@@ -1,0 +1,41 @@
+/*!
+ * Colors material design
+ * https://material.io/design/color/the-color-system.html#tools-for-picking-colors * 
+ */
+
+ /* Indigo*/
+ .indigo50  { background-color: #E8EAF6; }
+ .indigo100 { background-color: #C5CAE9; }
+ .indigo200 { background-color: #9FA8DA; }
+ .indigo300 { background-color: #7986CB; }
+ .indigo400 { background-color: #5C6BC0; }
+ .indigo500 { background-color: #3F51B5; }
+ .indigo600 { background-color: #3949AB; }
+ .indigo700 { background-color: #303F9F; }
+ .indigo800 { background-color: #283593; }
+ .indigo900 { background-color: #1A237E; }
+ .indigoA100 { background-color: #8C9EFF; }
+ .indigoA200 { background-color: #536DFE; }
+ .indigoA400 { background-color: #3D5AFE; }
+ .indigoA700 { background-color: #3D5AFE; }
+
+ /* Blue */
+ .blue50  { background-color: #E3F2FD; }
+ .blue100 { background-color: #BBDEFB; }
+ .blue200 { background-color: #90CAF9; }
+ .blue300 { background-color: #64B5F6; }
+ .blue400 { background-color: #42A5F5; }
+ .blue500 { background-color: #2196F3; }
+ .blue600 { background-color: #1E88E5; }
+ .blue700 { background-color: #1976D2; }
+ .blue800 { background-color: #1565C0; }
+ .blue900 { background-color: #0D47A1; }
+ .blueA100 { background-color: #82B1FF; }
+ .blueA200 { background-color: #448AFF; }
+ .blueA400 { background-color: #2979FF; }
+ .blueA700 { background-color: #2962FF; }
+
+ .red600 { background-color: #E53935; }
+ .orange600 { background-color: #FB8C00; }
+
+ 
