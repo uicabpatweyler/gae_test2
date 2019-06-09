@@ -84,7 +84,7 @@ class Escuela extends Model
      * Obtener todos los grados  que pertenecen a esta escuela
      */
     public function grados(){
-        return $this->HasMany(Grado::class);
+        return $this->hasMany(Grado::class);
     }
 
 
