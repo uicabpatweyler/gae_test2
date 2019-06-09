@@ -19,8 +19,7 @@ class GradoController extends Controller
     public function index()
     {
         return view('grados.index',[
-            'escuelas' => Escuela::with('nivel')->get(),
-            'ciclos' => Ciclo::orderBy('periodo','desc')->get()
+            'escuelas' => Escuela::with('nivel')->get()
         ]);
     }
 
@@ -32,8 +31,7 @@ class GradoController extends Controller
     public function create()
     {
         return view('grados.create',[
-            'escuelas' => Escuela::with('nivel')->get(),
-            'ciclos' => Ciclo::orderBy('periodo','desc')->get()
+            'escuelas' => Escuela::with('nivel')->get()
         ]);
     }
 
@@ -61,7 +59,10 @@ class GradoController extends Controller
      */
     public function show(Grado $grado)
     {
-        //
+        return view('grados.show',[
+          'grado'    => $grado,
+           'escuela' =>  Escuela::where('id',$grado->escuela_id)->first()
+        ]);
     }
 
     /**
@@ -72,7 +73,10 @@ class GradoController extends Controller
      */
     public function edit(Grado $grado)
     {
-        //
+        return view('grados.edit',[
+            'escuelas' => Escuela::with('nivel')->get(),
+            'grado'    => $grado
+        ]);
     }
 
     /**
@@ -84,7 +88,12 @@ class GradoController extends Controller
      */
     public function update(GradoRequest $request, Grado $grado)
     {
-        //
+        $grado->update($request->all());
+        return response()
+            ->json([
+                'message'  => 'Los datos se han actualizado correctamente',
+                'location' => route('grados.index')
+            ]);
     }
 
     /**
