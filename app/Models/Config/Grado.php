@@ -9,7 +9,7 @@ class Grado extends Model
 {
     use SoftDeletes;
     protected $table = 'grados';
-    protected $fillable = ['escuela_id','ciclo_id','nombre','abreviacion'];
+    protected $fillable = ['escuela_id','nombre','abreviacion'];
     protected $dates = [
         'deleted_at',
         'created_at',
@@ -18,6 +18,11 @@ class Grado extends Model
     protected $casts = [
         'status'   => 'boolean'
     ];
+
+    public function setNombreAttribute($value)
+    {
+        $this->attributes['nombre'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
+    }
 
     /*
      * Relacion: ESCUELAS:GRADOS (1:M)
