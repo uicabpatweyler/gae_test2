@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use phpDocumentor\Reflection\Types\Null_;
 
 class GradoRequest extends FormRequest
 {
@@ -18,19 +18,30 @@ class GradoRequest extends FormRequest
         return true;
     }
 
+    //https://stackoverflow.com/questions/50349775/laravel-unique-validation-on-multiple-columns
     public function storeRules(){
         return [
             'escuela_id' => 'required',
-            'ciclo_id'   => 'required',
-            'nombre'     => 'required'
+            'nombre'     => [
+                'required',
+                Rule::unique('grados')->where(function ($query)  {
+                    return $query->where('escuela_id', $this->escuela_id)
+                        ->where('nombre', $this->nombre);
+                })
+            ]
         ];
     }
 
     public function updateRules(){
         return [
             'escuela_id' => 'required',
-            'ciclo_id'   => 'required',
-            'nombre'     => 'required'
+            'nombre'     => [
+                'required',
+                Rule::unique('grados')->where(function ($query)  {
+                    return $query->where('escuela_id', $this->escuela_id)
+                        ->where('nombre', $this->nombre);
+                })->ignore($this->grado->id),
+            ]
         ];
     }
 
@@ -58,7 +69,7 @@ class GradoRequest extends FormRequest
     {
         return [
             'escuela_id.required' => 'Elija una escuela',
-            'ciclo_id.required'   => 'Elija un periodo',
+            'nombre.unique'       => 'Este grado ya existe',
             'nombre.required'     => 'Falta el nombre',
         ];
     }
