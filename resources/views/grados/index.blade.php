@@ -35,17 +35,6 @@
             @endforeach
           </select>
         </div>
-        <div class="col-sm-3 my-1">
-          <label class="sr-only" for="ciclo_id">Ciclo</label>
-          <select id="ciclo_id" name="ciclo_id" class="form-control" required>
-            @foreach($ciclos as $ciclo)
-              @if($loop->first)
-                <option value="" selected>[Elija un ciclo]</option>
-              @endif
-              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }}</option>
-            @endforeach
-          </select>
-        </div>
       </div>
     </div>
     <div class="border-bottom border-gray pb-2 mb-2">
@@ -76,59 +65,52 @@
   <!-- Datatables JS -->
   <script>
     var escuela = 0;
-    var ciclo   = 0;
 
-    $(document).ready(function(){
-      /*Evento change. Select: Escuela*/
-      $("#escuela_id").change( function (){
-        if($(this).val()!==''){
-          escuela = $(this).val();
-          filtrarGrados()
-        }
-        else{ escuela= 0;}
-      });
-
-      /*Evento change. Select: Ciclo*/
-      $("#ciclo_id").change( function (){
-        if($(this).val()!==''){
-          ciclo = $(this).val();
-          filtrarGrados()
-        }
-        else{ ciclo= 0;}
-      });
-    });
-
-    function filtrarGrados(){
-      if(escuela!=0 && ciclo!=0){
-        $('#grados').DataTable({
-          processing: true,
-          serverSide: true,
-          ordering:false,
-          searching: false,
-          destroy: true,
-          ajax: urlRoot+'/data/grados/'+escuela+'/'+ciclo,
-          language: {
-            url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
-          },
-          columns: [
-            {data: 'nombre', name: 'nombre', className:"text-center"},
-            {data: 'abreviacion', name: 'abreviacion', className:"text-center"},
-            {data: null, className:"text-center",
-              render: function(data){
-                if(data.status==="1"){
-                  return '<i class="fas fa-check text-success"></i>'
-                }
-                return '<i class="fas fa-times text-danger"></i>'
-              }
-            },
-            { data: "actions", className:"text-center",
-              render: function(data){
-                return htmlDecode(data);
-              }
+    $(document).ready(function() {
+        /*Evento change. Select: Escuela*/
+        $("#escuela_id").change(function () {
+            if ($(this).val() !== '') {
+                escuela = $(this).val();
+                filtrarGrados()
+            } else {
+                escuela = 0;
             }
-          ]
         });
-      }
-    }
+
+        function filtrarGrados() {
+            if (escuela !== 0) {
+                $('#grados').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ordering: false,
+                    searching: false,
+                    destroy: true,
+                    ajax: urlRoot + '/data/grados/' + escuela,
+                    language: {
+                        url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
+                    },
+                    columns: [
+                        {data: 'nombre', name: 'nombre', className: "text-center"},
+                        {data: 'abreviacion', name: 'abreviacion', className: "text-center"},
+                        {
+                            data: null, className: "text-center",
+                            render: function (data) {
+                                if (data.status === "1") {
+                                    return '<i class="fas fa-check text-success"></i>'
+                                }
+                                return '<i class="fas fa-times text-danger"></i>'
+                            }
+                        },
+                        {
+                            data: "actions", className: "text-center",
+                            render: function (data) {
+                                return htmlDecode(data);
+                            }
+                        }
+                    ]
+                });
+            }
+        }
+    });
   </script>
 @endpush
