@@ -43,22 +43,9 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="ciclo_id" class="col-sm-3 col-form-label">Ciclo <span class="text-danger">*</span></label>
-        <div class="col-sm-6">
-          <select id="ciclo_id" name="ciclo_id" class="form-control" required>
-            @foreach($ciclos as $ciclo)
-              @if($loop->first)
-                <option value="" selected>[Elija un ciclo]</option>
-              @endif
-              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
         <label for="nombre" class="col-sm-3 col-form-label">Nombre <span class="text-danger">*</span></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del grado" value="Principiante" required>
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del grado" required>
         </div>
       </div>
       <div class="form-group row">
@@ -73,7 +60,7 @@
           <i class="fas fa-times-circle"></i>
           Cancelar
         </button>
-        <button type="submit" class="btn blue700 text-white">
+        <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
           <i class="fas fa-save"></i>
           Guardar
         </button>
@@ -88,90 +75,11 @@
 @push('scripts')
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
+  <script src="{{ asset('modulos/grados.js') }}"></script>
   <script>
     $('#btn_cancelar').click(function(){
       event.preventDefault();
       showCancel('{{ route('grados.index') }}')
     });
-
-    // $.validator.setDefaults({
-    //   submitHandler: function() {
-    //     alert("submitted!");
-    //   }
-    // });
-
-    $().ready(function() {
-      $('#form_grado').validate({
-        debug: false,
-        errorElement: "div",
-        rules: {
-          escuela_id: "required",
-          ciclo_id:  "required",
-          nombre: "required"
-        },
-        messages: {
-          escuela_id: 'Obligatorio',
-          ciclo_id:  "Obligatorio",
-          nombre: "Obligatorio"
-        },
-        submitHandler: function() { saveUpdate(); },
-        invalidHandler: function(event, validator) {
-          // 'this' refers to the form
-          var errors = validator.numberOfInvalids();
-          if (errors) {
-            var message = errors === 1
-              ? 'Verifica el campo marcado en rojo'
-              : 'Verifica los ' + errors + ' campos marcados en rojo';
-            showAlert('error','ERROR',message,'');
-          } else {
-            // informar que se procedera a guardar el formulario
-          }
-        },
-        errorPlacement: function ( error, element ) {
-          error.addClass( "invalid-feedback" );
-          if ( element.prop( "type" ) === "checkbox" ) {
-            error.insertAfter( element.parent( "label" ) );
-          } else {
-            error.insertAfter( element );
-          }
-        },
-        success: function(element){
-          $( element ).remove();
-        },
-        highlight: function ( element, errorClass, validClass ) {
-          $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
-        }
-      });
-    });
-
-    function saveUpdate(){
-      $("#btn_guardar").prop('disabled', 'disabled');
-      $.ajax({
-        method: "POST",
-        url: $("#form_grado").attr('action'),
-        data: $("#form_grado").serialize()
-      })
-        .done(function(data, textStatus, jqXHR){
-          showAlert(textStatus, jqXHR.statusText, data.message, data.location);
-        })
-        .fail(function( jqXHR, textStatus, errorThrown){
-          var errors = Object.keys(jqXHR.responseJSON.errors).length;
-          var message = errors === 1
-            ? 'Verifica el campo marcado en rojo'
-            : 'Verifica los ' + errors + ' campos marcados en rojo';
-
-          showAlert(textStatus, jqXHR.statusText, message, '');
-
-          $.each(jqXHR.responseJSON.errors, function(key,value){
-            $( "#"+key ).addClass( "is-invalid" ).removeClass( "is-valid" );
-            $('<div id="'+key+'-error" class="error invalid-feedback">'+value+'</div>').insertAfter( $( "#"+key ) );
-          });
-          $("#btn_guardar").removeAttr('disabled');
-        });
-    }
-
   </script>
 @endpush
