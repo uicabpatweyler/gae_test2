@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use phpDocumentor\Reflection\Types\Null_;
 
 class GradoRequest extends FormRequest
 {
