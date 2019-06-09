@@ -34,9 +34,8 @@ class DataController extends Controller
             ->make(true);
     }
 
-    public function grados($escuela,$ciclo){
+    public function grados($escuela){
         $grados = Grado::where('escuela_id',$escuela)
-                    ->where('ciclo_id',$ciclo)
                     ->orderBy('id','asc')
                     ->get();
         return DataTables::of($grados)
