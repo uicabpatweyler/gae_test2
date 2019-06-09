@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/modulos/grados.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/grados/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/grados/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Config/GradoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Config/GradoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/GradoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/GradoRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Config/Escuela.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Config/Escuela.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Config/Grado.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Config/Grado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_07_114125_create_grados_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_07_114125_create_grados_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/GradosTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GradosTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/escuelas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/escuelas/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/grados/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/grados/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/grados/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/grados/index.blade.php" afterDir="false" />
@@ -33,7 +22,7 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -199,7 +188,7 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1296" />
@@ -233,7 +222,7 @@
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="grados" type="462c0819:PsiDirectoryNode" />
+              <item name="escuelas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -363,16 +352,17 @@
       <workItem from="1560001583324" duration="437000" />
       <workItem from="1560030581383" duration="4034000" />
       <workItem from="1560046178820" duration="10303000" />
+      <workItem from="1560061681528" duration="307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109228000" />
+    <option name="totallyTimeSpent" value="109535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18689321" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18689321" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -660,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/escuelas/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-728">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/NivelController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -787,6 +770,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="47" column="107" selection-start-line="47" selection-start-column="107" selection-end-line="47" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/escuelas/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
         </state>
       </provider>
     </entry>
