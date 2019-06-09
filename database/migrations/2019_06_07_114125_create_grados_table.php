@@ -16,17 +16,13 @@ class CreateGradosTable extends Migration
         Schema::create('grados', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('escuela_id');
-            $table->unsignedBigInteger('ciclo_id');
             $table->string('nombre',120);
             $table->string('abreviacion',60)->nullable();
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();
 
-            //$table->unique(['ciclo_id','escuela_id','nombre'], 'grado_unico');
-
             $table->foreign('escuela_id')->references('id')->on('escuelas');
-            $table->foreign('ciclo_id')->references('id')->on('ciclos');
         });
     }
 
