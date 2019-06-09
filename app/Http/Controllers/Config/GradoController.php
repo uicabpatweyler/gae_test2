@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Config;
 
 use App\Http\Requests\GradoRequest;
-use App\Models\Config\Ciclo;
 use App\Models\Config\Escuela;
 use App\Models\Config\Grado;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class GradoController extends Controller
@@ -59,9 +57,10 @@ class GradoController extends Controller
      */
     public function show(Grado $grado)
     {
+      //One To Many (Inverse) Escuelas:Grados
         return view('grados.show',[
           'grado'    => $grado,
-           'escuela' =>  Escuela::where('id',$grado->escuela_id)->first()
+          'escuela'  =>  Grado::find($grado->id)->escuela
         ]);
     }
 
