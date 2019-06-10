@@ -12,8 +12,9 @@ class GradosTableSeeder extends Seeder
      */
     public function run()
     {
-        $escuela1=1;
-        $escuela2=2;
+        $escuela1 = 1;
+        $escuela2 = 2;
+        $escuela3 = 3;
 
         Grado::create([
             'escuela_id'  => $escuela1,
@@ -67,6 +68,24 @@ class GradosTableSeeder extends Seeder
             'escuela_id'  => $escuela2,
             'nombre'      => 'Sexto',
             'abreviacion' => '6to.'
+        ]);
+
+        Grado::create([
+            'escuela_id'  => $escuela3,
+            'nombre'      => 'primer grado',
+            'abreviacion' => '1ero.'
+        ]);
+
+        Grado::create([
+            'escuela_id'  => $escuela3,
+            'nombre'      => 'segundo grado',
+            'abreviacion' => '2do.'
+        ]);
+
+        Grado::create([
+            'escuela_id'  => $escuela3,
+            'nombre'      => 'tercer grado',
+            'abreviacion' => '3ero..'
         ]);
 
     }
