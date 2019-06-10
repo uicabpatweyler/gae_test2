@@ -18,7 +18,10 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        //
+        return view('grupos.index',[
+            'escuelas' => Escuela::with('nivel')->get(),
+            'ciclos' => Ciclo::orderBy('periodo','desc')->get()
+        ]);
     }
 
     /**
