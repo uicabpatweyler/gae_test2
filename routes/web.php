@@ -26,12 +26,14 @@ Route::prefix('config')->group(function () {
     Route::resource('escuelas', 'Config\EscuelaController');
     Route::resource('ciclos','Config\CicloController');
     Route::resource('grados','Config\GradoController');
+    Route::resource('grupos','Config\GrupoController');
 });
 
 Route::prefix('data')->group(function () {
     Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
     Route::get('ciclos','DataController@ciclos')->name('ciclos.data');
     Route::get('grados/{escuela}','DataController@grados')->name('grados.data');
+    Route::get('selectgrados/{escuela}', 'DataController@selectGradosEscuela');
 });
 
 //Route::resource('escuelas', 'Config\EscuelaController');
