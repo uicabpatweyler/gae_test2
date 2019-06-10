@@ -20,4 +20,13 @@ class Ciclo extends Model
     ];
 
     /* Mutators: set and get */
+
+  /*
+   * Relacion CICLO:GRUPOS (1:M)
+   * Lado 1
+   * Obtener todos los grupos creados o que pertenecen a este ciclo escolar
+   */
+  public function grupos(){
+    return $this->hasMany(Ciclo::class);
+  }
 }
