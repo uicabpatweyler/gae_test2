@@ -87,5 +87,12 @@ class Escuela extends Model
         return $this->hasMany(Grado::class);
     }
 
-
+    /*
+     * Relacion: ESCUELA:GRUPOS (1:M)
+     * Lado 1
+     * Obtener todos los grupos que pertenecen a esta escuela
+     */
+    public function grupos(){
+      return $this->hasMany(Grupo::class);
+    }
 }
