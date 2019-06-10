@@ -34,6 +34,7 @@ Route::prefix('data')->group(function () {
     Route::get('ciclos','DataController@ciclos')->name('ciclos.data');
     Route::get('grados/{escuela}','DataController@grados')->name('grados.data');
     Route::get('selectgrados/{escuela}', 'DataController@selectGradosEscuela');
+    Route::get('grupos/{escuela}/{grado}/{ciclo}','DataController@grupos');
 });
 
 //Route::resource('escuelas', 'Config\EscuelaController');
