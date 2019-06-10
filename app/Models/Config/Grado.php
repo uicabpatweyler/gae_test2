@@ -32,4 +32,13 @@ class Grado extends Model
     public function escuela(){
         return $this->belongsTo(Escuela::class,'escuela_id','id');
     }
+
+    /*
+     * Relacion: GRADO:GRUPOS (1:M)
+     * Lado 1
+     * Obtener todos los grupos que pertenece a este grado
+     */
+    public function grupos(){
+      return $this->hasMany(Grupo::class);
+    }
 }
