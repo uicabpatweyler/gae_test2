@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Grado;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class DataController extends Controller
@@ -46,5 +47,15 @@ class DataController extends Controller
                 return view('_formActions', compact('showUrl','editUrl','deleteUrl'));
             })
             ->make(true);
+    }
+
+    public function selectGradosEscuela($escuela){
+      /*Relacion ESCUELA:GRUPOS: Una ESCUELA tiene muchos GRUPOS*/
+      $grados = Escuela::find($escuela)->grados()
+        ->select(['id as value','nombre as text', 'abreviacion as abrev'])->get()->toArray();
+
+      array_unshift($grados, ['value' => '', 'text' => '', 'abrev' => '']);
+
+      return $grados;
     }
 }
