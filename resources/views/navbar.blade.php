@@ -25,8 +25,7 @@
             <a class="dropdown-item" href="{{ route('ciclos.index') }}"><i class="fas fa-angle-right"></i> Ciclos Escolares</a>
             <a class="dropdown-item" href="{{ route('grados.index') }}"><i class="fas fa-angle-right"></i> Grados Escolares</a>
             <a class="dropdown-item" href="{{ route('grupos.index') }}"><i class="fas fa-angle-right"></i> Grupos Escolares</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cuotas de Inscrpción</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cuotas de Colegiatura</a>
+            <a class="dropdown-item" href="{{route('cuotas.index')}}"><i class="fas fa-angle-right"></i> Cuotas de Pago</a>
           </div>
         </li>
 
