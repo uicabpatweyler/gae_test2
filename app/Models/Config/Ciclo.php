@@ -29,4 +29,13 @@ class Ciclo extends Model
   public function grupos(){
     return $this->hasMany(Ciclo::class);
   }
+
+  /*
+   * Relacion CICLO:CUOTAS (1:M)
+   * Lado 1
+   * Obtener todas las cuotas que pertenecen a este ciclo escolar   *
+   */
+  public function cuotas(){
+      return $this->hasMany(Cuota::class);
+  }
 }
