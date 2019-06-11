@@ -12,79 +12,145 @@ class GruposTableSeeder extends Seeder
      */
     public function run()
     {
-        $escuela1 = 1;
-        $escuela2 = 2;
-        $escuela3 = 3;
-
-        $ciclo1 = 20;
-        $ciclo2 = 19;
-
-        $grado1 = 1;
-        $grado2 = 2;
-        $grado3 = 3;
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado1,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 1,
             'nombre'     => 'P01A',
-            'cupoalumnos' => 30,
+            'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado1,
-            'nombre'     => 'P01B',
-            'cupoalumnos' => 30,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 1,
+            'nombre'     => 'P02A',
+            'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado2,
-            'nombre'     => 'I01A',
-            'cupoalumnos' => 30,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 1,
+            'nombre'     => 'P02B',
+            'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado2,
-            'nombre'     => 'I01B',
-            'cupoalumnos' => 30,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 1,
+            'nombre'     => 'P03A',
+            'cupoalumnos' => 27,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado3,
-            'nombre'     => 'A01A',
-            'cupoalumnos' => 30,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 1,
+            'nombre'     => 'P03B',
+            'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
         Grupo::create([
-            'escuela_id' => $escuela1,
-            'ciclo_id'   => $ciclo1,
-            'grado_id'   => $grado3,
-            'nombre'     => 'A01B',
-            'cupoalumnos' => 30,
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => 'i001a',
+            'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
         ]);
 
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => 'i001b',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
 
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => 'i002a',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
 
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => 'i002b',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
 
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => 'i003a',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
+
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 3,
+            'nombre'     => 'a003a',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
+
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 3,
+            'nombre'     => 'a002a',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
+
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 3,
+            'nombre'     => 'a001a',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
+
+        Grupo::create([
+            'escuela_id' => 1,
+            'ciclo_id'   => 1,
+            'grado_id'   => 2,
+            'nombre'     => '1003b',
+            'cupoalumnos' => 25,
+            'cuotainscripcion_id' => 0,
+            'cuotacolegiatura_id' => 0
+        ]);
     }
 }
