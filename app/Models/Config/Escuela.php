@@ -18,8 +18,9 @@ class Escuela extends Model
 
     protected $fillable = [
         'cct', 'incorporacion', 'nombre', 'tipo_id', 'nivel_id', 'servicio_id',
-        'turno', 'sostenimiento', 'calle', 'exterior', 'interior', 'entrecalles',
-        'colonia', 'codpost', 'pais', 'entidad', 'municipio', 'localidad', 'status'
+        'turno', 'sostenimiento', 'email', 'telefono',
+        'calle', 'exterior', 'interior', 'entrecalles', 'colonia', 'codpost',
+        'pais', 'entidad', 'municipio', 'localidad', 'status'
     ];
 
     protected $dates = [
@@ -94,5 +95,14 @@ class Escuela extends Model
      */
     public function grupos(){
       return $this->hasMany(Grupo::class);
+    }
+
+    /*
+     * Relacion: ESCUELA:CUOTAS (1:M)
+     * Lado 1
+     * Obtener todas las cuotas que pertenecen a esta escuela
+     */
+    public function cuotas(){
+        return $this->hasMany(Cuota::class);
     }
 }
