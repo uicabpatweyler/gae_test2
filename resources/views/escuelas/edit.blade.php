@@ -101,6 +101,16 @@
           </select>
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control form-control-sm" id="email" name="email" value="{{$escuela->email}}">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="telefono">Teléfono</label>
+          <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" value="{{$escuela->telefono}}" placeholder="(000) 000-0000">
+        </div>
+      </div>
       <hr class="mt-0 mb-0">
       <h5 class="text-center mb-1">Domicilio</h5>
       <hr class="mt-0">
@@ -109,30 +119,32 @@
           <label for="calle">Calle</label>
           <input type="text" class="form-control form-control-sm" id="calle" name="calle" value="{{$escuela->calle}}">
         </div>
-        <div class="form-group col-md-6">
-          <label for="colonia">Colonia</label>
-          <input type="text" class="form-control form-control-sm" id="colonia" name="colonia" value="{{$escuela->colonia}}">
-        </div>
-      </div>
-      <div class="form-row">
         <div class="form-group col-md-3">
-          <label for="exterior">Número exterior</label>
+          <label for="exterior">Núm. Ext.</label>
           <input type="text" class="form-control form-control-sm" id="exterior" name="exterior" value="{{$escuela->exterior}}" placeholder="">
         </div>
         <div class="form-group col-md-3">
-          <label for="interior">Número interior</label>
+          <label for="interior">Núm. Int.</label>
           <input type="text" class="form-control form-control-sm" id="interior" name="interior" value="{{$escuela->interior}}" placeholder="">
         </div>
-        <div class="form-group col-md-3">
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-5">
+          <label for="entrecalles">Entre calles</label>
+          <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" value="{{$escuela->entrecalles}}" placeholder="">
+        </div>
+        <div class="form-group col-md-5">
+          <label for="colonia">Colonia</label>
+          <input type="text" class="form-control form-control-sm" id="colonia" name="colonia" value="{{$escuela->colonia}}">
+        </div>
+        <div class="form-group col-md-2">
           <label for="codpost">Código postal</label>
           <input type="text" class="form-control form-control-sm" id="codpost" name="codpost" value="{{$escuela->codpost}}" placeholder="">
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="entrecalles">Entre calles</label>
-          <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" value="{{$escuela->entrecalles}}" placeholder="">
-        </div>
+
         <div class="form-group col-md-3">
           <label for="entidad">Entidad</label>
           <input type="text" class="form-control form-control-sm" id="entidad" name="entidad" value="{{$escuela->entidad}}" placeholder="">
@@ -168,6 +180,7 @@
 @push('scripts')
 <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
+<script src="{{ asset('jquerymask-1.14.15/jquery.mask.js') }}"></script>
   <script src="{{ asset('modulos/escuela.js') }}"></script>
   <script>
     $('#btn_cancelar').click(function(){
