@@ -45,7 +45,7 @@ class GradoController extends Controller
         return response()
             ->json([
                 'message'  => 'Los datos se han guardado correctamente',
-                'location' => route('grados.index')
+                'location' => route('grados.show', $grado->id)
             ]);
     }
 
@@ -91,7 +91,7 @@ class GradoController extends Controller
         return response()
             ->json([
                 'message'  => 'Los datos se han actualizado correctamente',
-                'location' => route('grados.index')
+                'location' => route('grados.show',$grado->id)
             ]);
     }
 

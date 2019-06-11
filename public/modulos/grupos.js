@@ -89,7 +89,7 @@ $.fn.populateSelectGrados = function (values) {
 
 $("#escuela_id").change( function (){
   if($(this).val()!==''){
-    $('#ciclo_id').enableControl(true,true);
+    $('#ciclo_id').enableControl(false,true);
     $('#grado_id').enableControl(false,true);
 
     $.getJSON(urlRoot+'/data/selectgrados/'+$(this).val(), null, function (values) {

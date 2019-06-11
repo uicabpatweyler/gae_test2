@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Config;
 use App\Http\Requests\GrupoRequest;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Escuela;
+use App\Models\Config\Grado;
 use App\Models\Config\Grupo;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class GrupoController extends Controller
@@ -49,7 +49,7 @@ class GrupoController extends Controller
       return response()
         ->json([
           'message'  => 'Los datos se han guardado correctamente',
-          'location' => route('escuelas.index')
+          'location' => route('grupos.show',$grupo->id)
         ]);
     }
 
@@ -61,7 +61,12 @@ class GrupoController extends Controller
      */
     public function show(Grupo $grupo)
     {
-        //
+        return view('grupos.show',[
+          'grupo' => $grupo,
+          'escuela' => Escuela::find($grupo->escuela_id),
+          'ciclo' => Ciclo::find($grupo->ciclo_id),
+          'grado' => Grado::find($grupo->grado_id)
+        ]);
     }
 
     /**
@@ -72,7 +77,12 @@ class GrupoController extends Controller
      */
     public function edit(Grupo $grupo)
     {
-        //
+        return view('grupos.edit',[
+          'escuelas' => Escuela::with('nivel')->get(),
+          'grados'   => Escuela::find($grupo->escuela_id)->grados()->get(),
+          'ciclos'   => Ciclo::orderBy('periodo','desc')->get(),
+          'grupo'    => $grupo
+        ]);
     }
 
     /**
@@ -84,7 +94,12 @@ class GrupoController extends Controller
      */
     public function update(GrupoRequest $request, Grupo $grupo)
     {
-        //
+      $grupo->update($request->all());
+      return response()
+        ->json([
+          'message'  => 'Los datos se han actualizado correctamente',
+          'location' => route('grupos.show',$grupo->id)
+        ]);
     }
 
     /**
@@ -95,6 +110,9 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
-        //
+      $grupo->delete();
+      return response()->json([
+        'success' => true
+      ]);
     }
 }
