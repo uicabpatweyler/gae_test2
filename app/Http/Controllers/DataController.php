@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
-use App\Models\Config\Grado;
 use App\Models\Config\Grupo;
 use Yajra\DataTables\DataTables;
 
@@ -36,7 +35,8 @@ class DataController extends Controller
     }
 
     public function grados($escuela){
-        $grados = Grado::where('escuela_id',$escuela)
+        /* Relacion ESCUELA:GRADOS 1:M*/
+        $grados = Escuela::find($escuela)->grados()
                     ->orderBy('id','asc')
                     ->get();
         return DataTables::of($grados)
@@ -70,8 +70,9 @@ class DataController extends Controller
             ->make(true);
     }
 
+    /* Select de los grados para la creacion de un nuevo grupo*/
     public function selectGradosEscuela($escuela){
-      /*Relacion ESCUELA:GRUPOS: Una ESCUELA tiene muchos GRUPOS*/
+      /*Relacion ESCUELA:GRADOS: 1:M*/
       $grados = Escuela::find($escuela)->grados()
         ->select(['id as value','nombre as text', 'abreviacion as abrev'])->get()->toArray();
 
