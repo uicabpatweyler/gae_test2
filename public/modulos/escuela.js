@@ -1,4 +1,8 @@
 $().ready(function() {
+
+  $('#telefono').mask('(000) 000-0000');
+  $('#codpost').mask('00000');
+
   $('#form_escuela').validate({
     debug: false,
     errorElement: "div",
