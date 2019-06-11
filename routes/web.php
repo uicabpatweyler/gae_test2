@@ -27,6 +27,7 @@ Route::prefix('config')->group(function () {
     Route::resource('ciclos','Config\CicloController');
     Route::resource('grados','Config\GradoController');
     Route::resource('grupos','Config\GrupoController');
+    Route::resource('cuotas','Config\CuotaController');
 });
 
 Route::prefix('data')->group(function () {
