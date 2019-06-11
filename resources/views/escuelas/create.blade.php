@@ -88,6 +88,16 @@
             </select>
           </div>
         </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control form-control-sm" id="email" name="email">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" placeholder="(000) 000-0000">
+          </div>
+        </div>
         <hr class="mt-0 mb-0">
         <h5 class="text-center mb-1">Domicilio</h5>
         <hr class="mt-0">
@@ -96,41 +106,42 @@
             <label for="calle">Calle</label>
             <input type="text" class="form-control form-control-sm" id="calle" name="calle">
           </div>
-          <div class="form-group col-md-6">
-            <label for="colonia">Colonia</label>
-            <input type="text" class="form-control form-control-sm" id="colonia" name="colonia">
-          </div>
-        </div>
-        <div class="form-row">
           <div class="form-group col-md-3">
-            <label for="exterior">Número exterior</label>
+            <label for="exterior">Núm. Ext.</label>
             <input type="text" class="form-control form-control-sm" id="exterior" name="exterior" placeholder="">
           </div>
           <div class="form-group col-md-3">
-            <label for="interior">Número interior</label>
+            <label for="interior">Núm. Int.</label>
             <input type="text" class="form-control form-control-sm" id="interior" name="interior" placeholder="">
           </div>
-          <div class="form-group col-md-3">
-            <label for="codpost">Código postal</label>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="entrecalles">Entre calles</label>
+            <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" placeholder="">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="colonia">Colonia</label>
+            <input type="text" class="form-control form-control-sm" id="colonia" name="colonia">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="codpost">C.P.</label>
             <input type="text" class="form-control form-control-sm" id="codpost" name="codpost" placeholder="">
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="entrecalles">Entre calles</label>
-            <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" placeholder="">
-          </div>
+
           <div class="form-group col-md-3">
             <label for="entidad">Entidad</label>
-            <input type="text" class="form-control form-control-sm" id="entidad" name="entidad" placeholder="">
+            <input type="text" class="form-control form-control-sm" id="entidad" name="entidad" value="Quintana Roo">
           </div>
           <div class="form-group col-md-3">
             <label for="municipio">Municipio</label>
-            <input type="text" class="form-control form-control-sm" id="municipio" name="municipio" placeholder="">
+            <input type="text" class="form-control form-control-sm" id="municipio" name="municipio" value="Othón. P. Blanco">
           </div>
           <div class="form-group col-md-3">
             <label for="localidad">Localidad</label>
-            <input type="text" class="form-control form-control-sm" id="localidad" name="localidad" placeholder="">
+            <input type="text" class="form-control form-control-sm" id="localidad" name="localidad" value="Chetumal">
           </div>
         </div>
         <div class="border-top mt-2 mb-2"></div>
@@ -155,6 +166,7 @@
 @push('scripts')
 <!-- Archivo(s) javascript del modulo -->
 <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
+<script src="{{ asset('jquerymask-1.14.15/jquery.mask.js') }}"></script>
 <script src="{{ asset('modulos/escuela.js') }}"></script>
 <script>
   $('#btn_cancelar').click(function(){
