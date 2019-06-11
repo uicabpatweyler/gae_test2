@@ -64,6 +64,16 @@
           <input type="text" id="sostenimiento" name="sostenimiento" class="form-control form-control-sm" value="{{ $escuela->sostenimiento }}" disabled>
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control form-control-sm" id="email" name="email" value="{{$escuela->email}}" disabled>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="telefono">Teléfono</label>
+          <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" value="{{$escuela->telefono}}" disabled>
+        </div>
+      </div>
       <hr class="mt-0 mb-0">
       <h5 class="text-center mb-1">Domicilio</h5>
       <hr class="mt-0">
@@ -72,30 +82,32 @@
           <label for="calle">Calle</label>
           <input type="text" class="form-control form-control-sm" id="calle" name="calle" value="{{$escuela->calle}}" disabled>
         </div>
-        <div class="form-group col-md-6">
-          <label for="colonia">Colonia</label>
-          <input type="text" class="form-control form-control-sm" id="colonia" name="colonia" value="{{$escuela->colonia}}" disabled>
-        </div>
-      </div>
-      <div class="form-row">
         <div class="form-group col-md-3">
-          <label for="exterior">Número exterior</label>
+          <label for="exterior">Núm. Ext.</label>
           <input type="text" class="form-control form-control-sm" id="exterior" name="exterior" value="{{$escuela->exterior}}" disabled>
         </div>
         <div class="form-group col-md-3">
-          <label for="interior">Número interior</label>
+          <label for="interior">Núm. Int.</label>
           <input type="text" class="form-control form-control-sm" id="interior" name="interior" value="{{$escuela->interior}}" disabled>
         </div>
-        <div class="form-group col-md-3">
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-5">
+          <label for="entrecalles">Entre calles</label>
+          <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" value="{{$escuela->entrecalles}}" disabled>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="colonia">Colonia</label>
+          <input type="text" class="form-control form-control-sm" id="colonia" name="colonia" value="{{$escuela->colonia}}" disabled>
+        </div>
+        <div class="form-group col-md-2">
           <label for="codpost">Código postal</label>
           <input type="text" class="form-control form-control-sm" id="codpost" name="codpost" value="{{$escuela->codpost}}" disabled>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="entrecalles">Entre calles</label>
-          <input type="text" class="form-control form-control-sm" id="entrecalles" name="entrecalles" value="{{$escuela->entrecalles}}" disabled>
-        </div>
+
         <div class="form-group col-md-3">
           <label for="entidad">Entidad</label>
           <input type="text" class="form-control form-control-sm" id="entidad" name="entidad" value="{{$escuela->entidad}}" disabled>
