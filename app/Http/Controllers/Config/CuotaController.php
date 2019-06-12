@@ -31,7 +31,10 @@ class CuotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('cuotas.create',[
+            'escuelas' => Escuela::with('nivel')->get(),
+            'ciclos' => Ciclo::orderBy('periodo','desc')->get()
+        ]);
     }
 
     /**
@@ -42,7 +45,12 @@ class CuotaController extends Controller
      */
     public function store(CuotaRequest $request)
     {
-        //
+        $cuota = tap(new Cuota($request->all()))->save();
+        return response()
+            ->json([
+                'message'  => 'Los datos se han guardado correctamente',
+                'location' => route('cuotas.show',$cuota->id)
+            ]);
     }
 
     /**
@@ -53,7 +61,11 @@ class CuotaController extends Controller
      */
     public function show(Cuota $cuota)
     {
-        //
+        return view('cuotas.show', [
+            'escuela' => Escuela::find($cuota->escuela_id),
+            'ciclo' => Ciclo::find($cuota->ciclo_id),
+            'cuota' => $cuota
+        ]);
     }
 
     /**
@@ -64,7 +76,11 @@ class CuotaController extends Controller
      */
     public function edit(Cuota $cuota)
     {
-        //
+        return view('cuotas.edit',[
+            'escuelas' => Escuela::with('nivel')->get(),
+            'ciclos' => Ciclo::orderBy('periodo','desc')->get(),
+            'cuota' => $cuota
+        ]);
     }
 
     /**
@@ -76,7 +92,12 @@ class CuotaController extends Controller
      */
     public function update(CuotaRequest $request, Cuota $cuota)
     {
-        //
+        $cuota->update($request->all());
+        return response()
+            ->json([
+                'message'  => 'Los datos se han actualizado correctamente',
+                'location' => route('cuotas.show',$cuota->id)
+            ]);
     }
 
     /**

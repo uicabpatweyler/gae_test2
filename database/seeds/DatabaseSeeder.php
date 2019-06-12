@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CiclosTableSeeder::class);
         $this->call(GradosTableSeeder::class);
         $this->call(GruposTableSeeder::class);
+        $this->call(CuotasTableSeeder::class);
     }
 }

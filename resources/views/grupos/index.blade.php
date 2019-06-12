@@ -48,7 +48,7 @@
               @if($loop->first)
                 <option value="" selected>[Elegir ciclo]</option>
               @endif
-              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }})</option>
+              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }}</option>
             @endforeach
           </select>
         </div>

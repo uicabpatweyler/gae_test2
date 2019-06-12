@@ -80,4 +80,19 @@ class DataController extends Controller
 
       return $grados;
     }
+
+    public function cuotas($escuela,$ciclo,$tipo){
+        /* Relacion ESCUELA:CUOTAS (1:M). Tipo cuota: 1=Inscripcion 2=Colegiatura*/
+        $cuotas = Escuela::find($escuela)->cuotas()
+            ->where('ciclo_id',$ciclo)
+            ->where('tipo',$tipo);
+        return DataTables::of($cuotas)
+            ->addColumn('actions', function($cuota){
+                $showUrl = route('cuotas.show',['id' => $cuota->id]);
+                $editUrl = route('cuotas.edit',['id' => $cuota->id]);
+                $deleteUrl = route('cuotas.destroy',['id' => $cuota->id]);
+                return view('_formActions', compact('showUrl','editUrl','deleteUrl'));
+            })
+            ->make(true);
+    }
 }

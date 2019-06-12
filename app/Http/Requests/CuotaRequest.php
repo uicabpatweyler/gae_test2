@@ -23,13 +23,13 @@ class CuotaRequest extends FormRequest
             'ciclo_id'   => 'required',
             'nombre'     => 'required',
             'tipo'       => 'required',
-            'cuota'      => [
-                'required|gt:0',
+            'cantidad'      => [
+                'required',
                 Rule::unique('cuotas')->where( function($query) {
                     return $query->where('escuela_id', $this->escuela_id)
                         ->where('ciclo_id', $this->ciclo_id)
                         ->where('tipo', $this->tipo)
-                        ->where('cuota', $this->cuota);
+                        ->where('cantidad', $this->cantidad);
                 })
             ]
         ];
@@ -41,13 +41,13 @@ class CuotaRequest extends FormRequest
             'ciclo_id'   => 'required',
             'nombre'     => 'required',
             'tipo'       => 'required',
-            'cuota'      => [
-                'required|gt:0',
+            'cantidad'   => [
+                'required',
                 Rule::unique('cuotas')->where( function($query) {
                     return $query->where('escuela_id', $this->escuela_id)
                         ->where('ciclo_id', $this->ciclo_id)
                         ->where('tipo', $this->tipo)
-                        ->where('cuota', $this->cuota);
+                        ->where('cantidad', $this->cantidad);
                 })->ignore($this->cuota->id)
             ]
         ];
@@ -80,9 +80,8 @@ class CuotaRequest extends FormRequest
             'ciclo_id.required'   => 'Elija el ciclo',
             'nombre.required'     => 'Nombre o breve descripción',
             'tipo.required'       => 'Elija el tipo de cuota',
-            'cuota.required'      => 'Falta la cuota',
-            'cuota.gt'            => 'Cuota incorrecta'
-
+            'cantidad.required'      => 'Falta la cuota',
+            'cantidad.unique'        => 'Esta cuota ya existe'
         ];
     }
 }

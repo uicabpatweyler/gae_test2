@@ -14,7 +14,7 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-table text-info"></i> cuotas de pago
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
+      <a href="{{route('cuotas.create')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="fas fa-plus"></i> nueva cuota
       </a>
       
@@ -42,7 +42,7 @@
               @if($loop->first)
                 <option value="" selected>[Elegir ciclo]</option>
               @endif
-              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }})</option>
+              <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }}</option>
             @endforeach
           </select>
         </div>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="table-responsive col-12">
-      <table class="table table-striped" id="grupos">
+      <table class="table table-striped" id="cuotas">
         <thead>
         <tr>
           <th scope="col" class="text-center">NOMBRE/DESCRIPCIÓN</th>
@@ -84,5 +84,80 @@
   <script src="{{asset('axios-0.19.0/axios.js')}}"></script>
   <!-- Datatables JS -->
   <script>
+    var escuela = 0;
+    var ciclo   = 0;
+    var tipo    = 0;
+
+    $().ready(function(){
+      $("#escuela_id").change(function () {
+        if ($(this).val() !== '') {
+          escuela = $(this).val();
+        } else {
+          escuela = 0;
+        }
+        filtrarCuotas();
+      });
+
+      $("#ciclo_id").change(function () {
+        if ($(this).val() !== '') {
+          ciclo = $(this).val();
+        } else {
+          ciclo = 0;
+        }
+        filtrarCuotas();
+      });
+
+      $("#tipo").change(function () {
+        if ($(this).val() !== '') {
+          tipo = $(this).val();
+        } else {
+          tipo = 0;
+        }
+        filtrarCuotas();
+      });
+
+      function filtrarCuotas(){
+        if(escuela!==0 && ciclo!==0 && tipo!==0){
+          $('#cuotas').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: false,
+            searching: false,
+            destroy: true,
+            ajax: urlRoot+'/data/cuotas/'+escuela+'/'+ciclo+'/'+tipo,
+            language: {
+              url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
+            },
+            columns: [
+              {data: 'nombre', name: 'nombre', className: "text-center"},
+              {
+                data: null, name: 'tipo', className: "text-center",
+                render: function(data){
+                  if(data.tipo === "1") return 'Inscripción';
+                  return 'Colegiatura';
+                }
+              },
+              {
+                data: 'cantidad', name: 'cantidad', className: "text-center",
+                render: $.fn.dataTable.render.number( ',', '.', 2, '$ ' )
+              },
+              {
+                data: null, className: "text-center",
+                render: function (data) {
+                  if (data.status === "1") return '<i class="fas fa-check text-success"></i>';
+                  return '<i class="fas fa-times text-danger"></i>'
+                }
+              },
+              {
+                data: "actions", className: "text-center",
+                render: function (data) {
+                  return htmlDecode(data);
+                }
+              }
+            ]
+          });
+        }
+      }
+    });
   </script>
 @endpush

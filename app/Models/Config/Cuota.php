@@ -9,7 +9,7 @@ class Cuota extends Model
 {
     use SoftDeletes;
     protected $table = 'cuotas';
-    protected $fillable = ['escuela_id','ciclo_id','nombre','tipo','cuota'];
+    protected $fillable = ['escuela_id','ciclo_id','nombre','tipo','cantidad'];
     protected $dates = [
         'deleted_at',
         'created_at',
@@ -18,6 +18,11 @@ class Cuota extends Model
     protected $casts = [
         'status'   => 'boolean'
     ];
+
+    public function setNombreAttribute($value)
+    {
+        $this->attributes['nombre'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
+    }
 
     /*
      * Relacion ESCUELA:CUOTAS (1:M)

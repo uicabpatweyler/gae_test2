@@ -147,7 +147,7 @@ class GruposTableSeeder extends Seeder
             'escuela_id' => 1,
             'ciclo_id'   => 1,
             'grado_id'   => 2,
-            'nombre'     => '1003b',
+            'nombre'     => 'i003b',
             'cupoalumnos' => 25,
             'cuotainscripcion_id' => 0,
             'cuotacolegiatura_id' => 0
