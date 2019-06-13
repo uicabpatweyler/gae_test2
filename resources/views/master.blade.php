@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('custom.css') }}">
     <link rel="stylesheet" href="{{ asset('customcolors.css') }}">
 
+    @stack('css')
+
     <title>@yield('title')</title>
 </head>
 <body class="bg-light">

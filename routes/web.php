@@ -28,6 +28,8 @@ Route::prefix('config')->group(function () {
     Route::resource('grados','Config\GradoController');
     Route::resource('grupos','Config\GrupoController');
     Route::resource('cuotas','Config\CuotaController');
+    Route::get('cuotagrupo/{cuota}','Config\CuotaGrupoController@updateCuotaGrupo');
+    Route::post('test','Config\CuotaGrupoController@test')->name('test');
 });
 
 Route::prefix('data')->group(function () {
