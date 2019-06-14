@@ -45,7 +45,7 @@
       <div class="form-group row">
         <label for="ciclo_id" class="col-sm-3 col-form-label">Ciclo <span class="text-danger">*</span></label>
         <div class="col-sm-6">
-          <select id="ciclo_id" name="ciclo_id" class="form-control" required disabled="">
+          <select id="ciclo_id" name="ciclo_id" class="form-control" required>
             @foreach($ciclos as $ciclo)
               @if($loop->first)
                 <option value="" selected>[Elija un ciclo escolar]</option>
@@ -58,7 +58,23 @@
       <div class="form-group row">
         <label for="grado_id" class="col-sm-3 col-form-label">Grado <span class="text-danger">*</span></label>
         <div class="col-sm-6">
-          <select name="grado_id" id="grado_id" class="form-control" required disabled>
+          <select name="grado_id" id="grado_id" class="form-control" disabled>
+            <option value="" selected></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cuotainscripcion_id" class="col-sm-3 col-form-label">Cuota Inscrip.</label>
+        <div class="col-sm-6">
+          <select name="cuotainscripcion_id" id="cuotainscripcion_id" class="form-control" disabled>
+            <option value="" selected></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cuotacolegiatura_id" class="col-sm-3 col-form-label">Cuota Coleg.</label>
+        <div class="col-sm-6">
+          <select name="cuotacolegiatura_id" id="cuotacolegiatura_id" class="form-control" disabled>
             <option value="" selected></option>
           </select>
         </div>
