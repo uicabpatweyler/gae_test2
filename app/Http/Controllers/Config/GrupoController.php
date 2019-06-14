@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Config;
 
 use App\Http\Requests\GrupoRequest;
 use App\Models\Config\Ciclo;
+use App\Models\Config\Cuota;
 use App\Models\Config\Escuela;
 use App\Models\Config\Grado;
 use App\Models\Config\Grupo;
@@ -61,11 +62,15 @@ class GrupoController extends Controller
      */
     public function show(Grupo $grupo)
     {
+        $cuotai = $grupo->cuotainscripcion_id === 0 ? 0 : Cuota::find($grupo->cuotainscripcion_id)->cantidad;
+        $cuotac = $grupo->cuotacolegiatura_id === 0 ? 0 : Cuota::find($grupo->cuotacolegiatura_id)->cantidad;
         return view('grupos.show',[
           'grupo' => $grupo,
           'escuela' => Escuela::find($grupo->escuela_id),
           'ciclo' => Ciclo::find($grupo->ciclo_id),
-          'grado' => Grado::find($grupo->grado_id)
+          'grado' => Grado::find($grupo->grado_id),
+          'cuotai' => $cuotai,
+          'cuotac' => $cuotac
         ]);
     }
 
@@ -81,7 +86,17 @@ class GrupoController extends Controller
           'escuelas' => Escuela::with('nivel')->get(),
           'grados'   => Escuela::find($grupo->escuela_id)->grados()->get(),
           'ciclos'   => Ciclo::orderBy('periodo','desc')->get(),
-          'grupo'    => $grupo
+          'grupo'    => $grupo,
+          'cuotasi'  => Cuota::where([
+            ['escuela_id','=',$grupo->escuela_id],
+            ['ciclo_id','=', $grupo->ciclo_id],
+            ['tipo','=', '1']
+          ])->get(),
+          'cuotasc'  => Cuota::where([
+            ['escuela_id','=',$grupo->escuela_id],
+            ['ciclo_id','=', $grupo->ciclo_id],
+            ['tipo','=', '2']
+          ])->get()
         ]);
     }
 
