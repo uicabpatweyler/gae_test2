@@ -64,6 +64,8 @@
           <th scope="col" class="text-center">GRADO</th>
           <th scope="col" class="text-center">GRUPO</th>
           <th scope="col" class="text-center">CUPO</th>
+          <th scope="col" class="text-center">INSCRIPCIÓN</th>
+          <th scope="col" class="text-center">COLEGIATURA</th>
           <th scope="col" class="text-center">ESTADO</th>
           <th scope="col" class="text-center">ACCIONES</th>
         </tr>
@@ -95,7 +97,7 @@
         grado = 0;
 
         $.getJSON(urlRoot+'/data/selectgrados/'+$(this).val(), null, function (values) {
-          $('#grado_id').populateSelectGrados(values);
+          $('#grado_id').populateSelect(values);
         });
 
         if(escuela!==0 && grado!==0 && ciclo!==0){
@@ -134,14 +136,6 @@
       }
     });
 
-    $.fn.populateSelectGrados = function (values) {
-      var options = '';
-      $.each(values, function (key, row) {
-        options += '<option value="' + row.value + '">' + row.text +' ' +row.abrev + '</option>';
-      });
-      $(this).html(options);
-    };
-
     function filtrarGrupos(){
       $('#grupos').DataTable({
         processing: true,
@@ -157,6 +151,8 @@
           {data: 'grado.nombre', name: 'grado.nombre', className: "text-center"},
           {data: 'nombre', name: 'nombre', className: "text-center"},
           {data: 'cupoalumnos', name: 'cupoalumnos', className: "text-center"},
+          {data: 'cuotains', name: 'cuotains', className: "text-center"},
+          {data: 'cuotacol', name: 'cuotacol', className: "text-center"},
           {
             data: null, className: "text-center",
             render: function (data) {
