@@ -64,7 +64,33 @@
               @if($loop->first)
                 <option value="" selected>[Elegir grado]</option>
               @endif
-              <option value="{{ $grado->id }}" {{$grado->id === $grupo->grado_id ? "selected" : ""}}>{{ $grado->nombre }}</option>
+              <option value="{{ $grado->id }}" {{$grado->id === $grupo->grado_id ? "selected" : ""}}>{{ $grado->nombre }} {{$grado->abreviacion}}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cuotainscripcion_id" class="col-sm-3 col-form-label">Cuota Inscrip. <span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <select name="cuotainscripcion_id" id="cuotainscripcion_id" class="form-control">
+            @foreach($cuotasi as $cuotai)
+              @if($loop->first)
+                <option value="" selected>[Elegir cuota]</option>
+              @endif
+              <option value="{{ $cuotai->id }}" {{$grupo->cuotainscripcion_id === $cuotai->id ? "selected" : ""}}>{{$cuotai->nombre}} {{number_format($cuotai->cantidad,2,'.',',')}}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cuotacolegiatura_id" class="col-sm-3 col-form-label">Cuota Coleg. <span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <select name="cuotacolegiatura_id" id="cuotacolegiatura_id" class="form-control">
+            @foreach($cuotasc as $cuotac)
+              @if($loop->first)
+                <option value="" selected>[Elegir cuota]</option>
+              @endif
+              <option value="{{ $cuotac->id }}" {{$grupo->cuotacolegiatura_id === $cuotac->id ? "selected" : ""}}>{{$cuotac->nombre}} {{number_format($cuotac->cantidad,2,'.',',')}}</option>
             @endforeach
           </select>
         </div>
