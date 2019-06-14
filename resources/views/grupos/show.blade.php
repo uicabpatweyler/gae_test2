@@ -45,6 +45,18 @@
       </div>
     </div>
     <div class="form-group row">
+      <label for="cuotai" class="col-sm-3 col-form-label">Cuota Inscripción</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="cuotai" name="cuota" value="$ {{number_format($cuotai,2,'.',',')}}" disabled>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="cuotac" class="col-sm-3 col-form-label">Cuota Colegiatura</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="cuotac" name="cuotac" value="$ {{number_format($cuotac,2,'.',',')}}" disabled>
+      </div>
+    </div>
+    <div class="form-group row">
       <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
       <div class="col-sm-6">
         <input type="text" class="form-control" id="nombre" name="nombre" value="{{$grupo->nombre}}" disabled>
