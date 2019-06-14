@@ -79,24 +79,54 @@ function saveUpdate(){
     });
 }
 
-$.fn.populateSelectGrados = function (values) {
-  var options = '';
-  $.each(values, function (key, row) {
-    options += '<option value="' + row.value + '">' + row.text +' ' +row.abrev + '</option>';
-  });
-  $(this).html(options);
-};
-
 $("#escuela_id").change( function (){
   if($(this).val()!==''){
-    $('#ciclo_id').enableControl(false,true);
-    $('#grado_id').enableControl(false,true);
+    $('#grado_id').enableControl(true,true);
 
     $.getJSON(urlRoot+'/data/selectgrados/'+$(this).val(), null, function (values) {
-      $('#grado_id').populateSelectGrados(values);
+      $('#grado_id').populateSelect(values);
     });
+
+    if($("#ciclo_id").val()!==''){
+      activeCuotas();
+      getCuotas(1);
+      getCuotas(2);
+    }
   }
   else{
     $('#grado_id').enableControl(true,false);
+    disableCuotas();
   }
 });
+
+$("#ciclo_id").change(function(){
+  if($(this).val()!=='' && $("#escuela_id").val()!==''){
+   activeCuotas();
+   getCuotas(1);
+   getCuotas(2);
+  }
+  else{
+    disableCuotas();
+  }
+});
+
+function getCuotas($tipo){
+  let url = urlRoot+'/data/_cuotas'+'/'+$("#escuela_id").val()+'/'+$("#ciclo_id").val()+'/'+$tipo;
+  $.getJSON(url, null, function (values) {
+    if($tipo===1){
+      $('#cuotainscripcion_id').populateSelect(values);
+    }
+    if($tipo===2){
+      $('#cuotacolegiatura_id').populateSelect(values);
+    }
+  });
+}
+
+function activeCuotas(){
+  $("#cuotainscripcion_id").enableControl(true,true);
+  $("#cuotacolegiatura_id").enableControl(true,true);
+}
+function disableCuotas(){
+  $("#cuotainscripcion_id").enableControl(true,false);
+  $("#cuotacolegiatura_id").enableControl(true,false);
+}
