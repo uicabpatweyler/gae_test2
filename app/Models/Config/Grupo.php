@@ -9,7 +9,9 @@ class Grupo extends Model
 {
     use SoftDeletes;
     protected $table = 'grupos';
-    protected $fillable= ['escuela_id', 'ciclo_id', 'grado_id', 'nombre','cupoalumnos'];
+    protected $fillable= [
+        'escuela_id', 'ciclo_id', 'grado_id', 'nombre','cupoalumnos','cuotainscripcion_id','cuotacolegiatura_id'
+    ];
     protected $dates = [
       'deleted_at',
       'created_at',
@@ -24,6 +26,24 @@ class Grupo extends Model
   {
     $this->attributes['nombre'] = mb_convert_case($value,MB_CASE_UPPER,"UTF-8");
   }
+
+  public function setCuotainscripcionIdAttribute($value){
+      if(isset($value)){
+          $this->attributes['cuotainscripcion_id'] = $value;
+      }
+      else{
+          $this->attributes['cuotainscripcion_id'] = 0;
+      }
+  }
+
+    public function setCuotacolegiaturaIdAttribute($value){
+        if(isset($value)){
+            $this->attributes['cuotacolegiatura_id'] = $value;
+        }
+        else{
+            $this->attributes['cuotacolegiatura_id'] = 0;
+        }
+    }
 
   /**
    * Relacion ESCUELA:GRUPOS (1:M)
@@ -50,5 +70,18 @@ class Grupo extends Model
    */
   public function grado(){
     return $this->belongsTo(Grado::class, 'grado_id','id');
+  }
+
+  /*
+   * Relacion CUOTA:GRUPOS (1:M) Cuota de Inscripcion
+   * Lado M
+   * Obtener el grupo al que pertenece esta cuota
+   */
+  public function inscripcion(){
+      return $this->belongsTo(Cuota::class, 'cuotainscripcion_id','id');
+  }
+
+  public function colegiatura(){
+      return $this->belongsTo(Cuota::class,'cuotacolegiatura_id','id');
   }
 }
