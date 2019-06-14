@@ -41,4 +41,17 @@ class Cuota extends Model
     public function ciclo(){
         return $this->belongsTo(Ciclo::class,'ciclo_id','id');
     }
+
+    /*
+     * Relacion CUOTA:GRUPOS (1:M)
+     * Lado 1
+     * Obtener los grupos que tienen asignada esta cuota
+     */
+    public function gruposIns(){
+        return $this->hasMany(Grupo::class,'cuotainscripcion_id','id');
+    }
+
+    public function gruposCol(){
+        return $this->hasMany(Grupo::class,'cuotacolegiatura_id','id');
+    }
 }
