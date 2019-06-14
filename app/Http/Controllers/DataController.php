@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Config\Cuota;
 use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Grupo;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class DataController extends Controller
@@ -67,6 +69,14 @@ class DataController extends Controller
                 $deleteUrl = route('grupos.destroy',['id' => $grupo->id]);
                 return view('_formActions', compact('showUrl','editUrl','deleteUrl'));
             })
+            ->addColumn('cuotains', function($grupo){
+              $cuotai = $grupo->cuotainscripcion_id === 0 ? 0 : Cuota::find($grupo->cuotainscripcion_id)->cantidad;
+              return '$ '.number_format($cuotai,2,'.',',');
+            })
+          ->addColumn('cuotacol', function($grupo){
+            $cuotac = $grupo->cuotacolegiatura_id === 0 ? 0 : Cuota::find($grupo->cuotacolegiatura_id)->cantidad;
+            return '$ '.number_format($cuotac,2,'.',',');
+          })
             ->make(true);
     }
 
@@ -74,11 +84,24 @@ class DataController extends Controller
     public function selectGradosEscuela($escuela){
       /*Relacion ESCUELA:GRADOS: 1:M*/
       $grados = Escuela::find($escuela)->grados()
-        ->select(['id as value','nombre as text', 'abreviacion as abrev'])->get()->toArray();
+        ->select(['id as value', DB::raw("CONCAT(nombre,' ',abreviacion)  AS text")])->get()->toArray();
 
-      array_unshift($grados, ['value' => '', 'text' => '[Elegir grado]', 'abrev' => '']);
+      array_unshift($grados, ['value' => '', 'text' => '[Elegir grado]']);
 
       return $grados;
+    }
+
+    public function selectCuotas($escuela,$ciclo,$tipo){
+        $cuotas = Cuota::select([
+            'id as value', DB::raw("CONCAT(nombre,' ',cantidad)  AS text")
+        ])
+        ->where('escuela_id',$escuela)
+        ->where('ciclo_id',$ciclo)
+        ->where('tipo',$tipo)->get()->toArray();
+
+        array_unshift($cuotas, ['value' => '', 'text' => '[Elegir cuota]']);
+
+        return $cuotas;
     }
 
     public function cuotas($escuela,$ciclo,$tipo){
