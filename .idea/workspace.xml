@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/cuotas/btnApplyPay.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Config/CuotaGrupoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Config/CuotaGrupoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_11_163015_create_cuotas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_11_163015_create_cuotas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/CuotasTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CuotasTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cuotagrupo/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cuotagrupo/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cuotas/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cuotas/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cuotas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cuotas/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cuotas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cuotas/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cuotas/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cuotas/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/CiclosTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CiclosTableSeeder.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +32,29 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Config/MesDePago.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="567">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding>
+                <element signature="e#37#76#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/MesesDePagoTableSeeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -69,9 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_07_114125_create_grados_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/grados/index.blade.php" />
         <option value="$PROJECT_DIR$/.editorconfig" />
         <option value="$PROJECT_DIR$/resources/views/grados/show.blade.php" />
         <option value="$PROJECT_DIR$/public/modulos/grados.js" />
@@ -87,7 +96,6 @@
         <option value="$PROJECT_DIR$/public/modulos/escuela.js" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_26_194618_create_escuelas_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/EscuelasTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/CiclosTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/GradosTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/GruposTableSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/escuelas/show.blade.php" />
@@ -120,6 +128,10 @@
         <option value="$PROJECT_DIR$/app/Models/Config/Grupo.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Config/CuotaGrupoController.php" />
         <option value="$PROJECT_DIR$/resources/views/cuotagrupo/show.blade.php" />
+        <option value="$PROJECT_DIR$/database/seeds/CiclosTableSeeder.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_18_163328_create_mesesdepago_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/Config/MesDePago.php" />
+        <option value="$PROJECT_DIR$/database/seeds/MesesDePagoTableSeeder.php" />
       </list>
     </option>
   </component>
@@ -219,7 +231,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,25 +241,19 @@
             <path>
               <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="grupos" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -417,11 +422,14 @@
       <workItem from="1560866353600" duration="1783000" />
       <workItem from="1560868339874" duration="1782000" />
       <workItem from="1560870156205" duration="1476000" />
+      <workItem from="1560892745965" duration="1785000" />
+      <workItem from="1560894559916" duration="1773000" />
+      <workItem from="1560896378382" duration="1109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193420000" />
+    <option name="totallyTimeSpent" value="198087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1272" y="-8" width="1296" height="1000" extended-state="6" />
@@ -452,48 +460,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/navbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="27" column="114" selection-start-line="27" selection-start-column="114" selection-end-line="27" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/regresar.url" />
-    <entry file="file://$PROJECT_DIR$/app/Models/Config/Grado.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#37#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CicloRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/EscuelaRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/GradoRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
-          <folding>
-            <element signature="e#37#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/grados/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -664,16 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/GruposTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1809">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding>
-            <element signature="e#7#35#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/EscuelasTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -712,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_11_163015_create_cuotas_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/CuotasTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="556">
@@ -742,16 +691,6 @@
           <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Config/Grupo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#37#76#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -797,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/grupos/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="114" column="33" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/globalFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
@@ -832,6 +764,82 @@
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/grupos/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="84" column="134" selection-start-line="84" selection-start-column="107" selection-end-line="84" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/escuelas/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="21" column="55" lean-forward="true" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/CiclosTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_18_162847_create_mesesdepago_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_11_163015_create_cuotas_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="23" column="34" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="23" selection-end-column="34" />
+          <folding>
+            <element signature="e#7#45#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_18_163328_create_mesesdepago_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Config/Grupo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#37#76#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/GruposTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+          <folding>
+            <element signature="e#7#35#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Config/MesDePago.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#37#76#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/MesesDePagoTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

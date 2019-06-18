@@ -14,7 +14,7 @@ class CiclosTableSeeder extends Seeder
     {
         $inicio = 2018;
         $fin = 2019;
-        foreach(range(1,1) as $i){
+        foreach(range(1,2) as $i){
             Ciclo::create([
                 'periodo' => $inicio.'-'.$fin,
                 'status' => true
