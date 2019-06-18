@@ -18,7 +18,7 @@ class CreateCuotasTable extends Migration
             $table->unsignedBigInteger('escuela_id');
             $table->unsignedBigInteger('ciclo_id');
             $table->string('nombre',120);
-            $table->string('tipo',20); //inscripcion-colegiatura
+            $table->integer('tipo')->default(0); //inscripcion=1, colegiatura=2
             $table->double('cantidad',8,2);
             $table->boolean('status')->default(true);
             $table->softDeletes();

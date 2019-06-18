@@ -61,8 +61,8 @@
         <div class="col-sm-6">
           <select id="tipo" name="tipo" class="form-control">
             <option value="">[Elegir]</option>
-            <option value="1" {{$cuota->tipo === "1" ? "selected" : "" }}>Cuota de Inscripción</option>
-            <option value="2" {{$cuota->tipo === "2" ? "selected" : "" }}>Cuota de Colegiatura</option>
+            <option value="1" {{$cuota->tipo === 1 ? "selected" : "" }}>Cuota de Inscripción</option>
+            <option value="2" {{$cuota->tipo === 2 ? "selected" : "" }}>Cuota de Colegiatura</option>
           </select>
         </div>
       </div>

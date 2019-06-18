@@ -43,7 +43,7 @@
       <div class="form-group row">
         <label for="tipo" class="col-sm-3 col-form-label">Tipo de Cuota</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" value="{{ $cuota->tipo === "1" ? "Inscripción" : "Colegiatura" }}" disabled>
+          <input type="text" class="form-control" value="{{ $cuota->tipo === 1 ? "Inscripción" : "Colegiatura" }}" disabled>
         </div>
       </div>
       <div class="form-group row">

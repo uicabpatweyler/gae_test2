@@ -66,6 +66,7 @@
           <th scope="col" class="text-center">NOMBRE/DESCRIPCIÓN</th>
           <th scope="col" class="text-center">TIPO</th>
           <th scope="col" class="text-center">CUOTA</th>
+          <th scope="col" class="text-center">APLICAR</th>
           <th scope="col" class="text-center">ESTADO</th>
           <th scope="col" class="text-center">ACCIONES</th>
         </tr>
@@ -133,13 +134,19 @@
               {
                 data: null, name: 'tipo', className: "text-center",
                 render: function(data){
-                  if(data.tipo === "1") return 'Inscripción';
+                  if(data.tipo === 1) return 'Inscripción';
                   return 'Colegiatura';
                 }
               },
               {
                 data: 'cantidad', name: 'cantidad', className: "text-center",
                 render: $.fn.dataTable.render.number( ',', '.', 2, '$ ' )
+              },
+              {
+                data: "apply", className: "text-center",
+                render: function (data) {
+                  return htmlDecode(data);
+                }
               },
               {
                 data: null, className: "text-center",

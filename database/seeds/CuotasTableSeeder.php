@@ -15,16 +15,16 @@ class CuotasTableSeeder extends Seeder
         Cuota::create([
             'escuela_id' => 1,
             'ciclo_id'   => 1,
-            'nombre' => 'cuota de inscripcion ciclo 2018-2019',
-            'tipo' => '1',
+            'nombre' => 'inscripción 2018-2019',
+            'tipo' => 1,
             'cantidad' => 450
         ]);
 
         Cuota::create([
             'escuela_id' => 1,
             'ciclo_id'   => 1,
-            'nombre' => 'cuota de colegiatura ciclo 2018-2019',
-            'tipo' => '2',
+            'nombre' => 'colegiatura 2018-2019',
+            'tipo' => 2,
             'cantidad' => 1000
         ]);
     }
