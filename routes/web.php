@@ -22,8 +22,14 @@ Route::get('/', function () {
   return view('dashboard');
 });
 
-Route::get('alumnos', function(){
-  return view('alumnos.create');
+Route::prefix('inscripcion')->group(function(){
+  Route::resource('alumnos','Inscripcion\AlumnoController');
+  Route::resource('da','Inscripcion\DAController')->except([
+    'create'
+  ]); /* da: Direccion Alumno*/
+  Route::get('da/create/{alumno}','Inscripcion\DAController@create')->name('da.create');
+
+  //Route::resource('contacto_alumnos','ContactoAlumnoController');
 });
 
 Route::prefix('config')->group(function () {

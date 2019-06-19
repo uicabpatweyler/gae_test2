@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GradosTableSeeder::class);
         $this->call(GruposTableSeeder::class);
         $this->call(CuotasTableSeeder::class);
+        $this->call(MesesDePagoTableSeeder::class);
     }
 }
