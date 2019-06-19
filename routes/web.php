@@ -22,6 +22,10 @@ Route::get('/', function () {
   return view('dashboard');
 });
 
+Route::get('alumnos', function(){
+  return view('alumnos.create');
+});
+
 Route::prefix('config')->group(function () {
   Route::resource('escuelas', 'Config\EscuelaController');
   Route::resource('ciclos', 'Config\CicloController');
