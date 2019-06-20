@@ -22,15 +22,6 @@ Route::get('/', function () {
   return view('dashboard');
 });
 
-Route::prefix('inscripcion')->group(function(){
-  Route::resource('alumnos','Inscripcion\AlumnoController');
-  Route::resource('da','Inscripcion\DAController')->except([
-    'create'
-  ]); /* da: Direccion Alumno*/
-  Route::get('da/create/{alumno}','Inscripcion\DAController@create')->name('da.create');
-
-  //Route::resource('contacto_alumnos','ContactoAlumnoController');
-});
 
 Route::prefix('config')->group(function () {
   Route::resource('escuelas', 'Config\EscuelaController');
@@ -42,6 +33,10 @@ Route::prefix('config')->group(function () {
   Route::post('cuotagrupo/{cuota}', 'Config\CuotaGrupoController@cuotaGrupo')->name('cuota.grupo');
 });
 
+Route::resource('alumnos','AlumnoController');
+Route::get('direccion_alumno/create/{alumno}','DireccionController@direccionAlumnoCreate')
+  ->name('direccion.alumno.create');
+
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
   Route::get('ciclos', 'DataController@ciclos')->name('ciclos.data');
@@ -50,12 +45,12 @@ Route::prefix('data')->group(function () {
   Route::get('grupos/{escuela}/{grado}/{ciclo}', 'DataController@grupos');
   Route::get('cuotas/{escuela}/{ciclo}/{tipo}', 'DataController@cuotas')->name('cuotas.data');
   Route::get('_cuotas/{escuela}/{ciclo}/{tipo}', 'DataController@selectCuotas')->name('selectCuotas');
+  Route::get('delegaciones/{estado}','DataController@selectDelegaciones')->name('selectDelegaciones');
+  Route::get('colonias/{estado}/{delegacion}','DataController@selectColonias');
+  Route::get('colonia/{colonia}','DataController@colonia');
 });
-
-//Route::resource('escuelas', 'Config\EscuelaController');
 
 Route::prefix('admin')->group(function () {
   Route::get('niveltipo/{tipo_id}', 'Admin\NivelController@niveltipo');
   Route::get('servnivel/{nivel_id}', 'Admin\ServicioController@servnivel');
-  //Route::resource('role','Admin\RoleController');
 });

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Inscripcion;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AlumnoRequest;
-use App\Models\Inscripcion\Alumno;
+use App\Models\Alumno;
 
 class AlumnoController extends Controller
 {
@@ -26,7 +25,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        return view('inscripciones.alumnos.create');
+        return view('alumnos.create');
     }
 
     /**
@@ -42,7 +41,7 @@ class AlumnoController extends Controller
       return response()
         ->json([
           'message'  => 'Los datos se han guardado correctamente',
-          'location' => route('alumnos.create')
+          'location' => route('direccion.alumno.create',$alumno->id)
         ]);
     }
 

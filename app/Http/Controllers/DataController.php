@@ -110,6 +110,48 @@ class DataController extends Controller
     return $cuotas;
   }
 
+  /* Select de las delegaciones*/
+  public function selectDelegaciones($estado){
+    $delegaciones = DB::table('delegaciones')
+      ->where('estado_id',$estado)
+      ->select('delegacion_clave as value', 'delegacion_nombre as text')
+      ->orderBy('delegacion_nombre', 'asc')
+      ->get()
+      ->toArray();
+
+    array_unshift($delegaciones, ['value' => '', 'text' => 'Seleccione...']);
+
+    return $delegaciones;
+  }
+
+  /* Select de las colonias*/
+  public function selectColonias($estado, $delegacion){
+    $colonias = DB::table('codigospostales')
+      ->where('estado_id',$estado)
+      ->where('delegacion_id',$delegacion)
+      ->select('id as value', 'cp_asentamiento as text')
+      ->orderBy('cp_asentamiento', 'asc')
+      ->get()
+      ->toArray();
+
+    array_unshift($colonias, ['value' => '', 'text' => 'Seleccione...']);
+
+    return $colonias;
+  }
+
+  /*Obtener los detalles de la colonia elegida*/
+  public function colonia($colonia){
+    $detalles = DB::table('codigospostales')->find($colonia);
+
+    return response()
+      ->json([
+        'localidad'        => $detalles->cp_ciudad,
+        'tipo'             => $detalles->cp_tipoasentamiento,
+        'asentamiento'     => $detalles->cp_asentamiento,
+        'codigo'           => $detalles->cp_codigo
+      ]);
+  }
+
   public function cuotas($escuela, $ciclo, $tipo)
   {
     /* Relacion ESCUELA:CUOTAS (1:M). Tipo cuota: 1=Inscripcion 2=Colegiatura*/
