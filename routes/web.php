@@ -34,10 +34,14 @@ Route::prefix('config')->group(function () {
 });
 
 Route::resource('alumnos','AlumnoController');
-Route::get('direccion_alumno/create/{alumno}','DireccionController@direccionAlumnoCreate')
-  ->name('direccion.alumno.create');
-Route::post('direccion_alumno/store','DireccionController@direccionAlumnoStore')
-  ->name('direccion.alumno.store');
+Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
+  ->name('alumno.direccion.create');
+Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
+  ->name('alumno.direccion.store');
+Route::get('alumno/infogeneral/{infoalumno}','InfoAlumnoController@createInfoGral')
+  ->name('alumno.infogeneral.create');
+Route::patch('alumno/infogeneral/{infoalumno}', 'InfoAlumnoController@updateInfoGral')
+  ->name('alumno.infogeneral.update');
 
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
