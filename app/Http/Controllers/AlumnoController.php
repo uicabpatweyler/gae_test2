@@ -41,7 +41,7 @@ class AlumnoController extends Controller
       return response()
         ->json([
           'message'  => 'Los datos se han guardado correctamente',
-          'location' => route('direccion.alumno.create',$alumno->id)
+          'location' => route('alumno.direccion.create',$alumno->id)
         ]);
     }
 
