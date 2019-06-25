@@ -184,7 +184,6 @@
 @push('scripts')
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
-  <script src="{{ asset('modulos/cuotas.js') }}"></script>
   <script>
     $().ready(function() {
 
