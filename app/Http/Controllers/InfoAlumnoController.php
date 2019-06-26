@@ -33,9 +33,6 @@ class InfoAlumnoController extends Controller
     ]);
   }
 
-  //Se actualizan la fila correspondiente al ID dado por $infoAlumno.
-  //El usuario esta creando los datos de informacion general, pero en realidad nosotros solo actualizamos
-  //determinados campos
   public function updateInfoGral(Request $request,$infoAlumno){
     $info = InfoAlumno::find($infoAlumno);
     $info->update($request->except('_method','_token','btn_guardar'));

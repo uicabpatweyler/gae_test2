@@ -81,6 +81,11 @@
 <!-- Archivo(s) javascript del modulo -->
 <script src="{{asset('jqueryvalidate-1.19.0/jquery.validate.js')}}"></script>
   <script>
+    $('#btn_cancelar').click(function(){
+      event.preventDefault();
+      showCancel('{{ route('cuotas.index') }}')
+    });
+
     $(document).ready(function() {
       $('#form_cuotagrupo').validate({
         debug: false,

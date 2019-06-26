@@ -45,59 +45,59 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="telefcasa">Teléfono de Casa</label>
-                  <input type="text" class="form-control form-control-sm" id="telefcasa" name="telefcasa" placeholder="(983)-000-0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefcasa" name="telefcasa" placeholder="( 983 ) - 000 - 0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia1">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia1" name="referencia1" placeholder="">
+                  <input type="text" class="form-control form-control-sm" id="referencia1" name="referencia1" placeholder="" style="text-transform:capitalize">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="teleftutor">Teléfono del Tutor</label>
-                  <input type="text" class="form-control form-control-sm" id="teleftutor" name="teleftutor" placeholder="(983)-000-0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="teleftutor" name="teleftutor" placeholder="( 983 ) - 000 - 0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia2">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia2" name="referencia2" placeholder="">
+                  <input type="text" class="form-control form-control-sm" id="referencia2" name="referencia2" placeholder="" style="text-transform:capitalize">
                 </div>
 
               </div>
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="telefcelular">Teléfono Celular</label>
-                  <input type="text" class="form-control form-control-sm" id="telefcelular" name="telefcelular" placeholder="(983)-000-0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefcelular" name="telefcelular" placeholder="( 983 ) - 000 - 0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia3">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia3" name="referencia3" placeholder="">
+                  <input type="text" class="form-control form-control-sm" id="referencia3" name="referencia3" placeholder="" style="text-transform:capitalize">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="telefotro">Otro</label>
-                  <input type="text" class="form-control form-control-sm" id="telefotro" name="telefotro" placeholder="(983)-000-0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefotro" name="telefotro" placeholder="( 983 ) - 000 - 0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia4">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia4" name="referencia4" placeholder="">
+                  <input type="text" class="form-control form-control-sm" id="referencia4" name="referencia4" placeholder="" style="text-transform:capitalize">
                 </div>
 
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="escuela">Escuela</label>
-                  <input type="text" class="form-control form-control-sm" id="escuela" name="escuela">
+                  <input type="text" class="form-control form-control-sm" id="escuela" name="escuela" style="text-transform:capitalize">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="ultimogrado">Último Grado Escolar a Cursar</label>
-                  <input type="text" class="form-control form-control-sm" id="ultimogrado" name="ultimogrado">
+                  <input type="text" class="form-control form-control-sm" id="ultimogrado" name="ultimogrado" style="text-transform:capitalize">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="lugartrabajo">Lugar de Trabajo</label>
-                  <input type="text" class="form-control form-control-sm" id="lugartrabajo" name="lugartrabajo">
+                  <input type="text" class="form-control form-control-sm" id="lugartrabajo" name="lugartrabajo" style="text-transform:capitalize">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="email">Correo Eléctronico del Alumno</label>
-                  <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="ejemplo@dominio.com">
+                  <input type="text" class="form-control form-control-sm" id="email" name="email" placeholder="ejemplo@dominio.com">
                 </div>
               </div>
               <div class="form-row">
@@ -171,8 +171,61 @@
 @push('scripts')
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
+  <script src="{{ asset('jqueryinputmask/jquery.inputmask.js') }}"></script>
   <script>
     $().ready(function() {
+
+      $(".telefono").inputmask("( 9{3} ) - 9{3} - 9{4}",{
+        clearMaskOnLostFocus: true,
+        greedy: false,
+        jitMasking: true,
+        onincomplete: function () {
+          $(this).addClass("is-invalid").removeClass("is-valid");
+          $("#btn_guardar").prop("disabled", true);
+        },
+        oncomplete: function () {
+          $(this).removeClass("is-invalid");
+          $("#btn_guardar").prop("disabled", false);
+        }
+      });
+
+      $("#email").inputmask({
+        clearMaskOnLostFocus: true,
+        mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+        greedy: false,
+        onBeforePaste: function (pastedValue, opts) {
+          pastedValue = pastedValue.toLowerCase();
+          return pastedValue.replace("mailto:", "");
+        },
+        definitions: {
+          '*': {
+            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+            casing: "lower"
+          }
+        },
+        onincomplete: function () {
+          if($(this).val()!==""){
+            isInValid("#email");
+          }
+          else{
+
+          }
+        },
+        oncomplete: function () {
+         isComplete("#email");
+        }
+      });
+
+      function isInValid(element){
+        $(element).addClass("is-invalid").removeClass("is-valid");
+        $("#btn_guardar").prop("disabled", true);
+      }
+
+      function isComplete(element){
+        $(element).removeClass("is-invalid");
+        $("#btn_guardar").prop("disabled", false);
+      }
+
       $( "#form_infogral" ).submit(function( event ) {
         event.preventDefault();
         saveUpdate();

@@ -43,6 +43,10 @@ Route::get('alumno/infogeneral/{infoalumno}','InfoAlumnoController@createInfoGra
 Route::patch('alumno/infogeneral/{infoalumno}', 'InfoAlumnoController@updateInfoGral')
   ->name('alumno.infogeneral.update');
 
+Route::get('tutor', function(){
+  return view('tutores.create');
+});
+
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
   Route::get('ciclos', 'DataController@ciclos')->name('ciclos.data');
