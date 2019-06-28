@@ -38,14 +38,28 @@ Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
   ->name('alumno.direccion.create');
 Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
   ->name('alumno.direccion.store');
-Route::get('alumno/infogeneral/{infoalumno}','InfoAlumnoController@createInfoGral')
-  ->name('alumno.infogeneral.create');
-Route::patch('alumno/infogeneral/{infoalumno}', 'InfoAlumnoController@updateInfoGral')
-  ->name('alumno.infogeneral.update');
+Route::get('alumno/infoadicional/{informacionAlumno}','InfoAlumnoController@createInfoGral')
+  ->name('alumno.infoadicional.create');
+Route::patch('alumno/infoadicional/{informacionAlumno}', 'InfoAlumnoController@updateInfoGral')
+  ->name('alumno.infoadicional.update');
 
-Route::get('tutor', function(){
-  return view('tutores.create');
-});
+Route::resource('tutores','TutorController');
+Route::get('tutor/elegir_alumno/{tutor}', 'AlumnoTutor@tutorElegirAlumno')
+  ->name('tutor.elegir.alumno');
+Route::patch('asignar_tutor_alumno','AlumnoTutor@asignarTutorAlumno')
+  ->name('asignar.tutor.alumno');
+Route::get('tutor/direccion/{informacionAlumno}', 'InfoTutorController@createDireccion')
+  ->name('tutor.direccion.create');
+Route::post('tutor/direccion/store','InfoTutorController@storeDireccion')
+  ->name('tutor.direccion.store');
+Route::get('tutor/telefonos/{informacionTutor}', 'InfoTutorController@createTelefonos')
+  ->name('tutor.telefonos.create');
+Route::patch('tutor/telefonos/{informacionTutor}','InfoTutorController@updateTelefonos')
+  ->name('tutor.telefonos.update');
+Route::get('tutor/infoadicional/{informacionTutor}', 'InfoTutorController@createInfoAdicional')
+  ->name('tutor.infoadicional.create');
+Route::patch('tutor/infoadicional/{informacionTutor}', 'InfoTutorController@updateInfoAdicional')
+  ->name('tutor.infoadicional.update');
 
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');

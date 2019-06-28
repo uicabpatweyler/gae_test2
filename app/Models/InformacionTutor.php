@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InfoAlumno extends Model
+class InformacionTutor extends Model
 {
   use SoftDeletes;
-  protected $table = 'informacion_alumnos';
+  protected $table = 'informacion_tutores';
   protected $fillable= [
+    'tutor_id',
     'alumno_id',
+    'infoalumno_id',
     'nombre_vialidad',
     'exterior',
     'interior',
@@ -21,8 +23,23 @@ class InfoAlumno extends Model
     'localidad',
     'delegacion',
     'estado',
-    'telefcasa', 'referencia1','teleftutor', 'referencia2','telefcelular', 'referencia3','telefotro', 'referencia4',
-    'escuela', 'ultimogrado', 'lugartrabajo', 'email', 'pregunta1', 'pregunta2'
+    'telefcasa',
+    'referencia1',
+    'teleftrabajo',
+    'referencia2',
+    'telefcelular',
+    'referencia3',
+    'telefotro',
+    'referencia4',
+    'adicional_trabajo',
+    'adicional_direccion',
+    'adicional_estado',
+    'adicional_delegacion',
+    'adicional_localidad',
+    'adicional_tipoasentamiento',
+    'adicional_nombreasentamiento',
+    'adicional_codpost',
+    'email'
   ];
   protected $dates = [
     'deleted_at',
@@ -90,27 +107,6 @@ class InfoAlumno extends Model
   public function setReferencia4Attribute($value){
     if(isset($value)){
       $this->attributes['referencia4'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
-    }
-    else{}
-  }
-
-  public function setEscuelaAttribute($value){
-    if(isset($value)){
-      $this->attributes['escuela'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
-    }
-    else{}
-  }
-
-  public function setUltimogradoAttribute($value){
-    if(isset($value)){
-      $this->attributes['ultimogrado'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
-    }
-    else{}
-  }
-
-  public function setLugartrabajoAttribute($value){
-    if(isset($value)){
-      $this->attributes['lugartrabajo'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
     else{}
   }

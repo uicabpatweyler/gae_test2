@@ -55,4 +55,8 @@ class Alumno extends Model
     $this->attributes['fechanacimiento'] = (new Carbon($value))->format('y-m-d');
   }
 
+  public function informacion(){
+    return $this->hasMany(InformacionAlumno::class);
+  }
+
 }

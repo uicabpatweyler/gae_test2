@@ -61,7 +61,7 @@
           <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="Apellido Materno" style="text-transform:capitalize" required>
         </div>
         <div class="form-group col-md-3">
-          <label for="apellido2">Apellido Paterno <span class="text-danger">*</span></label>
+          <label for="apellido2">Apellido Paterno</label>
           <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Apellido Paterno" style="text-transform:capitalize">
         </div>
       </div>
