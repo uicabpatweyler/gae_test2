@@ -55,12 +55,12 @@ class InformacionTutor extends Model
   }
 
   public function setExteriorAttribute($value){
-    $this->attributes['exterior'] = mb_convert_case($value,MB_CASE_UPPER,'UTF-8');
+    $this->attributes['exterior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
   }
 
   public function setInteriorAttribute($value){
     if(isset($value)){
-      $this->attributes['interior'] = mb_convert_case($value,MB_CASE_UPPER,'UTF-8');
+      $this->attributes['interior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
     else{}
   }
@@ -107,6 +107,41 @@ class InformacionTutor extends Model
   public function setReferencia4Attribute($value){
     if(isset($value)){
       $this->attributes['referencia4'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
+    }
+    else{}
+  }
+
+  public function setAdicionalTrabajoAttribute($value){
+    if(isset($value)){
+      $this->attributes['adicional_trabajo'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
+    }
+    else{}
+  }
+
+  public function setAdicionalDireccionAttribute($value){
+    if(isset($value)){
+      $this->attributes['adicional_direccion'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
+    }
+    else{}
+  }
+
+  public function setAdicionalLocalidadAttribute($value){
+    if(isset($value)){
+      $this->attributes['adicional_localidad'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
+    }
+    else{}
+  }
+
+  public function setAdicionalTipoasentamientoAttribute($value){
+    if(isset($value)){
+      $this->attributes['adicional_tipoasentamiento'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
+    }
+    else{}
+  }
+
+  public function setAdicionalNombreasentamientoAttribute($value){
+    if(isset($value)){
+      $this->attributes['adicional_nombreasentamiento'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
     else{}
   }

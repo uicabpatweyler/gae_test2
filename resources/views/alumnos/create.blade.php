@@ -13,9 +13,6 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> Inscripción: nuevo alumno
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 

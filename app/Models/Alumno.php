@@ -55,6 +55,17 @@ class Alumno extends Model
     $this->attributes['fechanacimiento'] = (new Carbon($value))->format('y-m-d');
   }
 
+  public function getFullNameAttribute(){
+    return "{$this->nombre1} {$this->nombre2} {$this->apellido1} {$this->apellido2}";
+  }
+
+  public function getMatriculaAttribute(){
+    if($this->id<1000){
+      return "00"."{$this->id} - ".(new Carbon($this->created_at))->format('dmY');
+    }
+    return "{$this->id} - ".(new Carbon($this->created_at))->format('dmY');
+  }
+
   public function informacion(){
     return $this->hasMany(InformacionAlumno::class);
   }

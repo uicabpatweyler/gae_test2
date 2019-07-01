@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Nuevo Tutor')
+@section('title', 'Asignar Tutor')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -11,11 +11,11 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-plus-circle text-info"></i> Asignar Tutor a Alumno
+        <i class="fas fa-user-tie text-info"></i>
+        <i class="fas fa-arrow-right text-danger"></i>
+        <i class="fas fa-user text-info"></i>
+        Asignar Tutor a Alumno
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
@@ -44,7 +44,7 @@
         </div>
         <div class="border-top mt-2 mb-2"></div>
         <div class="float-right">
-          <button type="button" class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
+          <button class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
             <i class="fas fa-times-circle"></i>
             Cancelar
           </button>
@@ -97,6 +97,10 @@
 @push('scripts')
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script>
+    $('#btn_cancelar').click(function(){
+      event.preventDefault();
+      showCancel('{{ route('tutores.index') }}')
+    });
     $(document).ready(function(){
       let table =  $('#alumnos').DataTable({
         ordering:false,

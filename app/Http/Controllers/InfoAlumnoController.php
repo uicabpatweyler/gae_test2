@@ -29,7 +29,8 @@ class InfoAlumnoController extends Controller
   //Formulario para los datos generales (telefonos, escuela y encuesta)
   public function createInfoGral(InformacionAlumno $informacionAlumno){
     return view('alumnos.infogeneral.create',[
-      'infoAlumno' => $informacionAlumno
+      'infoAlumno' => $informacionAlumno,
+      'alumno' => Alumno::find($informacionAlumno->alumno_id)
     ]);
   }
 

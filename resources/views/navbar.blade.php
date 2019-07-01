@@ -37,11 +37,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownAlumnos">
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Alumnos del Ciclo</a>
-            <a class="dropdown-item" href="{{route('alumnos.create')}}"><i class="fas fa-angle-right"></i> Inscripción</a>
+            <a class="dropdown-item" href="{{route('inscripciones.index')}}"><i class="fas fa-angle-right"></i> Inscripción</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Re-Inscripción</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Nuevo Tutor</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Asignar Tutor</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Asignar Grupo</a>
+            <a class="dropdown-item" href="{{route('tutores.index')}}"><i class="fas fa-angle-right"></i> Tutores</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cambio de Grupo</a>
           </div>
         </li>

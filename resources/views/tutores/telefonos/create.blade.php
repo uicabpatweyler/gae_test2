@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Inscripción de alumno')
+@section('title', 'Teléfonos del tutor')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -11,11 +11,8 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-plus-circle text-info"></i> Telefonos del tutor
+        <i class="fas fa-plus-circle text-info"></i> Teléfonos del tutor
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
@@ -68,25 +65,21 @@
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia3">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia3" name="referencia3" placeholder="" style="text-transform:capitalize">
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->referencia2}}" id="referencia3" name="referencia3" placeholder="" style="text-transform:capitalize">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="telefotro">Otro</label>
-                  <input type="text" class="form-control form-control-sm telefono" id="telefotro" name="telefotro" placeholder="( 983 ) - 000 - 0000">
+                  <input type="text" class="form-control form-control-sm telefono" value="{{$infoAlumno->telefotro}}" id="telefotro" name="telefotro" placeholder="( 983 ) - 000 - 0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia4">Referencia</label>
-                  <input type="text" class="form-control form-control-sm" id="referencia4" name="referencia4" placeholder="" style="text-transform:capitalize">
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->referencia4}}" id="referencia4" name="referencia4" placeholder="" style="text-transform:capitalize">
                 </div>
 
               </div>
 
               <div class="border-top mt-2 mb-2"></div>
               <div class="float-right mb-2">
-                <button class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
-                  <i class="fas fa-times-circle"></i>
-                  Cancelar
-                </button>
                 <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
                   <i class="fas fa-save"></i>
                   Guardar
@@ -106,19 +99,93 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
+            <div class="border-bottom border-gray pb-2 mb-2">
+            <span class="font-weight-bold">
+                Dirección del Tutor
+            </span>
+            </div>
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="">Nombre de Vialidad</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->nombre_vialidad}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Exterior</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->exterior}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Interior</label>
+                  <input type="text" class="form-control form-control-sm" {{$infoTutor->interior}} style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Entre Calles</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->entre_calles}}" style="text-transform:capitalize" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Colonia</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->tipo_asentamiento}} {{$infoTutor->nombre_asentamiento}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Código Postal</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->codigo_postal}}" style="text-transform: capitalize" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="">Delegación</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->delegacion}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Localidad</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->localidad}}" style="text-transform: capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Estado</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoTutor->estado}}" style="text-transform: capitalize" disabled>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingThree">
           <h2 class="mb-0">
-            <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Alumno
+            <button class="btn btn-success collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Tutor
             </button>
           </h2>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body">
+            <div class="border-bottom border-gray pb-2 mb-2">
+            <span class="font-weight-bold">
+                Datos del tutor
+            </span>
+            </div>
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="">Nombre</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->nombre}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Apellido Paterno</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->apellido1}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Apellido Materno</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->apellido2}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Sexo</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->genero === 'H' ? 'Hombre' : 'Mujer'}}" style="text-transform:capitalize" disabled>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

@@ -13,15 +13,12 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> Nuevo Tutor
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
     <div class="border-bottom border-gray pb-2 mb-2">
         <span class="font-weight-bold">
-            Complete los siguientes datos del tutor
+            Complete los siguientes datos
         </span>
       <small class="text-danger"> (* campo obligatorio)</small>
     </div>
@@ -73,11 +70,6 @@
 @push('scripts')
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script>
-    // $.validator.setDefaults({
-    //   submitHandler: function() {
-    //     alert("submitted!");
-    //   }
-    // });
 
     $('#btn_cancelar').click(function(){
       event.preventDefault();

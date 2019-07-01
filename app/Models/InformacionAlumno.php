@@ -38,12 +38,12 @@ class InformacionAlumno extends Model
   }
 
   public function setExteriorAttribute($value){
-    $this->attributes['exterior'] = mb_convert_case($value,MB_CASE_UPPER,'UTF-8');
+    $this->attributes['exterior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
   }
 
   public function setInteriorAttribute($value){
     if(isset($value)){
-      $this->attributes['interior'] = mb_convert_case($value,MB_CASE_UPPER,'UTF-8');
+      $this->attributes['interior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
     else{}
   }
@@ -60,10 +60,6 @@ class InformacionAlumno extends Model
 
   public function setTipoAsentamientoAttribute($value){
     $this->attributes['tipo_asentamiento'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
-  }
-
-  public function setNombreAsentamientoAttribute($value){
-    $this->attributes['nombre_asentamiento'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
   }
 
   public function setReferencia1Attribute($value){

@@ -13,9 +13,6 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> Inscripción: nuevo alumno
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
@@ -32,7 +29,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Dirección
+              Dirección del Alumno
             </button>
           </h2>
         </div>
@@ -90,11 +87,11 @@
                   <input type="text" class="form-control form-control-sm detalle" style="text-transform:capitalize" id="localidad" name="localidad" required disabled>
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="tipo_asentamiento">&nbsp;</label>
+                  <label for="tipo_asentamiento">Tipo Asentamiento <span class="text-danger">*</span></label>
                   <input type="text" class="form-control form-control-sm detalle" style="text-transform:capitalize" id="tipo_asentamiento" name="tipo_asentamiento" required disabled>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="nombre_asentamiento">&nbsp;</label>
+                  <label for="nombre_asentamiento">Nombre Asentamiento <span class="text-danger">*</span></label>
                   <input type="text" class="form-control form-control-sm detalle" style="text-transform:capitalize" id="nombre_asentamiento" name="nombre_asentamiento" required disabled>
                 </div>
                 <div class="form-group col-md-2">
@@ -104,10 +101,6 @@
               </div>
               <div class="border-top mt-2 mb-2"></div>
               <div class="float-right mb-2">
-                <button class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
-                  <i class="fas fa-times-circle"></i>
-                  Cancelar
-                </button>
                 <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
                   <i class="fas fa-save"></i>
                   Guardar
@@ -121,7 +114,7 @@
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
             <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Alumno
+              Datos Personales del Alumno
             </button>
           </h2>
         </div>
@@ -277,6 +270,7 @@
         if($(this).val()!==''){
           $("#estado").val($(this).children("option:selected").text());
           $("#_delegacion").enableControl(true, true);
+          detalleColoniaDisabled();
           $.getJSON(urlRoot+'/data/delegaciones/'+$(this).val(), null, function (values) {
             $("#_delegacion").populateSelect(values);
           });
@@ -294,6 +288,7 @@
         if($(this).val()!==''){
           $("#delegacion").val($(this).children("option:selected").text());
           $("#colonia").enableControl(true, true);
+          detalleColoniaDisabled();
           $.getJSON(urlRoot+'/data/colonias/'+$("#_estado").val()+'/'+$(this).val(), null, function (values) {
             $("#colonia").populateSelect(values);
           });

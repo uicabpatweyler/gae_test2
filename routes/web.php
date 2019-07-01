@@ -34,6 +34,7 @@ Route::prefix('config')->group(function () {
 });
 
 Route::resource('alumnos','AlumnoController');
+
 Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
   ->name('alumno.direccion.create');
 Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
@@ -44,6 +45,7 @@ Route::patch('alumno/infoadicional/{informacionAlumno}', 'InfoAlumnoController@u
   ->name('alumno.infoadicional.update');
 
 Route::resource('tutores','TutorController');
+
 Route::get('tutor/elegir_alumno/{tutor}', 'AlumnoTutor@tutorElegirAlumno')
   ->name('tutor.elegir.alumno');
 Route::patch('asignar_tutor_alumno','AlumnoTutor@asignarTutorAlumno')
@@ -61,6 +63,10 @@ Route::get('tutor/infoadicional/{informacionTutor}', 'InfoTutorController@create
 Route::patch('tutor/infoadicional/{informacionTutor}', 'InfoTutorController@updateInfoAdicional')
   ->name('tutor.infoadicional.update');
 
+Route::resource('inscripciones', 'InscripcionController')->except(['create']);
+Route::get('inscripcion/create/{informacionAlumno}','InscripcionController@create')
+  ->name('inscripcion.create');
+
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
   Route::get('ciclos', 'DataController@ciclos')->name('ciclos.data');
@@ -72,6 +78,10 @@ Route::prefix('data')->group(function () {
   Route::get('delegaciones/{estado}','DataController@selectDelegaciones')->name('selectDelegaciones');
   Route::get('colonias/{estado}/{delegacion}','DataController@selectColonias');
   Route::get('colonia/{colonia}','DataController@colonia');
+  Route::get('tutores','DataController@tutores')->name('tutores.data');
+  Route::get('info_alumnos', 'DataController@infoAlumnos')->name('info.alumnos.data');
+  Route::get('gruposinscripcion/{escuela}/{grado}/{ciclo}', 'DataController@gruposInscripcion')
+    ->name('gruposinscr.data');
 });
 
 Route::prefix('admin')->group(function () {

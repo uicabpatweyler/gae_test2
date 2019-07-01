@@ -15,6 +15,8 @@ class CreateInformacionTutoresTable extends Migration
     {
         Schema::create('informacion_tutores', function (Blueprint $table) {
           $table->bigIncrements('id');
+          $table->unsignedBigInteger('escuela_id')->default(0);
+          $table->unsignedBigInteger('ciclo_id')->default(0);
           $table->unsignedBigInteger('tutor_id');
           $table->unsignedBigInteger('alumno_id');
           $table->unsignedBigInteger('infoalumno_id');

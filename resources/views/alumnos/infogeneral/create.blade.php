@@ -13,9 +13,6 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> Inscripción: nuevo alumno
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
@@ -122,10 +119,6 @@
               </div>
               <div class="border-top mt-2 mb-2"></div>
               <div class="float-right mb-2">
-                <button class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
-                  <i class="fas fa-times-circle"></i>
-                  Cancelar
-                </button>
                 <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
                   <i class="fas fa-save"></i>
                   Guardar
@@ -139,25 +132,107 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Dirección
+              Dirección del Alumno
             </button>
           </h2>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="">Nombre de Vialidad</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->nombre_vialidad}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Exterior</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->exterior}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="">Interior</label>
+                  <input type="text" class="form-control form-control-sm" {{$infoAlumno->interior}} style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Entre Calles</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->entre_calles}}" style="text-transform:capitalize" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Colonia</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->tipo_asentamiento}} {{$infoAlumno->nombre_asentamiento}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Código Postal</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->codigo_postal}}" style="text-transform: capitalize" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="">Delegación</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->delegacion}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Localidad</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->localidad}}" style="text-transform: capitalize" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="">Estado</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->estado}}" style="text-transform: capitalize" disabled>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingThree">
           <h2 class="mb-0">
-            <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Alumno
+            <button class="btn btn-success collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Datos Personales del Alumno
             </button>
           </h2>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="curp">C.U.R.P</label>
+                  <input type="text" class="form-control form-control-sm" id="curp" name="curp" disabled value="{{$alumno->curp}}">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="fechanacimiento">Fecha de Nacimiento</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$alumno->fechanacimiento->format('d-m-Y')}}" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="edad">Edad</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$alumno->fechanacimiento->diffInYears(\Illuminate\Support\Carbon::now())}} años" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="genero">Sexo</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$alumno->genero === "H" ? "Hombre" : "Mujer"}}" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="nombre1">Primer Nombre</label>
+                  <input type="text" class="form-control form-control-sm" id="nombre1" name="nombre1" value="{{$alumno->nombre1}}" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="nombre2">Segundo Nombre </label>
+                  <input type="text" class="form-control form-control-sm" id="nombre2" name="nombre2" value="{{$alumno->nombre2}}" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="apellido1">Apellido Materno</label>
+                  <input type="text" class="form-control form-control-sm" id="apellido1" name="apellido1" value="{{$alumno->apellido1}}" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="apellido2">Apellido Paterno</label>
+                  <input type="text" class="form-control form-control-sm" id="apellido2" name="apellido2" value="{{$alumno->apellido2}}" disabled>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

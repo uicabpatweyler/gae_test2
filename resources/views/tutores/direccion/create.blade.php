@@ -14,9 +14,6 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> Dirección del tutor
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="far fa-arrow-alt-circle-left"></i> regresar
-      </a>
     </div>
     <!-- Titulo de la seccion -->
 
@@ -33,35 +30,35 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Dirección
+              Dirección del tutor
             </button>
           </h2>
         </div>
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionTutor">
           <div class="card-body">
             <form method="POST" action="{{route('tutor.direccion.store')}}" id="form_direccion" name="form_direccion">
-              <input type="hidden" name="tutor_id" id="tutor_id" value="{{$info->tutor_id}}">
-              <input type="hidden" name="alumno_id" id="alumno_id" value="{{$info->alumno_id}}">
-              <input type="hidden" name="infoalumno_id" id="infoalumno_id" value="{{$info->id}}">
-              <input type="hidden" name="estado" id="estado" value="{{$info->estado}}">
-              <input type="hidden" name="delegacion" id="delegacion" value="{{$info->delegacion}}">
+              <input type="hidden" name="tutor_id" id="tutor_id" value="{{$infoAlumno->tutor_id}}">
+              <input type="hidden" name="alumno_id" id="alumno_id" value="{{$infoAlumno->alumno_id}}">
+              <input type="hidden" name="infoalumno_id" id="infoalumno_id" value="{{$infoAlumno->id}}">
+              <input type="hidden" name="estado" id="estado" value="{{$infoAlumno->estado}}">
+              <input type="hidden" name="delegacion" id="delegacion" value="{{$infoAlumno->delegacion}}">
               @csrf
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="nombre_vialidad">Nombre de Vialidad <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm" value="{{$info->nombre_vialidad}}" style="text-transform:capitalize" id="nombre_vialidad" name="nombre_vialidad" required>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->nombre_vialidad}}" style="text-transform:capitalize" id="nombre_vialidad" name="nombre_vialidad" required>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="exterior">Exterior <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm" value="{{$info->exterior}}" style="text-transform:capitalize" id="exterior" name="exterior" required>
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->exterior}}" style="text-transform:capitalize" id="exterior" name="exterior" required>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="interior">Interior</label>
-                  <input type="text" class="form-control form-control-sm" value="{{$info->interior}}" style="text-transform:capitalize" id="interior" name="interior">
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->interior}}" style="text-transform:capitalize" id="interior" name="interior">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="entre_calles">Entre Calles</label>
-                  <input type="text" class="form-control form-control-sm" value="{{$info->entre_calles}}" style="text-transform:capitalize" id="entre_calles" name="entre_calles">
+                  <input type="text" class="form-control form-control-sm" value="{{$infoAlumno->entre_calles}}" style="text-transform:capitalize" id="entre_calles" name="entre_calles">
                 </div>
               </div>
               <div class="form-row">
@@ -90,27 +87,23 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="localidad">Localidad <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm detalle" value="{{$info->localidad}}" style="text-transform:capitalize" id="localidad" name="localidad" required>
+                  <input type="text" class="form-control form-control-sm detalle" value="{{$infoAlumno->localidad}}" style="text-transform:capitalize" id="localidad" name="localidad" required>
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="tipo_asentamiento">&nbsp<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm detalle" value="{{$info->tipo_asentamiento}}" style="text-transform:capitalize" id="tipo_asentamiento" name="tipo_asentamiento" required>
+                  <label for="tipo_asentamiento">Tipo Asentamiento <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-sm detalle" value="{{$infoAlumno->tipo_asentamiento}}" style="text-transform:capitalize" id="tipo_asentamiento" name="tipo_asentamiento" required>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="nombre_asentamiento">&nbsp<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm detalle" value="{{$info->nombre_asentamiento}}" style="text-transform:capitalize" id="nombre_asentamiento" name="nombre_asentamiento" required>
+                  <label for="nombre_asentamiento">Nombre Asentamiento <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-sm detalle" value="{{$infoAlumno->nombre_asentamiento}}" style="text-transform:capitalize" id="nombre_asentamiento" name="nombre_asentamiento" required>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="codigo_postal">Código Postal <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control form-control-sm detalle" value="{{$info->codigo_postal}}" id="codigo_postal" name="codigo_postal" required>
+                  <input type="text" class="form-control form-control-sm detalle" value="{{$infoAlumno->codigo_postal}}" id="codigo_postal" name="codigo_postal" required>
                 </div>
               </div>
               <div class="border-top mt-2 mb-2"></div>
               <div class="float-right mb-2">
-                <button class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
-                  <i class="fas fa-times-circle"></i>
-                  Cancelar
-                </button>
                 <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
                   <i class="fas fa-save"></i>
                   Guardar
@@ -136,7 +129,26 @@
                 Datos del tutor
             </span>
             </div>
-
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="">Nombre</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->nombre}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Apellido Paterno</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->apellido1}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Apellido Materno</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->apellido2}}" style="text-transform:capitalize" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="">Sexo</label>
+                  <input type="text" class="form-control form-control-sm" value="{{$tutor->genero === 'H' ? 'Hombre' : 'Mujer'}}" style="text-transform:capitalize" disabled>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
