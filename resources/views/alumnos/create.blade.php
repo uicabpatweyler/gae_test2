@@ -27,11 +27,15 @@
     <form method="POST" action="{{ route('alumnos.store') }}" name="form_alumno" id="form_alumno">
       @csrf
       <div class="form-row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-3">
+          <label for="fecha" class="font-weight-bold text-danger">Fecha Inscripción <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="fecha" name="fecha" value="{{\Illuminate\Support\Carbon::now()->format('d-m-Y')}}" required>
+        </div>
+        <div class="form-group col-md-3">
           <label for="curp">C.U.R.P <span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="curp" name="curp" placeholder="" required>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label for="fechanacimiento">Fecha de Nacimiento <span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="fechanacimiento" name="fechanacimiento"  required>
         </div>
@@ -164,6 +168,20 @@
         },
         oncomplete : function(){
           $("#fechanacimiento").removeClass("is-invalid");
+          $("#btn_guardar").prop("disabled", false);
+        }
+      });
+
+      $('#fecha').inputmask('datetime',{
+        inputFormat: "dd-mm-yyyy",
+        onKeyValidation: function (key, result) {
+          if (!result) { isInValid("#fecha"); }
+        },
+        onincomplete : function(){
+          isInValid("#fecha");
+        },
+        oncomplete : function(){
+          $("#fecha").removeClass("is-invalid");
           $("#btn_guardar").prop("disabled", false);
         }
       });

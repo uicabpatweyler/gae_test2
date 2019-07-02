@@ -60,7 +60,7 @@ class InscripcionController extends Controller
       return response()
         ->json([
           'message'  => 'Los datos se han guardado correctamente',
-          'location' => route('inscripciones.index')
+          'location' => route('pagos_inscripcion.create', $inscripcion->id)
         ]);
     }
 

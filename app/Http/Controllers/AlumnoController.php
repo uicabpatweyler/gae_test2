@@ -36,7 +36,6 @@ class AlumnoController extends Controller
      */
     public function store(AlumnoRequest $request)
     {
-      //return dd($request->all());
       $alumno = tap(new Alumno($request->all()))->save();
       return response()
         ->json([

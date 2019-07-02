@@ -67,6 +67,17 @@ Route::resource('inscripciones', 'InscripcionController')->except(['create']);
 Route::get('inscripcion/create/{informacionAlumno}','InscripcionController@create')
   ->name('inscripcion.create');
 
+Route::resource('pagos_inscripcion', 'PagoInscripcionController')->except(['create']);
+Route::get('inscripcion/pago/{inscripcion}', 'PagoInscripcionController@create')
+  ->name('pagos_inscripcion.create');
+
+Route::get('impresion/reciboinscripcion/{pagoInscripcion}', function(){
+  return 'Imprimir recibo del pago de inscripcion';
+})->name('print.recibo.inscripcion');
+Route::get('impresion/hojainscripcion/{inscripcion}', function(){
+  return 'Imprimir hoja de inscripcion del alumno';
+})->name('print.hoja.inscripcion');
+
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
   Route::get('ciclos', 'DataController@ciclos')->name('ciclos.data');

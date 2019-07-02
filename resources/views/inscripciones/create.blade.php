@@ -39,11 +39,11 @@
             <input type="text" class="form-control form-control-sm" value="{{$alumno->full_name}}" disabled="">
           </div>
           <div class="form-group col-md-3">
-            <label for="grado_grupo" class="font-weight-bold">Grupo Asignado <span class="text-danger">*</span></label>
+            <label for="grado_grupo" class="font-weight-bold text-danger">Grupo Asignado <span class="text-danger">*</span></label>
             <input type="text" class="form-control form-control-sm" id="grado_grupo" name="grado_grupo" placeholder="**Elegir Grupo**">
           </div>
           <div class="form-group col-md-2">
-            <label for="fecha" class="font-weight-bold">Fecha Inscripción <span class="text-danger">*</span></label>
+            <label for="fecha" class="font-weight-bold text-danger">Fecha Inscripción <span class="text-danger">*</span></label>
             <input type="text" class="form-control form-control-sm" name="fecha" id="fecha" value="{{\Illuminate\Support\Carbon::now()->format('d-m-Y')}}">
           </div>
         </div>
@@ -256,7 +256,7 @@
       function showConfirm(){
         Swal.fire({
           title: '¿El grupo y la fecha son correctos?',
-          text: "Presine Continuar para Guardar",
+          text: "Presione Continuar para Guardar",
           type: 'warning',
           allowOutsideClick:  false,
           showCancelButton: true,

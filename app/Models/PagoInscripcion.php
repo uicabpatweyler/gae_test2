@@ -6,12 +6,23 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Inscripcion extends Model
+class PagoInscripcion extends Model
 {
   use SoftDeletes;
-  protected $table = 'inscripciones';
-  protected $fillable= [
-    'escuela_id', 'ciclo_id', 'grado_id', 'grupo_id', 'infoalumno_id', 'alumno_id', 'fecha'
+  protected $table = 'pago_inscripciones';
+  protected $fillable = [
+    'inscripcion_id',
+    'escuela_id',
+    'ciclo_id',
+    'grado_id',
+    'grupo_id',
+    'alumno_id',
+    'serie_recibo',
+    'folio_recibo',
+    'cantidad_concepto',
+    'importe_cuota',
+    'cantidad_recibida_mxn',
+    'fecha'
   ];
 
   protected $dates = [
