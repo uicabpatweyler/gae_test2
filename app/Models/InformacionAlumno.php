@@ -111,6 +111,10 @@ class InformacionAlumno extends Model
     else{}
   }
 
+  public function getDireccionAttribute(){
+    return "{$this->nombre_vialidad} {$this->exterior} {$this->interior} {$this->entre_calles}";
+  }
+
   public function alumno(){
     return $this->belongsTo(Alumno::class, 'alumno_id', 'id');
   }

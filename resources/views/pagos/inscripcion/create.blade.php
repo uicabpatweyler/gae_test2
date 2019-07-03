@@ -182,6 +182,7 @@
           .fail(function( jqXHR, textStatus, errorThrown){
             var message = 'Ocurrio un error al procesar el pago de inscripción';
             showSwal(textStatus, jqXHR.statusText, message);
+            console.log(jqXHR);
             $("#btn_guardar").removeAttr('disabled');
           });
       }

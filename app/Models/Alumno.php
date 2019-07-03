@@ -70,4 +70,11 @@ class Alumno extends Model
     return $this->hasMany(InformacionAlumno::class);
   }
 
+  /*
+   * Obtener las inscripciones para este alumno
+   */
+  public function inscripciones(){
+    return $this->hasMany(Inscripcion::class);
+  }
+
 }

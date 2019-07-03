@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
 use App\Models\Config\Cuota;
 use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
@@ -215,6 +216,16 @@ class DataController extends Controller
       ->addColumn('asignar', function($tutor){
         $url = route('tutor.elegir.alumno', ['tutor' => $tutor->id]);
         return view('tutores._btnAsignar', compact('url'));
+      })
+      ->make(true);
+  }
+
+  public function alumnos(){
+    $alumnos = Alumno::orderBy('apellido1','asc')->get();
+    return DataTables::of($alumnos)
+      ->addColumn('select', function($alumno){
+        $urlAlumno = route('reinscripcion.selectciclo', $alumno->id);
+        return view('reinscripciones._btnSelectAlumno', compact('urlAlumno'));
       })
       ->make(true);
   }

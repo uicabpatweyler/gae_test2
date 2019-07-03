@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class InfoAlumnoController extends Controller
 {
-  //Formulario para los datos de la direccion
+  //Formulario para los datos de la direccion, para un nuevo alumno, inscripcion de alumno nuevo
   public function createDireccion(Alumno $alumno){
     return view('alumnos.direccion.create',[
       'alumno' => $alumno,
@@ -26,6 +26,7 @@ class InfoAlumnoController extends Controller
         'location' => route('alumno.infoadicional.create',$infoAlumno->id)
       ]);
   }
+
   //Formulario para los datos generales (telefonos, escuela y encuesta)
   public function createInfoGral(InformacionAlumno $informacionAlumno){
     return view('alumnos.infogeneral.create',[

@@ -67,16 +67,21 @@ Route::resource('inscripciones', 'InscripcionController')->except(['create']);
 Route::get('inscripcion/create/{informacionAlumno}','InscripcionController@create')
   ->name('inscripcion.create');
 
+Route::resource('reinscripciones', 'ReInscripcionController');
+Route::get('reinscripcion/selectciclo/{alumno}','ReInscripcionController@selectCiclo')
+  ->name('reinscripcion.selectciclo');
+Route::get('reinscripcion/info_alumno/{alumno}/{informacionAlumno}', 'ReInscripcionController@createInfoAlumno')
+  ->name('reinscripcion.infoalumno.create');
+
+
 Route::resource('pagos_inscripcion', 'PagoInscripcionController')->except(['create']);
 Route::get('inscripcion/pago/{inscripcion}', 'PagoInscripcionController@create')
   ->name('pagos_inscripcion.create');
 
-Route::get('impresion/reciboinscripcion/{pagoInscripcion}', function(){
-  return 'Imprimir recibo del pago de inscripcion';
-})->name('print.recibo.inscripcion');
-Route::get('impresion/hojainscripcion/{inscripcion}', function(){
-  return 'Imprimir hoja de inscripcion del alumno';
-})->name('print.hoja.inscripcion');
+Route::get('impresion/reciboinscripcion/{pagoInscripcion}/{inscripcion}', 'Impresion\ReciboInscripcion@printPDF')
+  ->name('print.recibo.inscripcion');
+Route::get('impresion/hojainscripcion/{inscripcion}', 'Impresion\HojaInscripcion@printPDF')
+  ->name('print.hoja.inscripcion');
 
 Route::prefix('data')->group(function () {
   Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
@@ -93,6 +98,7 @@ Route::prefix('data')->group(function () {
   Route::get('info_alumnos', 'DataController@infoAlumnos')->name('info.alumnos.data');
   Route::get('gruposinscripcion/{escuela}/{grado}/{ciclo}', 'DataController@gruposInscripcion')
     ->name('gruposinscr.data');
+  Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');
 });
 
 Route::prefix('admin')->group(function () {

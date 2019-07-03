@@ -28,4 +28,12 @@ class Inscripcion extends Model
   public function setFechaAttribute($value){
     $this->attributes['fecha'] = (new Carbon($value))->format('y-m-d');
   }
+
+  /*
+   * Obtener el alumno a la que pertenece esta inscripcion
+   */
+  public function alumno(){
+    return $this->belongsTo(Alumno::class, 'alumno_id', 'id');
+  }
+
 }

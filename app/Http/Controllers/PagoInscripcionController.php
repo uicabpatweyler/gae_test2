@@ -65,7 +65,7 @@ class PagoInscripcionController extends Controller
       return response()
         ->json([
           'message'  => 'Los datos del pago se han guardado correctamente.',
-          'urlRecibo' => route('print.recibo.inscripcion', $pago->id),
+          'urlRecibo' => route('print.recibo.inscripcion', ['pago' => $pago->id, 'inscripcion' =>$request->inscripcion_id ]),
           'urlHoja'   => route('print.hoja.inscripcion', $request->inscripcion_id)
         ]);
     }

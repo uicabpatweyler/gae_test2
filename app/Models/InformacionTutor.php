@@ -145,4 +145,8 @@ class InformacionTutor extends Model
     }
     else{}
   }
+
+  public function getDireccionAttribute(){
+    return "{$this->nombre_vialidad} {$this->exterior} {$this->interior} {$this->entre_calles}";
+  }
 }
