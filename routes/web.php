@@ -67,11 +67,13 @@ Route::resource('inscripciones', 'InscripcionController')->except(['create']);
 Route::get('inscripcion/create/{informacionAlumno}','InscripcionController@create')
   ->name('inscripcion.create');
 
-Route::resource('reinscripciones', 'ReInscripcionController');
+Route::get('reinscripciones', 'ReInscripcionController@index')->name('reinscripciones.index');
 Route::get('reinscripcion/selectciclo/{alumno}','ReInscripcionController@selectCiclo')
   ->name('reinscripcion.selectciclo');
 Route::get('reinscripcion/info_alumno/{alumno}/{informacionAlumno}', 'ReInscripcionController@createInfoAlumno')
   ->name('reinscripcion.infoalumno.create');
+Route::post('reinscripcion/info_alumno/store', 'ReInscripcionController@storeInfoAlumno')
+  ->name('reinscripcion.infoalumno.store');
 
 
 Route::resource('pagos_inscripcion', 'PagoInscripcionController')->except(['create']);
@@ -105,3 +107,12 @@ Route::prefix('admin')->group(function () {
   Route::get('niveltipo/{tipo_id}', 'Admin\NivelController@niveltipo');
   Route::get('servnivel/{nivel_id}', 'Admin\ServicioController@servnivel');
 });
+
+//Ruta para la importacion de datos
+Route::get('importAlumnos', 'ImportacionController@importAlumnos');
+Route::get('importDatosPersonales', 'ImportacionController@importDatosPersonales');
+Route::get('asignarTutor', 'ImportacionController@asignarTutor');
+Route::get('importTutores', 'ImportacionController@importTutores');
+Route::get('infoTutores', 'ImportacionController@infoTutores');
+Route::get('importPagosInscripcion', 'ImportacionController@importPagosInscripcion');
+Route::get('importInscripciones', 'ImportacionController@importInscripciones');

@@ -17,12 +17,15 @@ class PagoInscripcion extends Model
     'grado_id',
     'grupo_id',
     'alumno_id',
+    'user_id',
     'serie_recibo',
     'folio_recibo',
     'cantidad_concepto',
     'importe_cuota',
     'cantidad_recibida_mxn',
-    'fecha'
+    'fecha',
+    'created_at',
+    'updated_at',
   ];
 
   protected $dates = [

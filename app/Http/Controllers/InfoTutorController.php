@@ -58,7 +58,7 @@ class InfoTutorController extends Controller
     return response()
     ->json([
       'message'  => 'Los datos se han guardado correctamente',
-      'location' => route('alumnos.create')
+      'location' => route('inscripciones.index')
     ]);
   }
 }

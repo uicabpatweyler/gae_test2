@@ -10,6 +10,8 @@ class InformacionTutor extends Model
   use SoftDeletes;
   protected $table = 'informacion_tutores';
   protected $fillable= [
+    'escuela_id',
+    'ciclo_id',
     'tutor_id',
     'alumno_id',
     'infoalumno_id',
@@ -39,7 +41,9 @@ class InformacionTutor extends Model
     'adicional_tipoasentamiento',
     'adicional_nombreasentamiento',
     'adicional_codpost',
-    'email'
+    'email',
+    'created_at',
+    'updated_at'
   ];
   protected $dates = [
     'deleted_at',

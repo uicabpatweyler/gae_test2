@@ -12,7 +12,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-table text-info"></i> re-inscripciones: elegir información
+        <i class="fas fa-table text-info"></i> re-inscripción de alumno
       </h5>
       <a href="{{route('reinscripciones.index')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="far fa-arrow-alt-circle-left"></i> cambiar alumno

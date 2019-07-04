@@ -18,7 +18,7 @@ class CreateSeriesFoliosTable extends Migration
             $table->string('serie',10)->nullable();
             $table->unsignedInteger('folio');
             $table->unsignedInteger('tipo');
-            $table->string('descripcion_',120)->nullable();
+            $table->string('descripcion')->nullable();
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();

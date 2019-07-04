@@ -11,7 +11,17 @@ class Inscripcion extends Model
   use SoftDeletes;
   protected $table = 'inscripciones';
   protected $fillable= [
-    'escuela_id', 'ciclo_id', 'grado_id', 'grupo_id', 'infoalumno_id', 'alumno_id', 'fecha'
+    'escuela_id',
+    'ciclo_id',
+    'grado_id',
+    'grupo_id',
+    'infoalumno_id',
+    'alumno_id',
+    'pago_id', //
+    'user_id', //
+    'fecha',
+    'created_at',
+    'updated_at',
   ];
 
   protected $dates = [

@@ -91,6 +91,11 @@
   <script>
     $().ready(function() {
 
+      $('#btn_cancelar').click(function(){
+        event.preventDefault();
+        showCancel('{{ route('inscripciones.index') }}')
+      });
+
       $('#form_alumno').validate({
         debug: false,
         errorElement: "div",

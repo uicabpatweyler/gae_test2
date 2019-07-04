@@ -10,7 +10,7 @@ class Tutor extends Model
   use SoftDeletes;
   protected $table = 'tutores';
   protected $fillable= [
-    'nombre', 'apellido1', 'apellido2', 'genero', 'status'
+    'nombre', 'apellido1', 'apellido2', 'genero', 'status', 'created_at', 'updated_at'
   ];
   protected $dates = [
     'deleted_at',

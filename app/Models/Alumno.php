@@ -10,8 +10,10 @@ class Alumno extends Model
 {
   use SoftDeletes;
   protected $table = 'alumnos';
+  /*agregar  'created_at','updated_at' para la importacion*/
   protected $fillable= [
-    'curp', 'nombre1', 'nombre2', 'apellido1', 'apellido2', 'fechanacimiento', 'genero', 'status'
+    'curp', 'nombre1', 'nombre2', 'apellido1', 'apellido2', 'fechanacimiento', 'genero', 'status',
+    'created_at', 'updated_at'
   ];
   protected $dates = [
     'deleted_at',

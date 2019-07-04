@@ -40,7 +40,7 @@ class InfoAlumnoController extends Controller
     return response()
       ->json([
         'message'  => 'Los datos se han guardado correctamente',
-        'location' => route('tutores.create')
+        'location' => route('tutores.index')
       ]);
   }
 }

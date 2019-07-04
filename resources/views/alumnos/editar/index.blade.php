@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Re-Inscripciones')
+@section('title', 'Editar Alumno')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -12,7 +12,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-table text-info"></i> re-inscripciones
+        <i class="fas fa-table text-info"></i> editar alumno
       </h5>
 
     </div>
@@ -64,3 +64,4 @@
     });
   </script>
 @endpush
+
