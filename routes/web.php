@@ -116,3 +116,6 @@ Route::get('importTutores', 'ImportacionController@importTutores');
 Route::get('infoTutores', 'ImportacionController@infoTutores');
 Route::get('importPagosInscripcion', 'ImportacionController@importPagosInscripcion');
 Route::get('importInscripciones', 'ImportacionController@importInscripciones');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
