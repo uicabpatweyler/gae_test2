@@ -21,6 +21,8 @@ class CreateCuotasTable extends Migration
             $table->integer('tipo')->default(0); //inscripcion=1, colegiatura=2
             $table->double('cantidad',8,2);
             $table->boolean('status')->default(true);
+            $table->unsignedInteger('user_created')->default(0);
+            $table->unsignedInteger('user_updated')->default(0);
             $table->softDeletes();
             $table->timestamps();
 

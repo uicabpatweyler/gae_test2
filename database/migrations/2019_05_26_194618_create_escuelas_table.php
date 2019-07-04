@@ -36,6 +36,8 @@ class CreateEscuelasTable extends Migration
             $table->string('municipio',60)->nullable(); //18-municipio
             $table->string('localidad',60)->nullable(); //19
             $table->boolean('status')->default(true); //20
+            $table->unsignedInteger('user_created')->default(0);
+            $table->unsignedInteger('user_updated')->default(0);
             $table->softDeletes();
             $table->timestamps();
 

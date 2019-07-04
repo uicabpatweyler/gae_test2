@@ -24,9 +24,10 @@ class CreateInscripcionesTable extends Migration
           $table->unsignedBigInteger('pago_id')->default(0);
           $table->unsignedBigInteger('baja_id')->default(0);
           $table->unsignedBigInteger('becario_id')->default(0);
-          $table->unsignedBigInteger('user_id')->default(0);
           $table->date('fecha');
           $table->boolean('status')->default(true);
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });

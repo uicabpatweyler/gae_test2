@@ -21,6 +21,8 @@ class CreateSeriesFoliosTable extends Migration
             $table->string('descripcion')->nullable();
             $table->boolean('status')->default(true);
             $table->softDeletes();
+            $table->unsignedInteger('user_created')->default(0);
+            $table->unsignedInteger('user_updated')->default(0);
             $table->timestamps();
         });
     }

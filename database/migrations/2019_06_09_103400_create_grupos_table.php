@@ -23,6 +23,8 @@ class CreateGruposTable extends Migration
             $table->unsignedInteger('cuotainscripcion_id')->default(0);
             $table->unsignedInteger('cuotacolegiatura_id')->default(0);
             $table->boolean('status')->default(true);
+            $table->unsignedInteger('user_created')->default(0);
+            $table->unsignedInteger('user_updated')->default(0);
             $table->softDeletes();
             $table->timestamps();
 

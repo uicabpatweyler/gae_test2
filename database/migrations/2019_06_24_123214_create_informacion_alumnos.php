@@ -49,6 +49,8 @@ class CreateInformacionAlumnos extends Migration
           $table->string('pregunta1',60)->nullable();
           $table->string('pregunta2',60)->nullable();
           $table->boolean('status')->default(true);
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });

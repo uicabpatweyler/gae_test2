@@ -23,6 +23,8 @@ class CreateAlumnosTable extends Migration
           $table->date('fechanacimiento');
           $table->char('genero',1);
           $table->boolean('status')->default(true);
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });

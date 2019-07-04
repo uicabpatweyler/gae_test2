@@ -17,6 +17,8 @@ class CreateCiclosTable extends Migration
             $table->bigIncrements('id');
             $table->string('periodo',9)->unique();
             $table->boolean('status')->default(true);
+            $table->unsignedInteger('user_created')->default(0);
+            $table->unsignedInteger('user_updated')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

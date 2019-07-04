@@ -50,9 +50,9 @@ class CreateInformacionTutoresTable extends Migration
           $table->string('adicional_nombreasentamiento',60)->nullable();
           $table->string('adicional_codpost',5)->nullable();
           $table->string('email',60)->nullable();
-
-
           $table->boolean('status')->default(true);
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });

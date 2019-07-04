@@ -21,7 +21,6 @@ class CreatePagoInscripcionesTable extends Migration
           $table->unsignedBigInteger('grado_id');
           $table->unsignedBigInteger('grupo_id');
           $table->unsignedBigInteger('alumno_id');
-          $table->unsignedBigInteger('user_id')->default(0);
 
           $table->string('serie_recibo',10)->nullable();
           $table->unsignedBigInteger('folio_recibo')->unsigned();
@@ -42,6 +41,8 @@ class CreatePagoInscripcionesTable extends Migration
           $table->string('motivo_cancelacion')->nullable();
           $table->boolean('status')->default(true);
           $table->date('fecha');
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });

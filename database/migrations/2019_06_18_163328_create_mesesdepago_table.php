@@ -25,6 +25,8 @@ class CreateMesesdepagoTable extends Migration
           $table->double('recargo',8,2);
           $table->double('descuento',8,2);
           $table->boolean('status')->default(true);
+          $table->unsignedInteger('user_created')->default(0);
+          $table->unsignedInteger('user_updated')->default(0);
           $table->softDeletes();
           $table->timestamps();
         });
