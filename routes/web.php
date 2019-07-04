@@ -17,13 +17,16 @@ https://laravel-news.com/authorization-gates
 https://laravel-news.com/login-validation
 */
 
-
 Route::get('/', function () {
-  return view('dashboard');
+  return view('welcome');
 });
 
+//Route::get('/', function () {
+//  return view('dashboard');
+//});
 
-Route::prefix('config')->group(function () {
+
+Route::prefix('config')->middleware('auth')->group(function () {
   Route::resource('escuelas', 'Config\EscuelaController');
   Route::resource('ciclos', 'Config\CicloController');
   Route::resource('grados', 'Config\GradoController');
@@ -100,7 +103,7 @@ Route::prefix('data')->group(function () {
   Route::get('info_alumnos', 'DataController@infoAlumnos')->name('info.alumnos.data');
   Route::get('gruposinscripcion/{escuela}/{grado}/{ciclo}', 'DataController@gruposInscripcion')
     ->name('gruposinscr.data');
-  Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');
+  Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');  
 });
 
 Route::prefix('admin')->group(function () {
@@ -119,3 +122,5 @@ Route::get('importInscripciones', 'ImportacionController@importInscripciones');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();

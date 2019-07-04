@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('escuelas.update',$escuela->id)}}" method="POST" id="form_escuela" name="form_escuela" class="needs-validation" novalidate>
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
       @method('PATCH')
       @csrf
       <div class="form-row">

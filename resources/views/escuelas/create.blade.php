@@ -28,15 +28,16 @@
 
       <!-- Formulario -->
       <form action="{{route('escuelas.store')}}" method="POST" id="form_escuela" name="form_escuela">
+        <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
         @csrf
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="cct">C.C.T. <span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-sm" id="cct" name="cct" placeholder="C.C.T." required>
+            <input type="text" class="form-control form-control-sm" id="cct" name="cct" placeholder="C.C.T." style="text-transform: uppercase" required>
           </div>
           <div class="form-group col-md-6">
             <label for="incorporacion">Núm. de Incorporación</label>
-            <input type="text" class="form-control form-control-sm" id="incorporacion" name="incorporacion" placeholder="Núm. de Incorporación">
+            <input type="text" class="form-control form-control-sm" id="incorporacion" name="incorporacion" style="text-transform: uppercase">
           </div>
         </div>
         <div class="form-group">
@@ -126,7 +127,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="codpost">C.P.</label>
-            <input type="text" class="form-control form-control-sm" id="codpost" name="codpost" placeholder="">
+            <input type="text" class="form-control form-control-sm" id="codpost" name="codpost">
           </div>
         </div>
         <div class="form-row">

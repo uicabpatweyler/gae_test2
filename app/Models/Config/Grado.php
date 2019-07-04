@@ -9,7 +9,7 @@ class Grado extends Model
 {
     use SoftDeletes;
     protected $table = 'grados';
-    protected $fillable = ['escuela_id','nombre','abreviacion'];
+    protected $fillable = ['escuela_id','nombre','abreviacion','user_created', 'user_updated'];
     protected $dates = [
         'deleted_at',
         'created_at',
@@ -22,6 +22,24 @@ class Grado extends Model
     public function setNombreAttribute($value)
     {
         $this->attributes['nombre'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
+    }
+
+    public function setUserCreatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_created'] = $value;
+      }
+      else{
+        $this->attributes['user_created'] = 0;
+      }
+    }
+
+    public function setUserUpdatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_updated'] = $value;
+      }
+      else{
+        $this->attributes['user_updated'] = 0;
+      }
     }
 
     /*

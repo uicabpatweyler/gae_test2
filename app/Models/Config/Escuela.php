@@ -20,7 +20,7 @@ class Escuela extends Model
         'cct', 'incorporacion', 'nombre', 'tipo_id', 'nivel_id', 'servicio_id',
         'turno', 'sostenimiento', 'email', 'telefono',
         'calle', 'exterior', 'interior', 'entrecalles', 'colonia', 'codpost',
-        'pais', 'entidad', 'municipio', 'localidad', 'status'
+        'pais', 'entidad', 'municipio', 'localidad', 'status', 'user_created', 'user_updated'
     ];
 
     protected $dates = [
@@ -43,6 +43,24 @@ class Escuela extends Model
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = true;
+    }
+
+    public function setUserCreatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_created'] = $value;
+      }
+      else{
+        $this->attributes['user_created'] = 0;
+      }
+    }
+
+    public function setUserUpdatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_updated'] = $value;
+      }
+      else{
+        $this->attributes['user_updated'] = 0;
+      }
     }
 
     public function scopeActive(Builder $query)

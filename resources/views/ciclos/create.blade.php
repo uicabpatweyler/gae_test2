@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('ciclos.store')}}" method="POST" id="form_ciclo" name="form_ciclo">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-2">

@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('grados.store')}}" method="POST" id="form_grado" name="form_grado">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       @csrf
       <div class="form-group row">
         <label for="escuela_id" class="col-sm-3 col-form-label">Escuela <span class="text-danger">*</span></label>
@@ -45,7 +46,7 @@
       <div class="form-group row">
         <label for="nombre" class="col-sm-3 col-form-label">Nombre <span class="text-danger">*</span></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del grado" required>
+          <input type="text" class="form-control" id="nombre" name="nombre" style="text-transform: capitalize" placeholder="Nombre del grado" required>
         </div>
       </div>
       <div class="form-group row">

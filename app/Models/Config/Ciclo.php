@@ -9,7 +9,7 @@ class Ciclo extends Model
 {
     use SoftDeletes;
     protected $table = 'ciclos';
-    protected $fillable = ['periodo','status'];
+    protected $fillable = ['periodo','status','user_created', 'user_updated'];
     protected $dates = [
         'deleted_at',
         'created_at',
@@ -19,7 +19,24 @@ class Ciclo extends Model
         'status'   => 'boolean'
     ];
 
-    /* Mutators: set and get */
+  /* Mutators: set and get */
+  public function setUserCreatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_created'] = $value;
+    }
+    else{
+      $this->attributes['user_created'] = 0;
+    }
+  }
+
+  public function setUserUpdatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_updated'] = $value;
+    }
+    else{
+      $this->attributes['user_updated'] = 0;
+    }
+  }
 
   /*
    * Relacion CICLO:GRUPOS (1:M)

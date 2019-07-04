@@ -91,7 +91,7 @@
       <div class="dropdown">
         <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="far fa-user-circle"></i>
-          <span class="font-weight-light">Weyler Antonio Uicab Pat</span>
+          <span class="font-weight-light">{{ Auth::user()->name }}</span>
 
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -102,6 +102,15 @@
           <a class="dropdown-item" href="#">
             <i class="fas fa-key text-info"></i> <span class="font-weight-light">Cambiar Password</span>
           </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  href="{{ route('logout') }}"
+             onclick="event.preventDefault();
+             document.getElementById('logout-form').submit();">
+            <i class="fas fa-sign-out-alt text-danger"></i> <span class="font-weight-light">Salir</span>
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
         </div>
       </div>
       <!-- Dropdown del usuario -->

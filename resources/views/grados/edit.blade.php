@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('grados.update',$grado->id)}}" method="POST" id="form_grado" name="form_grado">
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
       @method('PATCH')
 
       @csrf

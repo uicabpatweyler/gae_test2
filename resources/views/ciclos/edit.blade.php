@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('ciclos.update',$ciclo->id)}}" method="POST" id="form_ciclo" name="form_ciclo">
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
       @method('PATCH')
       @csrf
       <div class="form-row">

@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('cuotas.update', $cuota->id)}}" method="POST" id="form_cuota" name="form_cuota">
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
       @method('PATCH')
       @csrf
       <div class="form-group row">

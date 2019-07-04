@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('grupos.update', $grupo->id)}}" method="POST" id="form_grupo" name="form_grupo">
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
       @method('PATCH')
       @csrf
       <div class="form-group row">

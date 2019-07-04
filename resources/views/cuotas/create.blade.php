@@ -28,6 +28,7 @@
 
     <!-- Formulario -->
     <form action="{{route('cuotas.store')}}" method="POST" id="form_cuota" name="form_cuota">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       @csrf
       <div class="form-group row">
         <label for="escuela_id" class="col-sm-3 col-form-label">Escuela <span class="text-danger">*</span></label>

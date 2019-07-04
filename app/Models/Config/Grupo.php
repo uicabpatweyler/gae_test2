@@ -10,7 +10,15 @@ class Grupo extends Model
     use SoftDeletes;
     protected $table = 'grupos';
     protected $fillable= [
-        'escuela_id', 'ciclo_id', 'grado_id', 'nombre','cupoalumnos','cuotainscripcion_id','cuotacolegiatura_id'
+      'escuela_id',
+      'ciclo_id',
+      'grado_id',
+      'nombre',
+      'cupoalumnos',
+      'cuotainscripcion_id',
+      'cuotacolegiatura_id',
+      'user_created',
+      'user_updated'
     ];
     protected $dates = [
       'deleted_at',
@@ -43,6 +51,24 @@ class Grupo extends Model
         else{
             $this->attributes['cuotacolegiatura_id'] = 0;
         }
+    }
+
+    public function setUserCreatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_created'] = $value;
+      }
+      else{
+        $this->attributes['user_created'] = 0;
+      }
+    }
+
+    public function setUserUpdatedAttribute($value){
+      if(isset($value)){
+        $this->attributes['user_updated'] = $value;
+      }
+      else{
+        $this->attributes['user_updated'] = 0;
+      }
     }
 
   /**
