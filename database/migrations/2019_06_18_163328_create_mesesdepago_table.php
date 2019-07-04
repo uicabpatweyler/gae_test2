@@ -17,7 +17,7 @@ class CreateMesesdepagoTable extends Migration
           $table->bigIncrements('id');
           $table->unsignedBigInteger('cuota_id');
           $table->tinyInteger('orden');
-          $table->string('mes',10);
+          $table->string('mes',60);
           $table->date('fecha1');
           $table->date('fecha2');
           $table->date('fecha3');

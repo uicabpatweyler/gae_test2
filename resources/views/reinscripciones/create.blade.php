@@ -29,6 +29,7 @@
 
     <!--Acordeon para la informacion del alumno -->
     <form method="POST" action="{{route('reinscripcion.infoalumno.store')}}" id="form_reinscripcion" name="form_reinscripcion">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       <input type="hidden" name="alumno_id" id="alumno_id" value="{{$alumno->id}}">
       <input type="hidden" name="" id="escuela" value="{{$info->escuela_id}}">
       <input type="hidden" name="" id="ciclo" value="{{$info->ciclo_id}}">

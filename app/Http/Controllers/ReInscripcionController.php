@@ -32,6 +32,10 @@ class ReInscripcionController extends Controller
     ]);
   }
 
+  public function verificar(Alumno $alumno){
+    return dd($alumno);
+  }
+
   public function createInfoAlumno(Alumno $alumno, InformacionAlumno $informacionAlumno){
     return view('reinscripciones.create',[
       'alumno' => $alumno,

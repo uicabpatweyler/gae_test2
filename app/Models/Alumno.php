@@ -10,10 +10,19 @@ class Alumno extends Model
 {
   use SoftDeletes;
   protected $table = 'alumnos';
-  /*agregar  'created_at','updated_at' para la importacion*/
   protected $fillable= [
-    'curp', 'nombre1', 'nombre2', 'apellido1', 'apellido2', 'fechanacimiento', 'genero', 'status',
-    'created_at', 'updated_at'
+    'curp',
+    'nombre1',
+    'nombre2',
+    'apellido1',
+    'apellido2',
+    'fechanacimiento',
+    'genero',
+    'status',
+    'user_created',
+    'user_updated',
+    'created_at',
+    'updated_at'
   ];
   protected $dates = [
     'deleted_at',
@@ -55,6 +64,42 @@ class Alumno extends Model
 
   public function setFechanacimientoAttribute($value){
     $this->attributes['fechanacimiento'] = (new Carbon($value))->format('y-m-d');
+  }
+
+  public function setUserCreatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_created'] = $value;
+    }
+    else{
+      $this->attributes['user_created'] = 0;
+    }
+  }
+
+  public function setUserUpdatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_updated'] = $value;
+    }
+    else{
+      $this->attributes['user_updated'] = 0;
+    }
+  }
+
+  public function setCreatedAtAttribute($value){
+    if(isset($value)){
+      $this->attributes['created_at'] = $value;
+    }
+    else{
+      $this->attributes['created_at'] = Carbon::now()->format('Y-m-d').' '.Carbon::now()->toTimeString();
+    }
+  }
+
+  public function setUpdatedAtAttribute($value){
+    if(isset($value)){
+      $this->attributes['updated_at'] = $value;
+    }
+    else{
+      $this->attributes['updated_at'] = Carbon::now()->format('Y-m-d').' '.Carbon::now()->toTimeString();
+    }
   }
 
   public function getFullNameAttribute(){

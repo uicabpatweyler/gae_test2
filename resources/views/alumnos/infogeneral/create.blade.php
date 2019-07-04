@@ -42,7 +42,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="telefcasa">Teléfono de Casa</label>
-                  <input type="text" class="form-control form-control-sm telefono" id="telefcasa" name="telefcasa" placeholder="( 983 ) - 000 - 0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefcasa" name="telefcasa" placeholder="(983)-000-0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia1">Referencia</label>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label for="teleftutor">Teléfono del Tutor</label>
-                  <input type="text" class="form-control form-control-sm telefono" id="teleftutor" name="teleftutor" placeholder="( 983 ) - 000 - 0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="teleftutor" name="teleftutor" placeholder="(983)-000-0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia2">Referencia</label>
@@ -61,7 +61,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="telefcelular">Teléfono Celular</label>
-                  <input type="text" class="form-control form-control-sm telefono" id="telefcelular" name="telefcelular" placeholder="( 983 ) - 000 - 0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefcelular" name="telefcelular" placeholder="(983)-000-0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia3">Referencia</label>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label for="telefotro">Otro</label>
-                  <input type="text" class="form-control form-control-sm telefono" id="telefotro" name="telefotro" placeholder="( 983 ) - 000 - 0000">
+                  <input type="text" class="form-control form-control-sm telefono" id="telefotro" name="telefotro" placeholder="(983)-000-0000">
                 </div>
                 <div class="form-group col-md-2">
                   <label for="referencia4">Referencia</label>
@@ -250,7 +250,7 @@
   <script>
     $().ready(function() {
 
-      $(".telefono").inputmask("( 9{3} ) - 9{3} - 9{4}",{
+      $(".telefono").inputmask("(9{3})-9{3}-9{4}",{
         clearMaskOnLostFocus: true,
         greedy: false,
         jitMasking: true,

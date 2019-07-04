@@ -25,6 +25,7 @@
 
     <!-- Formulario -->
     <form method="POST" action="{{route('tutores.store')}}" name="form_tutor" id="form_tutor">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-3">

@@ -15,7 +15,7 @@ class MesesDePagoTableSeeder extends Seeder
     {
       $meses = array('Agosto','Septiembre','Octubre','Noviembre','Diciembre',
         'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio');
-      $d1 = Carbon::create('2018',8,1);
+      $d1 = Carbon::create('2019',8,1);
         //$begin->addMonth()
 
       for($y=0; $y<12; $y++){
@@ -24,7 +24,7 @@ class MesesDePagoTableSeeder extends Seeder
         $d3 = $d1->copy()->addDays(10);
         $d4 = $d1->copy()->addMonth();
         MesDePago::create([
-          'cuota_id' => 2,
+          'cuota_id' => 4,
           'orden'    => $y + 1,
           'mes'      => $meses[$y],
           'fecha1'   => $d1,

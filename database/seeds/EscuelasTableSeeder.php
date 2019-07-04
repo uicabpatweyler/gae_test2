@@ -15,7 +15,7 @@ class EscuelasTableSeeder extends Seeder
         Escuela::create([
             'cct' => '23PBT0035N',
             'incorporacion' => 'ICAT17001CT',
-            'nombre' => 'academia de inglés: irlanda',
+            'nombre' => 'Academia de Inglés: Irlanda',
             'tipo_id' => 4,
             'nivel_id' => 8,
             'servicio_id' => 20,

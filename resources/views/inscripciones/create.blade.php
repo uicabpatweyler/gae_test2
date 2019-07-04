@@ -21,6 +21,7 @@
 
     <div class="card border-0">
       <form method="POST" action="{{route('inscripciones.store')}}" id="form_inscripcion" name="form_inscripcion">
+        <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
         <input type="hidden" name="escuela_id" id="escuela_id" value="0">
         <input type="hidden" name="ciclo_id" id="ciclo_id" value="0">
         <input type="hidden" name="grado_id" id="grado_id" value="0">

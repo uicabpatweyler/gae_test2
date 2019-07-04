@@ -78,6 +78,7 @@
       </div>
       <div class="card-body">
         <form method="POST" action="{{route('pagos_inscripcion.store')}}" id="form_pago" name="form_pago">
+          <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
           <input type="hidden" id="inscripcion_id" name="inscripcion_id" value="{{$inscripcion->id}}">
           <input type="hidden" id="escuela_id" name="escuela_id" value="{{$inscripcion->escuela_id}}">
           <input type="hidden" id="ciclo_id" name="ciclo_id" value="{{$inscripcion->ciclo_id}}">

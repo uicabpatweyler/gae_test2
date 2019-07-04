@@ -25,6 +25,7 @@
 
     <!-- Formulario -->
     <form method="POST" action="{{ route('alumnos.store') }}" name="form_alumno" id="form_alumno">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-3">

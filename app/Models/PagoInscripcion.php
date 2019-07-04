@@ -24,8 +24,10 @@ class PagoInscripcion extends Model
     'importe_cuota',
     'cantidad_recibida_mxn',
     'fecha',
+    'user_created',
+    'user_updated',
     'created_at',
-    'updated_at',
+    'updated_at'
   ];
 
   protected $dates = [
@@ -40,6 +42,48 @@ class PagoInscripcion extends Model
   ];
 
   public function setFechaAttribute($value){
-    $this->attributes['fecha'] = (new Carbon($value))->format('y-m-d');
+    if(isset($value)){
+      $this->attributes['fecha'] = (new Carbon($value))->format('y-m-d');
+    }
+    else{
+      $this->attributes['fecha'] = Carbon::now()->format('Y-m-d');
+    }
+
+  }
+
+  public function setUserCreatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_created'] = $value;
+    }
+    else{
+      $this->attributes['user_created'] = 0;
+    }
+  }
+
+  public function setUserUpdatedAttribute($value){
+    if(isset($value)){
+      $this->attributes['user_updated'] = $value;
+    }
+    else{
+      $this->attributes['user_updated'] = 0;
+    }
+  }
+
+  public function setCreatedAtAttribute($value){
+    if(isset($value)){
+      $this->attributes['created_at'] = $value;
+    }
+    else{
+      $this->attributes['created_at'] = Carbon::now()->format('Y-m-d').' '.Carbon::now()->toTimeString();
+    }
+  }
+
+  public function setUpdatedAtAttribute($value){
+    if(isset($value)){
+      $this->attributes['updated_at'] = $value;
+    }
+    else{
+      $this->attributes['updated_at'] = Carbon::now()->format('Y-m-d').' '.Carbon::now()->toTimeString();
+    }
   }
 }

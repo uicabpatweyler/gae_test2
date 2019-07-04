@@ -37,6 +37,7 @@
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionTutor">
           <div class="card-body">
             <form method="POST" action="{{route('tutor.direccion.store')}}" id="form_direccion" name="form_direccion">
+              <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
               <input type="hidden" name="tutor_id" id="tutor_id" value="{{$infoAlumno->tutor_id}}">
               <input type="hidden" name="alumno_id" id="alumno_id" value="{{$infoAlumno->alumno_id}}">
               <input type="hidden" name="infoalumno_id" id="infoalumno_id" value="{{$infoAlumno->id}}">
