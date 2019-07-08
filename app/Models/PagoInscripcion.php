@@ -43,7 +43,7 @@ class PagoInscripcion extends Model
 
   public function setFechaAttribute($value){
     if(isset($value)){
-      $this->attributes['fecha'] = (new Carbon($value))->format('y-m-d');
+      $this->attributes['fecha'] = (new Carbon($value))->format('Y-m-d');
     }
     else{
       $this->attributes['fecha'] = Carbon::now()->format('Y-m-d');

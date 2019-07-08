@@ -63,7 +63,7 @@ class Alumno extends Model
   }
 
   public function setFechanacimientoAttribute($value){
-    $this->attributes['fechanacimiento'] = (new Carbon($value))->format('y-m-d');
+    $this->attributes['fechanacimiento'] = (new Carbon($value))->format('Y-m-d');
   }
 
   public function setUserCreatedAttribute($value){
@@ -98,7 +98,7 @@ class Alumno extends Model
       $this->attributes['updated_at'] = $value;
     }
     else{
-      $this->attributes['updated_at'] = Carbon::now()->format('Y-m-d').' '.Carbon::now()->toTimeString();
+      $this->attributes['updated_at'] = Carbon::now()->toDateTimeString();
     }
   }
 

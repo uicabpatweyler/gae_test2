@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InfoAlumnoRequest;
 use App\Models\Alumno;
+use App\Models\Config\Ciclo;
+use App\Models\Config\Escuela;
+use App\Models\Config\Grado;
+use App\Models\Config\Grupo;
 use App\Models\InformacionAlumno;
+use App\Models\Inscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,5 +47,41 @@ class InfoAlumnoController extends Controller
         'message'  => 'Los datos se han guardado correctamente',
         'location' => route('tutores.index')
       ]);
+  }
+
+  //Muestra las escuelas y los ciclos en los que aparece el alumno
+  public function selectDatosInscripcion(Alumno $alumno){
+    return dd($alumno);
+  }
+
+  public function show(InformacionAlumno $informacionAlumno){
+    $inscripcion = Inscripcion::find($informacionAlumno->id);
+    return view('alumnos.showInfo',[
+      'info' => $informacionAlumno,
+      'escuela' => Escuela::find($informacionAlumno->escuela_id),
+      'ciclo' => Ciclo::find($informacionAlumno->ciclo_id),
+      'grado' => Grado::find($inscripcion->grado_id),
+      'grupo' => Grupo::find($inscripcion->grupo_id),
+      'alumno' => Alumno::find($informacionAlumno->alumno_id)
+    ]);
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  \App\Models\Alumno  $alumno
+   * @return \Illuminate\Http\Response
+   */
+  public function edit(InformacionAlumno $informacionAlumno){
+    $inscripcion = Inscripcion::find($informacionAlumno->id);
+    return view('alumnos.editInfo',[
+      'info' => $informacionAlumno,
+      'escuela' => Escuela::find($informacionAlumno->escuela_id),
+      'ciclo' => Ciclo::find($informacionAlumno->ciclo_id),
+      'grado' => Grado::find($inscripcion->grado_id),
+      'grupo' => Grupo::find($inscripcion->grupo_id),
+      'alumno' => Alumno::find($informacionAlumno->alumno_id),
+      'estados'=> DB::table('estados')->select('id', 'estado_nombre')->get()
+    ]);
   }
 }

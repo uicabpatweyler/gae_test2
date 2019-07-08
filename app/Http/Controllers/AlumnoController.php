@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inscripcion;
 use Illuminate\Http\Request;
 use App\Http\Requests\AlumnoRequest;
 use App\Models\Alumno;
@@ -15,7 +16,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        //
+        return view('alumnos.index');
     }
 
     /**
@@ -52,7 +53,21 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+      $rows =Inscripcion::where('alumno_id', $alumno->id)
+        ->join('escuelas', 'inscripciones.escuela_id','=','escuelas.id')
+        ->join('ciclos', 'inscripciones.ciclo_id','=', 'ciclos.id')
+        ->join('grados', 'inscripciones.grado_id', '=', 'grados.id')
+        ->join('grupos', 'inscripciones.grupo_id', '=' , 'grupos.id')
+        ->select('inscripciones.id','inscripciones.escuela_id','inscripciones.ciclo_id','inscripciones.grado_id')
+        ->addSelect('inscripciones.grupo_id', 'inscripciones.infoalumno_id')
+        ->addSelect('escuelas.nombre as escuela','ciclos.periodo', 'grados.nombre as grado', 'grupos.nombre as grupo')
+        ->orderBy('ciclos.periodo', 'desc')
+        ->get();
+
+      return view('alumnos.show',[
+        'alumno' => $alumno,
+        'rows' => $rows
+      ]);
     }
 
     /**
@@ -63,7 +78,9 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        //
+      return view('alumnos.edit',[
+        'alumno' => $alumno
+      ]);
     }
 
     /**
@@ -73,9 +90,13 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumno $alumno)
-    {
-        //
+    public function update(AlumnoRequest $request, Alumno $alumno)    {
+      $alumno->update($request->all());
+      return response()
+        ->json([
+          'message'  => 'Los datos se han guardado correctamente',
+          'location' => route('alumnos.index')
+        ]);
     }
 
     /**

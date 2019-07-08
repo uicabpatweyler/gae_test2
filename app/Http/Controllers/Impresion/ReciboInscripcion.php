@@ -106,14 +106,15 @@ class ReciboInscripcion extends Controller
 
       Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::cell(196,5,'RECIBIMOS DE:', 0,1,'C');
-      Fpdf::Cell(0,3,'',0,1);//Espacio
+      //Fpdf::Cell(0,3,'',0,1);//Espacio
 
-      //Nombre del alumno
       Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::Cell(28,5,'Alumno',1,0,'C',true);
       Fpdf::SetFont('Arial', '', 9);
       Fpdf::Cell(70,5,utf8_decode($alumno->full_name) ,1,0,'L',false);
+      Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::Cell(28,5,'Tutor',1,0,'C',true);
+      Fpdf::SetFont('Arial', '', 9);
       Fpdf::Cell(70,5,utf8_decode($tutor->full_name) ,1,1,'L',false);
 
       Fpdf::SetFont('Arial', 'B', 9);
@@ -136,7 +137,7 @@ class ReciboInscripcion extends Controller
       Fpdf::Cell(133,5,utf8_decode('Cuota de Inscripción del Ciclo Escolar: ').$ciclo->periodo,'R',0,'C');
       Fpdf::Cell(35,5,'$ '.number_format($pagoInscripcion->importe_cuota,2,'.',','),'R',1,'C');
 
-      for($i=1;$i<=2;$i++){
+      for($i=1;$i<=1;$i++){
         Fpdf::Cell(28,5,'','LR',0,'C');
         Fpdf::Cell(133,5,'','R',0,'C');
         Fpdf::Cell(35,5,'','R',1,'C');
@@ -227,14 +228,16 @@ class ReciboInscripcion extends Controller
 
       Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::cell(196,5,'RECIBIMOS DE:', 0,1,'C');
-      Fpdf::Cell(0,3,'',0,1);//Espacio
+      //Fpdf::Cell(0,3,'',0,1);//Espacio
 
       //Nombre del alumno
       Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::Cell(28,5,'Alumno',1,0,'C',true);
       Fpdf::SetFont('Arial', '', 9);
       Fpdf::Cell(70,5,utf8_decode($alumno->full_name) ,1,0,'L',false);
+      Fpdf::SetFont('Arial', 'B', 9);
       Fpdf::Cell(28,5,'Tutor',1,0,'C',true);
+      Fpdf::SetFont('Arial', '', 9);
       Fpdf::Cell(70,5,utf8_decode($tutor->full_name) ,1,1,'L',false);
 
       Fpdf::SetFont('Arial', 'B', 9);
@@ -257,7 +260,7 @@ class ReciboInscripcion extends Controller
       Fpdf::Cell(133,5,utf8_decode('Cuota de Inscripción del Ciclo Escolar: ').$ciclo->periodo,'R',0,'C');
       Fpdf::Cell(35,5,'$ '.number_format($pagoInscripcion->importe_cuota,2,'.',','),'R',1,'C');
 
-      for($i=1;$i<=2;$i++){
+      for($i=1;$i<=1;$i++){
         Fpdf::Cell(28,5,'','LR',0,'C');
         Fpdf::Cell(133,5,'','R',0,'C');
         Fpdf::Cell(35,5,'','R',1,'C');

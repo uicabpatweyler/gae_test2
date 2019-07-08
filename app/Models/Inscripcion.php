@@ -38,7 +38,7 @@ class Inscripcion extends Model
   ];
 
   public function setFechaAttribute($value){
-    $this->attributes['fecha'] = (new Carbon($value))->format('y-m-d');
+    $this->attributes['fecha'] = (new Carbon($value))->format('Y-m-d');
   }
 
   public function setUserCreatedAttribute($value){

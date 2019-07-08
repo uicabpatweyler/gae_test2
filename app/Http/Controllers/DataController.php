@@ -220,6 +220,7 @@ class DataController extends Controller
       ->make(true);
   }
 
+  //resincripciones.index
   public function alumnos(){
     $alumnos = Alumno::orderBy('apellido1','asc')->get();
     return DataTables::of($alumnos)
@@ -230,6 +231,7 @@ class DataController extends Controller
       ->make(true);
   }
 
+  /*inscripciones.index*/
   public function infoAlumnos(){
     $infoAlumnos = DB::table('alumnos')
       ->join('informacion_alumnos', 'alumnos.id','=', 'informacion_alumnos.alumno_id')
@@ -247,6 +249,19 @@ class DataController extends Controller
       ->addColumn('tutor', function($infoAlumno){
         $tutorUrl = $infoAlumno->tutor_id===0 ? route('tutores.index') : null;
         return view('inscripciones._btnAsignTutor', compact('tutorUrl'));
+      })
+      ->make(true);
+  }
+
+  /*alumnos.index*/
+  public function indexAlumnos(){
+    $alumnos = Alumno::orderBy('apellido1','asc')->get();
+    return DataTables::of($alumnos)
+      ->addColumn('actions', function ($tutor) {
+        $showUrl = route('alumnos.show', ['id' => $tutor->id]);
+        $editUrl = route('alumnos.edit', ['id' => $tutor->id]);
+        $deleteUrl = route('alumnos.destroy', ['id' => $tutor->id]);
+        return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
       })
       ->make(true);
   }

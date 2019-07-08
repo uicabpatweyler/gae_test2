@@ -27,7 +27,20 @@ class AlumnoRequest extends FormRequest
       ];
     }
 
-    public function updateRules(){}
+    public function updateRules(){
+      return [
+        'curp'            => [
+          'required',
+          Rule::unique('alumnos')->ignore($this->alumno->id),
+          'min:23',
+          'max:23'
+        ],
+        'nombre1'         => 'required|min:2|max:60',
+        'apellido1'       => 'required|min:2|max:60',
+        'fechanacimiento' => 'required',
+        'genero'          => 'required|min:1|max:1'
+      ];
+    }
 
     /**
      * Get the validation rules that apply to the request.
