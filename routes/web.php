@@ -34,33 +34,33 @@ Route::prefix('config')->middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function(){
 
   Route::resource('alumnos','AlumnoController');
-  Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
-    ->name('alumno.direccion.create');
-  Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
-    ->name('alumno.direccion.store');
-  Route::get('alumno/infoadicional/{informacionAlumno}','InfoAlumnoController@createInfoGral')
-    ->name('alumno.infoadicional.create');
-  Route::patch('alumno/infoadicional/{informacionAlumno}', 'InfoAlumnoController@updateInfoGral')
-    ->name('alumno.infoadicional.update');
-  Route::get('alumno/datosinscripcion/{alumno}', 'InfoAlumnoController@selectDatosInscripcion')
-    ->name('alumno.datos.inscripcion');
-
-  Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
-    ->name('alumno.direccion.create');
-  Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
-    ->name('alumno.direccion.store');
-  Route::get('alumno/infoadicional/{informacionAlumno}','InfoAlumnoController@createInfoGral')
-    ->name('alumno.infoadicional.create');
-  Route::patch('alumno/infoadicional/{informacionAlumno}', 'InfoAlumnoController@updateInfoGral')
-    ->name('alumno.infoadicional.update');
-
+  //Rutas para editar la información de un alumno existente en el sistema
   Route::get('alumno/informacion/{informacionAlumno}', 'InfoAlumnoController@show')
     ->name('infoalumno.show');
   Route::get('/alumno/informacion/{informacionAlumno}/edit','InfoAlumnoController@edit')
     ->name('infoalumno.edit');
-//  Route::patch()->name('infoalumno.update');
+  Route::patch('alumno/informacion/update/{informacionAlumno}', 'InfoAlumnoController@updateInfoAlumno')
+    ->name('infoalumno.update');
 
-  Route::resource('tutores','TutorController');
+  //Rutas para la creación de la información de un  nuevo alumno (inscripcion)
+  Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')
+    ->name('alumno.direccion.create');
+  Route::post('alumno/direccion/store','InfoAlumnoController@storeDireccion')
+    ->name('alumno.direccion.store');
+  Route::get('alumno/infoadicional/{informacionAlumno}','InfoAlumnoController@createInfoGral')
+    ->name('alumno.infoadicional.create');
+  Route::patch('alumno/infoadicional/{informacionAlumno}', 'InfoAlumnoController@updateInfoGral')
+    ->name('alumno.infoadicional.update');
+
+  Route::resource('tutores','TutorController')->except(['show', 'edit','update']);
+  Route::get('tutores/{tutor}','TutorController@show')->name('tutores.show');
+  Route::get('tutores/{tutor}/edit', 'TutorController@edit')->name('tutores.edit');
+  Route::patch('tutores/{tutor}', 'TutorController@update')->name('tutores.update');
+
+  Route::get('tutor/informacion/{informacionTutor}', 'InfoTutorController@show')
+    ->name('infotutor.show');
+  Route::get('tutor/informacion/{informacionTutor}/edit', 'InfoTutorController@edit')
+    ->name('infotutor.edit');
 
   Route::get('tutor/elegir_alumno/{tutor}', 'AlumnoTutor@tutorElegirAlumno')
     ->name('tutor.elegir.alumno');
@@ -119,7 +119,7 @@ Route::middleware(['auth'])->group(function(){
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');
 
-    //inscripciones.index Lista de alumnos para inscribir
+    //inscripciones.index Lista de alumnos para inscribir (los datos del alumno fueron creados durante la inscripción)
     Route::get('info_alumnos', 'DataController@infoAlumnos')->name('info.alumnos.data');
 
     //reinscripciones.index Lista de alumnos disponibles para reinscribir

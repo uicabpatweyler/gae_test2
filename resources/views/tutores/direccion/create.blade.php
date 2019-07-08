@@ -65,7 +65,7 @@
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="_estado">Estado <span class="text-danger">*</span></label>
-                  <select id="_estado" name="_estado" class="form-control form-control-sm">
+                  <select id="_estado" name="_estado" class="form-control form-control-sm" required>
                     @foreach($estados as $estado)
                       @if($loop->first)
                         <option value="" selected>Seleccione...</option>
@@ -177,6 +177,14 @@
           codigo_postal: "required",
           localidad: "required",
           _delegacion: "required",
+          _estado: {
+            required: function(element){
+              return $("#localidad").val() ===""
+                || $("#tipo_asentamiento").val() ===""
+                || $("#nombre_asentamiento").val() ===""
+                || $("#codigo_postal").val() === "";
+            }
+          },
           colonia: "required"
         },
         messages: {
@@ -187,6 +195,7 @@
           codigo_postal: "Obligatorio",
           localidad: "Obligatorio",
           _delegacion: "Seleccione un valor",
+          _estado: "Seleccione un valor",
           colonia: "Seleccione un valor"
         },
         invalidHandler: function(event, validator) {

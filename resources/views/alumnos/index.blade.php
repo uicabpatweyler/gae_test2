@@ -39,6 +39,8 @@
 
 @endsection
 @push('scripts')
+<!-- Axios -->
+<script src="{{asset('axios-0.19.0/axios.js')}}"></script>
   <script>
     $(document).ready(function(){
       $('#alumnos').DataTable({

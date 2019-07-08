@@ -45,13 +45,25 @@ class TutorRequest extends FormRequest
           })
         ],
         'apellido1' => 'required|min:2|max:60',
-        'genero'    => 'required',
-
+        'genero'    => 'required'
       ];
   }
 
   public function updateRules() {
-
+    return [
+      'nombre'    => [
+        'required',
+        'min:2',
+        'max:60',
+        Rule::unique('tutores')->where( function($query) {
+          return $query->where('nombre', mb_convert_case($this->nombre,MB_CASE_TITLE,'UTF-8'))
+            ->where('apellido1', mb_convert_case($this->apellido1,MB_CASE_TITLE,'UTF-8'))
+            ->where('apellido2', mb_convert_case($this->apellido2,MB_CASE_TITLE,'UTF-8'));
+        })->ignore($this->tutor->id)
+      ],
+      'apellido1' => 'required|min:2|max:60',
+      'genero'    => 'required'
+    ];
   }
 
   /**

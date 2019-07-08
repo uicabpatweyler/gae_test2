@@ -28,11 +28,14 @@
     </div>
 
     <!--Acordeon para la informacion del alumno -->
-    <form method="POST" action="" id="form_editinfo" name="form_editinfo">
-      <input type="hidden" name="estado" id="estado" value="">
-      <input type="hidden" name="delegacion" id="delegacion" value="">
+    <form method="POST" action="{{route('infoalumno.update', $info->id)}}" id="form_editinfo" name="form_editinfo">
+      <input type="hidden" name="estado" id="estado" value="{{$info->estado}}">
+      <input type="hidden" name="delegacion" id="delegacion" value="{{$info->delegacion}}">
       <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
+
+      @method('PATCH')
       @csrf
+
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="nombre_vialidad">Nombre de Vialidad <span class="text-danger">*</span></label>
@@ -191,11 +194,11 @@
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script src="{{ asset('jqueryinputmask/jquery.inputmask.js') }}"></script>
   <script>
-    $.validator.setDefaults({
-      submitHandler: function() {
-        alert("submitted!");
-      }
-    });
+    // $.validator.setDefaults({
+    //   submitHandler: function() {
+    //     alert("submitted!");
+    //   }
+    // });
 
     $('#btn_cancelar').click(function(){
       event.preventDefault();
@@ -215,7 +218,14 @@
           codigo_postal: "required",
           localidad: "required",
           _delegacion: "required",
-          _estado: "required",
+          _estado: {
+            required: function(element){
+              return $("#localidad").val() ===""
+              || $("#tipo_asentamiento").val() ===""
+              || $("#nombre_asentamiento").val() ===""
+              || $("#codigo_postal").val() === "";
+            }
+          },
           colonia: "required"
         },
         messages: {
@@ -241,7 +251,7 @@
             // informar que se procedera a guardar el formulario
           }
         },
-        //submitHandler: function() { saveUpdate(); },
+        submitHandler: function() { saveUpdate(); },
         errorPlacement: function ( error, element ) {
           error.addClass( "invalid-feedback" );
           if ( element.prop( "type" ) === "checkbox" ) {

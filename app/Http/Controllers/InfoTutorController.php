@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
+use App\Models\Config\Ciclo;
+use App\Models\Config\Escuela;
 use App\Models\InformacionAlumno;
 use App\Models\InformacionTutor;
 use App\Http\Requests\InfoTutorRequest;
@@ -60,5 +63,18 @@ class InfoTutorController extends Controller
       'message'  => 'Los datos se han guardado correctamente',
       'location' => route('inscripciones.index')
     ]);
+  }
+
+  public function show(InformacionTutor $informacionTutor){
+    return view('tutores.showInfo',[
+      'tutor' => Tutor::find($informacionTutor->tutor_id),
+      'escuela' => Escuela::find($informacionTutor->escuela_id),
+      'ciclo' => Ciclo::find($informacionTutor->ciclo_id),
+      'alumno' => Alumno::find($informacionTutor->alumno_id)
+    ]);
+  }
+
+  public function edit(InformacionTutor $informacionTutor){
+    return $informacionTutor;
   }
 }

@@ -40,19 +40,30 @@ class InfoAlumnoController extends Controller
     ]);
   }
 
+  //Se usa para la creacion/inscripción de un nuevo alumno
   public function updateInfoGral(Request $request,InformacionAlumno $informacionAlumno){
     $informacionAlumno->update($request->except('_method','_token','btn_guardar'));
     return response()
       ->json([
         'message'  => 'Los datos se han guardado correctamente',
-        'location' => route('tutores.index')
+        'location' => route('inscripciones.index')
+      ]);
+  }
+
+  //Se usa para actualizar la información de un alumno que ya existe en el sistema
+  public function updateInfoAlumno(InfoAlumnoRequest $request, InformacionAlumno $informacionAlumno){
+    $informacionAlumno->update($request->except('_method','_token','btn_guardar'));
+    return response()
+      ->json([
+        'message'  => 'Los datos se han actualizado correctamente',
+        'location' => route('alumnos.index')
       ]);
   }
 
   //Muestra las escuelas y los ciclos en los que aparece el alumno
-  public function selectDatosInscripcion(Alumno $alumno){
-    return dd($alumno);
-  }
+//  public function selectDatosInscripcion(Alumno $alumno){
+//    return dd($alumno);
+//  }
 
   public function show(InformacionAlumno $informacionAlumno){
     $inscripcion = Inscripcion::find($informacionAlumno->id);

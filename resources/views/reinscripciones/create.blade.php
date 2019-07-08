@@ -34,8 +34,8 @@
       <input type="hidden" name="" id="escuela" value="{{$info->escuela_id}}">
       <input type="hidden" name="" id="ciclo" value="{{$info->ciclo_id}}">
       <input type="hidden" name="" id="tutor" value="{{$info->tutor_id}}">
-      <input type="hidden" name="estado" id="estado" value="">
-      <input type="hidden" name="delegacion" id="delegacion" value="">
+      <input type="hidden" name="estado" id="estado" value="{{$info->estado}}">
+      <input type="hidden" name="delegacion" id="delegacion" value="{{$info->delegacion}}">
       @csrf
       <div class="accordion" id="accordionExample">
         <div class="card">
@@ -282,7 +282,14 @@
           codigo_postal: "required",
           localidad: "required",
           _delegacion: "required",
-          _estado: "required",
+          _estado: {
+            required: function(element){
+              return $("#localidad").val() ===""
+                || $("#tipo_asentamiento").val() ===""
+                || $("#nombre_asentamiento").val() ===""
+                || $("#codigo_postal").val() === "";
+            }
+          },
           colonia: "required"
         },
         messages: {
