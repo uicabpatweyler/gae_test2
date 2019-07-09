@@ -92,9 +92,6 @@
             <a href="{{ route('infotutor.show', ['id' => $row->infotutor_id]) }}" class="btn bg-transparent btn-sm" role="button" title="Ver" aria-pressed="true">
               <i class="far fa-eye text-secondary"></i>
             </a>
-            <a href="{{ route('infotutor.edit', ['id' => $row->infotutor_id]) }}" class="btn bg-transparent btn-sm" role="button" title="Editar" aria-pressed="true">
-              <i class="fas fa-pencil-alt text-primary"></i>
-            </a>
           </td>
         </tr>
       @endforeach

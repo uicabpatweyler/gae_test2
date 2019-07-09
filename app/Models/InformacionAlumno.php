@@ -66,12 +66,17 @@ class InformacionAlumno extends Model
     if(isset($value)){
       $this->attributes['interior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['interior'] = null;
+    }
   }
 
   public function setEntreCallesAttribute($value){
     if(isset($value)){
       $this->attributes['entre_calles'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
+    }
+    else{
+      $this->attributes['entre_calles'] = null;
     }
   }
 
@@ -91,49 +96,63 @@ class InformacionAlumno extends Model
     if(isset($value)){
       $this->attributes['referencia1'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia1'] = null;
+    }
   }
 
   public function setReferencia2Attribute($value){
     if(isset($value)){
       $this->attributes['referencia2'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia2'] = null;
+    }
   }
 
   public function setReferencia3Attribute($value){
     if(isset($value)){
       $this->attributes['referencia3'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia3'] = null;
+    }
   }
 
   public function setReferencia4Attribute($value){
     if(isset($value)){
       $this->attributes['referencia4'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia4'] = null;
+    }
   }
 
   public function setEscuelaAttribute($value){
     if(isset($value)){
       $this->attributes['escuela'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['escuela'] = null;
+    }
   }
 
   public function setUltimogradoAttribute($value){
     if(isset($value)){
       $this->attributes['ultimogrado'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['ultimogrado'] = null;
+    }
   }
 
   public function setLugartrabajoAttribute($value){
     if(isset($value)){
       $this->attributes['lugartrabajo'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['lugartrabajo'] = null;
+    }
   }
 
   public function setEscuelaIdAttribute($value){

@@ -59,8 +59,19 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('tutor/informacion/{informacionTutor}', 'InfoTutorController@show')
     ->name('infotutor.show');
-  Route::get('tutor/informacion/{informacionTutor}/edit', 'InfoTutorController@edit')
-    ->name('infotutor.edit');
+  Route::get('tutor/informacion/{informacionTutor}/editdireccion', 'InfoTutorController@editDireccionTutor')
+    ->name('infotutor.edit.direccion');
+  Route::patch('tutor/direccion/update/{informacionTutor}','InfoTutorController@updateDireccionTutor')
+    ->name('infotutor.update.direccion');
+  Route::get('tutor/informacion/{informacionTutor}/editTelefonos','InfoTutorController@editTelefonos')
+    ->name('infotutor.edit.telefonos');
+  Route::patch('tutor/telefono/update/{informacionTutor}', 'InfoTutorController@updateInfoTelefonos')
+    ->name('infotutor.update.telefonos');
+  Route::get('tutor/informacion/{informacionTutor}/editInfoAdicional', 'InfoTutorController@editInfoAdicional')
+    ->name('infotutor.edit.infoadicional');
+  Route::patch('tutor/infoadicional/update/{informacionTutor}','InfoTutorController@patchInfoAdicional')
+    ->name('infotutor.update.infoadicional');
+
 
   Route::get('tutor/elegir_alumno/{tutor}', 'AlumnoTutor@tutorElegirAlumno')
     ->name('tutor.elegir.alumno');
@@ -78,7 +89,6 @@ Route::middleware(['auth'])->group(function(){
     ->name('tutor.infoadicional.create');
   Route::patch('tutor/infoadicional/{informacionTutor}', 'InfoTutorController@updateInfoAdicional')
     ->name('tutor.infoadicional.update');
-
   Route::resource('inscripciones', 'InscripcionController')->except(['create']);
   Route::get('inscripcion/create/{informacionAlumno}','InscripcionController@create')
     ->name('inscripcion.create');

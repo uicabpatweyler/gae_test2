@@ -70,12 +70,17 @@ class InformacionTutor extends Model
     if(isset($value)){
       $this->attributes['interior'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['interior'] = null;
+    }
   }
 
   public function setEntreCallesAttribute($value){
     if(isset($value)){
       $this->attributes['entre_calles'] = mb_convert_case($value,MB_CASE_TITLE,"UTF-8");
+    }
+    else{
+      $this->attributes['entre_calles'] = null;
     }
   }
 
@@ -95,63 +100,81 @@ class InformacionTutor extends Model
     if(isset($value)){
       $this->attributes['referencia1'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia1'] = null;
+    }
   }
 
   public function setReferencia2Attribute($value){
     if(isset($value)){
       $this->attributes['referencia2'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia2'] = null;
+    }
   }
 
   public function setReferencia3Attribute($value){
     if(isset($value)){
       $this->attributes['referencia3'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia3'] = null;
+    }
   }
 
   public function setReferencia4Attribute($value){
     if(isset($value)){
       $this->attributes['referencia4'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['referencia4'] = null;
+    }
   }
 
   public function setAdicionalTrabajoAttribute($value){
     if(isset($value)){
       $this->attributes['adicional_trabajo'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['adicional_trabajo'] = null;
+    }
   }
 
   public function setAdicionalDireccionAttribute($value){
     if(isset($value)){
       $this->attributes['adicional_direccion'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['adicional_direccion'] = null;
+    }
   }
 
   public function setAdicionalLocalidadAttribute($value){
     if(isset($value)){
       $this->attributes['adicional_localidad'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['adicional_localidad'] = null;
+    }
   }
 
   public function setAdicionalTipoasentamientoAttribute($value){
     if(isset($value)){
       $this->attributes['adicional_tipoasentamiento'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['adicional_tipoasentamiento'] = null;
+    }
   }
 
   public function setAdicionalNombreasentamientoAttribute($value){
     if(isset($value)){
       $this->attributes['adicional_nombreasentamiento'] = mb_convert_case($value,MB_CASE_TITLE,'UTF-8');
     }
-    else{}
+    else{
+      $this->attributes['adicional_nombreasentamiento'] = null;
+    }
   }
 
   public function setEscuelaIdAttribute($value){

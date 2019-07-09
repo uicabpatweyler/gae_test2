@@ -103,7 +103,7 @@
                 <input type="text" class="form-control form-control-sm detalle" value="{{$info->delegacion}}" style="text-transform:capitalize" id="_delegacion" name="_delegacion" disabled>
               </div>
               <div class="form-group col-md-3">
-                <label for="_estado">Delegación/Municipio</label>
+                <label for="_estado">Estado</label>
                 <input type="text" class="form-control form-control-sm detalle" value="{{$info->estado}}" style="text-transform:capitalize" id="_estado" name="_estado" disabled>
               </div>
             </div>
