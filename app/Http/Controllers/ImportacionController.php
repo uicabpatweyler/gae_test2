@@ -164,7 +164,7 @@ class ImportacionController extends Controller
           'grado_id' => $row->clasifgrupo_id,
           'grupo_id' => $row->grupo_id,
           'alumno_id' => $row->alumno_id,
-          'user_id' => $row->user_id,
+          'user_created' => $row->user_id,
           'serie_recibo' => $row->serie_recibo,
           'folio_recibo' => $row->folio_recibo,
           'cantidad_concepto' => $row->cantidad_concepto,
@@ -189,7 +189,7 @@ class ImportacionController extends Controller
           'infoalumno_id' => $row->alumno_id,
           'alumno_id' => $row->alumno_id,
           'pago_id' => $row->alumno_id,
-          'user_id' => $row->user_id,
+          'user_created' => $row->user_id,
           'fecha' => Carbon::create($row->created_at)->format('Y-m-d'),
           'created_at' => Carbon::create($row->created_at)->addHour(5),
           'updated_at' => Carbon::create($row->updated_at)->addHour(5)

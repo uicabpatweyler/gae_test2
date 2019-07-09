@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/tutores/direccion/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/tutores/infoadicional/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/tutores/telefonos/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InfoTutorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InfoTutorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/InfoTutorRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/InfoTutorRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/InformacionAlumno.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InformacionAlumno.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/InformacionTutor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InformacionTutor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/alumnos/showInfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/alumnos/showInfo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tutores/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tutores/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tutores/showInfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tutores/showInfo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImportacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImportacionController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/cuotas/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cuotas/edit.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_18_163328_create_mesesdepago_table.php" />
         <option value="$PROJECT_DIR$/app/Models/Config/MesDePago.php" />
@@ -143,6 +132,7 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/InfoTutorController.php" />
         <option value="$PROJECT_DIR$/resources/views/tutores/infoadicional/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ImportacionController.php" />
       </list>
     </option>
   </component>
@@ -257,28 +247,20 @@
             <path>
               <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
               <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="tutores" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="tutores" type="462c0819:PsiDirectoryNode" />
-              <item name="telefonos" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -676,11 +658,13 @@
       <workItem from="1562641553429" duration="1786000" />
       <workItem from="1562643359552" duration="1788000" />
       <workItem from="1562645167413" duration="1324000" />
+      <workItem from="1562673086160" duration="1785000" />
+      <workItem from="1562674941393" duration="579000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="519834000" />
+    <option name="totallyTimeSpent" value="522198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -711,13 +695,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/_formActions.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="6" selection-start-line="6" selection-start-column="2" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/alumnos/infogeneral/edit.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/alumnos/direccion/edit.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/alumnos/create.blade.php">
@@ -1057,16 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tutores/telefonos/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -1080,6 +1047,23 @@
           <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
           <folding>
             <element signature="e#4604#4637#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="191" column="23" selection-start-line="191" selection-start-column="23" selection-end-line="191" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="153" column="31" lean-forward="true" selection-start-line="153" selection-start-column="12" selection-end-line="153" selection-end-column="31" />
+          <folding>
+            <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
