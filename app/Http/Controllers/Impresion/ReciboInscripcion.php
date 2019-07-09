@@ -156,8 +156,8 @@ class ReciboInscripcion extends Controller
       Fpdf::Cell(0,12,'',0,1,'C',false); //Espacio
 
       /*Inicia Logo Encabezado*/
-      Fpdf::Image('logo_left.png',10,153);
-      Fpdf::Image('logo_right.png',185,150);
+      Fpdf::Image('logo_left.png',10,146);
+      Fpdf::Image('logo_right.png',185,142);
       Fpdf::SetFont('Times', 'BI', 14);
       Fpdf::SetTextColor(0,128,0);
       Fpdf::Cell(90,5,'IRLANDA Academy of English',0,0,'L');

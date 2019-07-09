@@ -10,6 +10,7 @@ use App\Models\Config\Grupo;
 use App\Models\InformacionAlumno;
 use App\Models\Inscripcion;
 use App\Models\Tutor;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -262,6 +263,56 @@ class DataController extends Controller
         $editUrl = route('alumnos.edit', ['id' => $tutor->id]);
         $deleteUrl = route('alumnos.destroy', ['id' => $tutor->id]);
         return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
+      })
+      ->make(true);
+  }
+
+  /*impresiones.hojainscripcion.index*/
+  public function alumnosHojaInscripcion($escuela,$ciclo){
+    $rows = DB::table('alumnos')
+      ->join('inscripciones', 'alumnos.id','=', 'inscripciones.alumno_id')
+      ->join('grados', 'inscripciones.grado_id','=', 'grados.id')
+      ->join('grupos','inscripciones.grupo_id','=','grupos.id')
+      ->select('inscripciones.id as inscripcion_id', 'inscripciones.escuela_id', 'inscripciones.ciclo_id')
+      ->addSelect('inscripciones.pago_id', 'inscripciones.baja_id', 'inscripciones.becario_id')
+      ->addSelect('inscripciones.fecha', 'grados.nombre as grado_nombre', 'grupos.nombre as grupo_nombre')
+      ->addSelect( 'alumnos.nombre1','alumnos.nombre2','alumnos.apellido1', 'alumnos.apellido2')
+      ->where('inscripciones.escuela_id','=', $escuela)
+      ->where('inscripciones.ciclo_id','=', $ciclo)
+      ->orderBy('inscripciones.pago_id', 'asc')
+      ->get();
+    return DataTables::of($rows)
+      ->addColumn('date_enroll', function($row){
+        $dateEnroll =  (new Carbon($row->fecha))->format('d-m-Y');
+        $groupEnroll = null;
+        $urlRecibo = null;
+        $folioPago = null;
+        $urlHoja = null;
+        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+      })
+      ->addColumn('group_enroll', function($row){
+        $dateEnroll =  null;
+        $groupEnroll = $row->grupo_nombre;
+        $urlRecibo = null;
+        $folioPago = null;
+        $urlHoja = null;
+        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+      })
+      ->addColumn('print_receipt', function($row){
+        $dateEnroll =  null;
+        $groupEnroll = null;
+        $urlRecibo = route('print.recibo.inscripcion', ['pago' => $row->pago_id, 'inscripcion' =>$row->inscripcion_id ]);
+        $folioPago = $row->pago_id;
+        $urlHoja = null;
+        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+      })
+      ->addColumn('sheet_enroll', function($row){
+        $dateEnroll =  null;
+        $groupEnroll = null;
+        $urlRecibo = null;
+        $folioPago = null;
+        $urlHoja   = route('print.hoja.inscripcion', $row->inscripcion_id);
+        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
       })
       ->make(true);
   }

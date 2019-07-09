@@ -327,11 +327,8 @@ class HojaInscripcion extends Controller
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::Cell(196,5,utf8_decode($infoTutor->email),1,1,'C',true);
 
-    Fpdf::cell(0,16,'',0,1);
     Fpdf::SetFont('Arial', 'B', 8);
     Fpdf::Cell(0,6,utf8_decode('Se entrego Tarjetas de Pago, Reglamento, Fechas de entrega de Boletas y Dias de Suspensión'),0,1,'C');
-
-
 
     Fpdf::Output();
     exit;

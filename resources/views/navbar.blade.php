@@ -76,8 +76,7 @@
             Impresiones
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownImpresiones">
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Hoja de Inscripción</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Inscripción</a>
+            <a class="dropdown-item" href="{{route('impresion.recibohoja')}}"><i class="fas fa-angle-right"></i> Recibo/Hoja Inscripción</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Colegiatura</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Lista de Asistencia</a>

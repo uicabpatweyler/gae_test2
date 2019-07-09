@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Editar Alumno')
+@section('title', 'Escuela: Alumnos')
 
 {{--Contenido de la seccion--}}
 @section('content')

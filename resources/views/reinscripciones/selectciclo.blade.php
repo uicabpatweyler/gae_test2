@@ -51,9 +51,10 @@
               <td class="text-center">{{$row->grupo}}</td>
               <td class="text-center">
                 <a href="{{route('reinscripcion.infoalumno.create', ['alumno' => $alumno->id, 'infoAlumno' => $row->infoalumno_id])}}"
-                   class="btn btn-success btn-sm" role="button" title="" aria-pressed="true">
-                  <i class="far fa-hand-point-right"></i> Seleccionar
+                   class="btn btn-outline-success btn-sm" role="button" title="" aria-pressed="true">
+                  <i class="fas fa-user-tag"></i> <i class="fas fa-angle-double-right"></i>
                 </a>
+
               </td>
             </tr>
           @endforeach

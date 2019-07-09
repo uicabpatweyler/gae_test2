@@ -17,9 +17,7 @@ https://laravel-news.com/authorization-gates
 https://laravel-news.com/login-validation
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::prefix('config')->middleware('auth')->group(function () {
   Route::resource('escuelas', 'Config\EscuelaController');
@@ -110,6 +108,8 @@ Route::middleware(['auth'])->group(function(){
     ->name('print.recibo.inscripcion');
   Route::get('impresion/hojainscripcion/{inscripcion}', 'Impresion\HojaInscripcion@printPDF')
     ->name('print.hoja.inscripcion');
+  Route::get('alumnos/impresion/recibohoja','ImpresionController@reciboHojaInscripcion')
+    ->name('impresion.recibohoja');
 
   Route::prefix('data')->group(function () {
     Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
@@ -135,6 +135,10 @@ Route::middleware(['auth'])->group(function(){
     //reinscripciones.index Lista de alumnos disponibles para reinscribir
     Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');
 
+    //impresiones.hojainscripcion.index
+    Route::get('alumnos/hojainscripcion/{escuela}/{ciclo}', 'DataController@alumnosHojaInscripcion')
+      ->name('impresion.hojainscripcion.index.data');
+
   });
 
   Route::prefix('admin')->group(function () {
@@ -152,8 +156,7 @@ Route::get('importTutores', 'ImportacionController@importTutores');
 Route::get('infoTutores', 'ImportacionController@infoTutores');
 Route::get('importPagosInscripcion', 'ImportacionController@importPagosInscripcion');
 Route::get('importInscripciones', 'ImportacionController@importInscripciones');
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes(['register' => false, 'reset' => false]);
