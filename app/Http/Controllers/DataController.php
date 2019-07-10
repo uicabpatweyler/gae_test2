@@ -268,51 +268,94 @@ class DataController extends Controller
   }
 
   /*impresiones.hojainscripcion.index*/
-  public function alumnosHojaInscripcion($escuela,$ciclo){
+  public function alumnosEscuelaCiclo($escuela,$ciclo){
     $rows = DB::table('alumnos')
       ->join('inscripciones', 'alumnos.id','=', 'inscripciones.alumno_id')
-      ->join('grados', 'inscripciones.grado_id','=', 'grados.id')
+      ->join('escuelas', 'inscripciones.escuela_id','=','escuelas.id')
+      ->join('ciclos', 'inscripciones.ciclo_id','=','ciclos.id')
+      ->join('grados','inscripciones.grado_id','=','grados.id')
       ->join('grupos','inscripciones.grupo_id','=','grupos.id')
       ->select('inscripciones.id as inscripcion_id', 'inscripciones.escuela_id', 'inscripciones.ciclo_id')
-      ->addSelect('inscripciones.pago_id', 'inscripciones.baja_id', 'inscripciones.becario_id')
-      ->addSelect('inscripciones.fecha', 'grados.nombre as grado_nombre', 'grupos.nombre as grupo_nombre')
+      ->addSelect('inscripciones.grado_id', 'inscripciones.grupo_id', 'inscripciones.infoalumno_id')
+      ->addSelect('inscripciones.alumno_id', 'inscripciones.pago_id')
+      ->addSelect('inscripciones.baja_id', 'inscripciones.becario_id','inscripciones.fecha')
+      ->addSelect('escuelas.nombre as escuela', 'ciclos.periodo')
+      ->addSelect('grados.nombre as grado', 'grupos.nombre as grupo')
       ->addSelect( 'alumnos.nombre1','alumnos.nombre2','alumnos.apellido1', 'alumnos.apellido2')
       ->where('inscripciones.escuela_id','=', $escuela)
       ->where('inscripciones.ciclo_id','=', $ciclo)
       ->orderBy('inscripciones.pago_id', 'asc')
       ->get();
     return DataTables::of($rows)
-      ->addColumn('date_enroll', function($row){
-        $dateEnroll =  (new Carbon($row->fecha))->format('d-m-Y');
+      ->addColumn('ciclo_enroll', function($row){
+        $cicloEnroll = $row->periodo;
         $groupEnroll = null;
-        $urlRecibo = null;
-        $folioPago = null;
-        $urlHoja = null;
-        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
       })
       ->addColumn('group_enroll', function($row){
-        $dateEnroll =  null;
-        $groupEnroll = $row->grupo_nombre;
-        $urlRecibo = null;
-        $folioPago = null;
-        $urlHoja = null;
-        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
-      })
-      ->addColumn('print_receipt', function($row){
-        $dateEnroll =  null;
-        $groupEnroll = null;
-        $urlRecibo = route('print.recibo.inscripcion', ['pago' => $row->pago_id, 'inscripcion' =>$row->inscripcion_id ]);
-        $folioPago = $row->pago_id;
-        $urlHoja = null;
-        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+        $cicloEnroll = null;
+        $groupEnroll = $row->grupo;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
       })
       ->addColumn('sheet_enroll', function($row){
-        $dateEnroll =  null;
+        $cicloEnroll = null;
         $groupEnroll = null;
-        $urlRecibo = null;
-        $folioPago = null;
-        $urlHoja   = route('print.hoja.inscripcion', $row->inscripcion_id);
-        return view('impresiones._columns', compact('dateEnroll','groupEnroll','urlRecibo','folioPago','urlHoja'));
+        $urlHoja     = route('print.hoja.inscripcion', $row->inscripcion_id);
+        $urlRecibo   = null;
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
+      })
+      ->addColumn('receipt_enroll', function($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = route('print.recibo.inscripcion', ['pago' => $row->pago_id, 'inscripcion' =>$row->inscripcion_id ]);
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
+      })
+      ->addColumn('pago_colegiatura', function($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago = route('pagocolegiaturas.create',['inscripcion' => $row->inscripcion_id]);
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
       })
       ->make(true);
   }

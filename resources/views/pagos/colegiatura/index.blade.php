@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Recibo/Hoja de Inscripción')
+@section('title', 'Pago de Colegiagura')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -12,7 +12,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-print text-info"></i> Recibo/Hoja de Inscripción
+        <i class="fas fa-print text-info"></i> pago de colegiatura
       </h5>
 
     </div>
@@ -52,14 +52,13 @@
       <table class="table table-striped" id="alumnos">
         <thead>
         <tr>
+          <th scope="col" class="text-left">CICLO</th>
           <th scope="col" class="text-left">NOMBRE</th>
           <th scope="col" class="text-left"></th>
           <th scope="col" class="text-left">APELLIDO P.</th>
           <th scope="col" class="text-left">APELLIDO M.</th>
-          <th scope="col" class="text-left">FECHA INSCR.</th>
           <th scope="col" class="text-left">GRUPO</th>
-          <th scope="col" class="text-left">PAGO</th>
-          <th scope="col" class="text-left">HOJA INSCR.</th>
+          <th scope="col" class="text-left">ACCIONES</th>
         </tr>
         </thead>
       </table>
@@ -93,7 +92,7 @@
       function buildUrl(){
         let escuela = $("#escuela_id").val();
         let ciclo = $("#ciclo_id").val();
-        return urlRoot + '/data/alumnos/hojainscripcion/'+escuela+'/'+ciclo
+        return urlRoot + '/data/alumnos/'+escuela+'/'+ciclo
       }
 
       function filtrarDatos(urlAjax){
@@ -107,26 +106,21 @@
             url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
           },
           columns: [
-            {data: 'nombre1', name: 'nombre1'},
-            {data: 'nombre2', name: 'nombre2'},
-            {data: 'apellido1', name: 'apellido1'},
-            {data: 'apellido2', name: 'apellido2'},
-            {data: "date_enroll", className:"text-center", searchable: false,
+            {data: "ciclo_enroll", className:"text-center", searchable: false,
               render: function(data){
                 return htmlDecode(data);
               }
             },
+            {data: 'nombre1', name: 'nombre1'},
+            {data: 'nombre2', name: 'nombre2'},
+            {data: 'apellido1', name: 'apellido1'},
+            {data: 'apellido2', name: 'apellido2'},
             {data: "group_enroll", className:"text-center", searchable: false,
               render: function(data){
                 return htmlDecode(data);
               }
             },
-            {data: "print_receipt", className:"text-center", searchable: false,
-              render: function(data){
-                return htmlDecode(data);
-              }
-            },
-            {data: "sheet_enroll", className:"text-center", searchable: false,
+            {data: "pago_colegiatura", className:"text-center", searchable: false,
               render: function(data){
                 return htmlDecode(data);
               }
@@ -138,4 +132,5 @@
     });
   </script>
 @endpush
+
 

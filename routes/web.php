@@ -99,17 +99,26 @@ Route::middleware(['auth'])->group(function(){
   Route::post('reinscripcion/info_alumno/store', 'ReInscripcionController@storeInfoAlumno')
     ->name('reinscripcion.infoalumno.store');
 
-
   Route::resource('pagos_inscripcion', 'PagoInscripcionController')->except(['create']);
   Route::get('inscripcion/pago/{inscripcion}', 'PagoInscripcionController@create')
     ->name('pagos_inscripcion.create');
+
+  Route::get('pagocolegiaturas','PagoColegiaturaController@index')
+    ->name('pagocolegiaturas.index');
+  Route::get('pagocolegiaturas/create/{inscripcion}', 'PagoColegiaturaController@create')
+    ->name('pagocolegiaturas.create');
+
+  Route::get('pagocolegiaturas/faltantes', 'PagoColegiaturaController@alumnosDeudores')
+    ->name('pagocolegiaturas.faltantes');
 
   Route::get('impresion/reciboinscripcion/{pagoInscripcion}/{inscripcion}', 'Impresion\ReciboInscripcion@printPDF')
     ->name('print.recibo.inscripcion');
   Route::get('impresion/hojainscripcion/{inscripcion}', 'Impresion\HojaInscripcion@printPDF')
     ->name('print.hoja.inscripcion');
-  Route::get('alumnos/impresion/recibohoja','ImpresionController@reciboHojaInscripcion')
-    ->name('impresion.recibohoja');
+  Route::get('alumnos/impresion/hojainscripcion','ImpresionController@hojaInscripcion')
+    ->name('alumnos.impresion.hojainscripcion');
+  Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
+    ->name('alumnos.impresion.reciboinscripcion');
 
   Route::prefix('data')->group(function () {
     Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
@@ -135,9 +144,9 @@ Route::middleware(['auth'])->group(function(){
     //reinscripciones.index Lista de alumnos disponibles para reinscribir
     Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');
 
-    //impresiones.hojainscripcion.index
-    Route::get('alumnos/hojainscripcion/{escuela}/{ciclo}', 'DataController@alumnosHojaInscripcion')
-      ->name('impresion.hojainscripcion.index.data');
+    //
+    Route::get('alumnos/{escuela}/{ciclo}', 'DataController@alumnosEscuelaCiclo')
+      ->name('alumnos.escuela.ciclo.data');
 
   });
 

@@ -52,7 +52,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownPagos">
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Pago de Inscripcion</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Pago de Colegiatura</a>
+            <a class="dropdown-item" href="{{route('pagocolegiaturas.index')}}"><i class="fas fa-angle-right"></i> Pago de Colegiatura</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cancelar Pago</a>
           </div>
         </li>
@@ -76,7 +76,8 @@
             Impresiones
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownImpresiones">
-            <a class="dropdown-item" href="{{route('impresion.recibohoja')}}"><i class="fas fa-angle-right"></i> Recibo/Hoja Inscripción</a>
+            <a class="dropdown-item" href="{{route('alumnos.impresion.hojainscripcion')}}"><i class="fas fa-angle-right"></i> Hoja de Inscripción</a>
+            <a class="dropdown-item" href="{{route('alumnos.impresion.reciboinscripcion')}}"><i class="fas fa-angle-right"></i> Recibo de Inscripción</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Colegiatura</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Lista de Asistencia</a>
