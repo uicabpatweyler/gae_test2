@@ -151,7 +151,7 @@
             <i class="fas fa-times-circle"></i>
             Cancelar
           </button>
-          <button type="submit" class="btn blue700 text-white">
+          <button type="submit" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar">
             <i class="fas fa-save"></i>
             Guardar
           </button>

@@ -23,6 +23,10 @@ class MesDePago extends Model
     'user_updated'
   ];
   protected $dates = [
+    'fecha1',
+    'fecha2',
+    'fecha3',
+    'fecha4',
     'deleted_at',
     'created_at',
     'updated_at'

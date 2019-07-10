@@ -7,9 +7,11 @@ use App\Models\Config\Ciclo;
 use App\Models\Config\Cuota;
 use App\Models\Config\Escuela;
 use App\Models\Config\MesDePago;
+use App\Models\DetallePagoColegiatura;
 use App\Models\Inscripcion;
 use App\Models\Config\Grupo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PagoColegiaturaController extends Controller
@@ -37,9 +39,30 @@ class PagoColegiaturaController extends Controller
     $grupo = Grupo::find($inscripcion->grupo_id);
     $cuota = Cuota::find($grupo->cuotacolegiatura_id);
     $meses = MesDePago::where('cuota_id',$cuota->id)->orderBy('orden', 'asc')->get();
-    $alumnos = Alumno::all();
+    $arrayMeses=[];
 
-    return view('pagos.colegiatura.create');
+    foreach ($meses as $mesdepago){
+      $detallePago = DetallePagoColegiatura::where('escuela_id',$inscripcion->escuela_id)
+        ->where('ciclo_id', $inscripcion->ciclo_id)
+        ->where('alumno_id', $inscripcion->alumno_id)
+        ->where('nombre_mes', $mesdepago->mes)
+        ->where('pago_cancelado', false)
+        ->get();
+      if(!$detallePago->count()){
+        $diffInDays = Carbon::now()->diffInDays($mesdepago->fecha2,false);
+        $arrayMeses[]=[
+          'orden' => $mesdepago->orden,
+          'nombreMes' => $mesdepago->mes,
+          'recargo' => $diffInDays < 0 ? $mesdepago->recargo : 0,
+          'descuento' => $mesdepago->descuento,
+          'cuota' => $cuota->cantidad
+        ];
+      }
+    }
+    return view('pagos.colegiatura.create', [
+      'rows' => $arrayMeses
+    ]);
+    //return response()->json(['inscripcion' => $inscripcion, 'arrayMeses' => $arrayMeses]);
   }
 
   public function alumnosDeudores(){
