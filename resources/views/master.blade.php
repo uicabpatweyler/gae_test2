@@ -14,6 +14,10 @@
     <!-- Sweetalert v2 CSS -->
     <link rel="stylesheet" href="{{ asset('sweetalert2-8.3.0/sweetalert2.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('gijgo-datepicker-1.9.1.13/css/gijgo.css') }}">
+
+
+
     <link rel="stylesheet" href="{{ asset('offcanvas.css') }}">
     <link rel="stylesheet" href="{{ asset('custom.css') }}">
     <link rel="stylesheet" href="{{ asset('customcolors.css') }}">
