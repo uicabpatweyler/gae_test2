@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SerieFolio extends Model
 {
-  use SoftDeletes;
   protected $table = 'series_folios';
 }

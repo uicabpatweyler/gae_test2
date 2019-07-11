@@ -107,6 +107,9 @@ Route::middleware(['auth'])->group(function(){
     ->name('pagocolegiaturas.index');
   Route::get('pagocolegiaturas/create/{inscripcion}', 'PagoColegiaturaController@create')
     ->name('pagocolegiaturas.create');
+  Route::post('pagocolegiaturas', 'PagoColegiaturaController@store')
+    ->name('pgocolegiaturas.store');
+
 
   Route::get('pagocolegiaturas/faltantes', 'PagoColegiaturaController@alumnosDeudores')
     ->name('pagocolegiaturas.faltantes');
@@ -115,10 +118,13 @@ Route::middleware(['auth'])->group(function(){
     ->name('print.recibo.inscripcion');
   Route::get('impresion/hojainscripcion/{inscripcion}', 'Impresion\HojaInscripcion@printPDF')
     ->name('print.hoja.inscripcion');
+  Route::get('/impresion/recibocolegiatura/{pagoColegiatura}', 'Impresion\ReciboColegiatura@printPDF')
+    ->name('print.recibo.colegiatura');
   Route::get('alumnos/impresion/hojainscripcion','ImpresionController@hojaInscripcion')
     ->name('alumnos.impresion.hojainscripcion');
   Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
     ->name('alumnos.impresion.reciboinscripcion');
+
 
   Route::prefix('data')->group(function () {
     Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');

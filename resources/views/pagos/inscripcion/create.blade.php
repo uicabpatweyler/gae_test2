@@ -72,6 +72,7 @@
         </table>
       </div>
     </div>
+
     <div class="card">
       <div class="card-header">
         Detalles del pago

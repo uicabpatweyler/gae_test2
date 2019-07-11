@@ -21,10 +21,66 @@
 
     <div class="border-bottom border-gray pb-2 mb-2">
         <span class="font-weight-bold">
-            Complete los siguientes datos
+            Seleccione el mes o los meses que desea realizar el pago. Puede modificar la columa recargo y descuento para
+          ajustar el importe.
         </span>
-      <small class="text-danger"> (* campo obligatorio)</small>
     </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-sm table-bordered">
+          <thead></thead>
+          <tbody>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Ciclo Escolar</td>
+            <td>{{$ciclo->periodo}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Escuela</td>
+            <td>{{$escuela->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Alumno</td>
+            <td>{{$alumno->full_name}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Matrícula</td>
+            <td>{{$alumno->matricula}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-sm table-bordered">
+          <thead></thead>
+          <tbody>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Recibo</td>
+            <td class="text-center">
+              <span class="font-weight-bold text-danger">
+                {{$recibo->serie}}-{{$recibo->folio}}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Grado</td>
+            <td class="text-center">{{$grado->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Grupo</td>
+            <td class="text-center">{{$grupo->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Fecha del pago</td>
+            <td class="text-center">
+              <input type="text" class="form-control form-control-sm text-center" id="_fecha" name="_fecha" value="{{$fecha}}">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="col-md-12">
       <div class="text-center">
         <button type="button" class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
@@ -42,7 +98,20 @@
       </div>
     </div>
     <div class="border-bottom mt-2 mb-2"></div>
-    <form>
+    <form method="POST" action="{{route('pgocolegiaturas.store')}}" id="form_pagocolegiatura" name="form_pagocolegiatura">
+      <input type="hidden" id="rows_detallepago" name="rows_detallepago" value="">
+      <input type="hidden" id="cantidad_recibida_mxn" name="cantidad_recibida_mxn" value="">
+      <input type="hidden" id="escuela_id" name="escuela_id" value="{{$inscripcion->escuela_id}}">
+      <input type="hidden" id="ciclo_id" name="ciclo_id" value="{{$inscripcion->ciclo_id}}">
+      <input type="hidden" id="alumno_id" name="alumno_id" value="{{$inscripcion->alumno_id}}">
+      <input type="hidden" id="grupo_id" name="grupo_id" value="{{$inscripcion->grupo_id}}">
+      <input type="hidden" id="grado_id" name="grado_id" value="{{$inscripcion->grado_id}}">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
+      <input type="hidden" id="serie_recibo" name="serie_recibo" value="{{$recibo->serie}}">
+      <input type="hidden" id="folio_recibo" name="folio_recibo" value="{{$recibo->folio}}">
+      <input type="hidden" id="fecha_pago" name="fecha_pago" value="{{$fecha}}">
+      <input type="hidden" id="urlRecibo" value="">
+      @csrf()
       <div class="form-row">
         <div class="col-1"></div>
         <div class="col-2 text-center font-weight-bold">Mes</div>
@@ -88,6 +157,8 @@
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script src="{{ asset('jqueryinputmask/jquery.inputmask.js') }}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/messages/messages.es-es.js') }}"></script>
   <script>
 
     $('#btn_cancelar').click(function(){
@@ -106,6 +177,16 @@
       let checked = 0;
       let datos = [];
       let item = {};
+
+      $('#_fecha').datepicker({
+        locale: 'es-es',
+        format: 'dd-mm-yyyy',
+        showOtherMonths: true,
+        disableDaysOfWeek: [0, 6]
+      }).change(function(){
+        $("#fecha_pago").val($(this).val());
+      });
+
       maskNumeric(".colegiatura");
 
       function maskNumeric(element){
@@ -134,8 +215,8 @@
           datos.push(item);
         });
         let message = datos.length === 1
-          ? '1 mes. Total: '+totalPagar()
-          : datos.length + ' meses. Total: '+totalPagar();
+          ? '1 mes. Total: '+totalPagar(true)
+          : datos.length + ' meses. Total: '+totalPagar(true);
 
         Swal.fire({
           type:  'info',
@@ -152,17 +233,67 @@
           confirmButtonAriaLabel: 'Realizar Pago',
         }).then((result) => {
           if (result.value) {
-
+            $("#rows_detallepago").val(JSON.stringify(datos));
+            $("#cantidad_recibida_mxn").val(totalPagar(false));
+            saveUpdate();
           }
         });
       });
 
-      function totalPagar(){
+      function saveUpdate(){
+        $("#btn_guardar").prop('disabled', 'disabled');
+        $.ajax({
+          method: "POST",
+          url: $("#form_pagocolegiatura").attr('action'),
+          data: $("#form_pagocolegiatura").serialize()
+        })
+          .done(function(data, textStatus, jqXHR){
+            $("#urlRecibo").val(data.urlRecibo);
+            $("#_fecha").prop('disabled','disabled');
+            showSwal(textStatus, jqXHR.statusText, data.message);
+            $("#btn_recibo").removeAttr('disabled');
+          })
+          .fail(function( jqXHR, textStatus, errorThrown){
+            var message = 'Ocurrio un error al procesar el pago de colegiatura.';
+            showSwal(textStatus, jqXHR.statusText, message);
+            console.log(jqXHR);
+            $("#btn_recibo").removeAttr('disabled');
+          });
+      }
+
+      function showSwal(_textStatus, _statusText, _message){
+        Swal.fire({
+          type:  _textStatus,
+          title: _statusText === 'OK' ? 'OK' : _statusText,
+          text:  _message,
+          allowOutsideClick:  false,
+          showCancelButton:   _statusText !== 'OK',
+          showConfirmButton:  _statusText === 'OK',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor:  '#d33',
+          cancelButtonText:   'Corregir',
+          confirmButtonText:  'OK'
+        }).then((result) => {
+          if (result.value) {
+            $(":checkbox").prop('disabled', 'disabled');
+            $(".recargo").prop('disabled','disabled');
+            $(".descuento").prop('disabled','disabled');
+          }
+        });
+      }
+
+      $("#btn_recibo").click(function(){
+        event.preventDefault();
+        window.open($("#urlRecibo").val());
+        return false;
+      });
+
+      function totalPagar(format){
         let total=0;
         $.each(datos, function(key,value){
           total = total + parseFloat(value['importe']);
         });
-        return '$ '+total.format(2);
+        return format ? '$ '+total.format(2) : total;
       }
 
       $(":checkbox").change( function () {
