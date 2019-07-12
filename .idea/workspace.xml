@@ -36,20 +36,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Impresion/ReciboColegiatura.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
-              <folding>
-                <element signature="e#50#72#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -748,16 +735,15 @@
       <workItem from="1562911185452" duration="1507000" />
       <workItem from="1562944779071" duration="1745000" />
       <workItem from="1562947336072" duration="1744000" />
-      <workItem from="1562950282553" duration="641000" />
+      <workItem from="1562950282553" duration="800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="610300000" />
+    <option name="totallyTimeSpent" value="610459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1272" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
