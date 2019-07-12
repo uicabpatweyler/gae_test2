@@ -222,6 +222,14 @@ class InformacionAlumno extends Model
     return "{$this->nombre_vialidad} {$this->exterior} {$this->interior} {$this->entre_calles}";
   }
 
+  public function getColoniaAttribute(){
+    return "{$this->tipo_asentamiento} {$this->nombre_asentamiento} C.P.: {$this->codigo_postal}";
+  }
+
+  public function getUbicacionAttribute(){
+    return "{$this->localidad} {$this->delegacion} {$this->estado}";
+  }
+
   public function alumno(){
     return $this->belongsTo(Alumno::class, 'alumno_id', 'id');
   }
