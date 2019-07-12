@@ -9,6 +9,7 @@ use App\Models\Config\Escuela;
 use App\Models\InformacionAlumno;
 use App\Models\InformacionTutor;
 use App\Models\Inscripcion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InscripcionController extends Controller
@@ -34,6 +35,7 @@ class InscripcionController extends Controller
           'escuelas' => Escuela::with('nivel')->get(),
           'ciclos' => Ciclo::orderBy('periodo','desc')->get(),
           'alumno' => Alumno::find(($informacionAlumno->alumno_id)),
+          'fecha' => Carbon::now()->format('d-m-Y'),
           'info' => $informacionAlumno
         ]);
     }
@@ -56,6 +58,11 @@ class InscripcionController extends Controller
           ->update([
             'escuela_id' => $request->get('escuela_id'),
             'ciclo_id' => $request->get('ciclo_id')
+          ]);
+        Alumno::where('id',$request->get('infoalumno_id'))
+          ->update([
+            'created_at' => (new Carbon($request->get('fecha')))->format('Y-m-d').' '.Carbon::now()->toTimeString(),
+            'updated_at' => (new Carbon($request->get('fecha')))->format('Y-m-d').' '.Carbon::now()->toTimeString()
           ]);
       return response()
         ->json([

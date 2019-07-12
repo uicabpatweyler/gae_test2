@@ -73,7 +73,7 @@
           <tr>
             <td class="bg-success text-white font-weight-bold" style="width: 50%">Fecha del pago</td>
             <td class="text-center">
-              <input type="text" class="form-control form-control-sm text-center" id="_fecha" name="_fecha" value="{{$fecha}}">
+              <input type="text" class="form-control form-control-sm text-center" id="_fecha" name="_fecha" value="{{$fecha}}" readonly>
             </td>
           </tr>
           </tbody>

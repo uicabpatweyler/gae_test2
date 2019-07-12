@@ -45,7 +45,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="fecha" class="font-weight-bold text-danger">Fecha Inscripción <span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-sm" name="fecha" id="fecha" value="{{\Illuminate\Support\Carbon::now()->format('d-m-Y')}}">
+            <input type="text" class="form-control form-control-sm" name="fecha" id="fecha" value="{{$fecha}}" readonly>
           </div>
         </div>
         <div class="border-top mt-2 mb-2"></div>
@@ -123,6 +123,8 @@
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script src="{{ asset('jqueryinputmask/jquery.inputmask.js') }}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/messages/messages.es-es.js') }}"></script>
   <script>
     $('#btn_cancelar').click(function(){
       event.preventDefault();
@@ -183,6 +185,12 @@
           $("#fecha").removeClass("is-invalid");
           if($("#grado_grupo").val()!=='') { $("#btn_guardar").prop("disabled", false); }
         }
+      }).datepicker({
+        locale: 'es-es',
+        format: 'dd-mm-yyyy',
+        showRightIcon: false,
+        showOtherMonths: true,
+        disableDaysOfWeek: [0, 6]
       });
 
       $('#form_inscripcion').validate({

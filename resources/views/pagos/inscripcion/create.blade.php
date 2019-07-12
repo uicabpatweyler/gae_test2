@@ -111,7 +111,7 @@
               <td>
                 <div class="form-row">
                   <div class="form-group col-md-7">
-                    <input type="text" class="form-control form-control-sm" id="fecha" name="fecha" value="{{$inscripcion->fecha->format('d-m-Y')}}">
+                    <input type="text" class="form-control form-control-sm" id="fecha" name="fecha" value="{{$inscripcion->fecha->format('d-m-Y')}}" readonly>
                   </div>
                 </div>
               </td>
@@ -158,6 +158,8 @@
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script src="{{ asset('jqueryinputmask/jquery.inputmask.js') }}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/messages/messages.es-es.js') }}"></script>
   <script>
 
     $().ready(function() {
@@ -220,6 +222,12 @@
           $("#fecha").removeClass("is-invalid");
           if($("#grado_grupo").val()!=='') { $("#btn_guardar").prop("disabled", false); }
         }
+      }).datepicker({
+        locale: 'es-es',
+        format: 'dd-mm-yyyy',
+        showRightIcon: false,
+        showOtherMonths: true,
+        disableDaysOfWeek: [0, 6]
       });
 
       $("#btn_recibo").click(function(){
