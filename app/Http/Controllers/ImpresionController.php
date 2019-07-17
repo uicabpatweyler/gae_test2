@@ -21,4 +21,8 @@ class ImpresionController extends Controller
       'ciclos' => Ciclo::orderBy('periodo','desc')->get()
     ]);
   }
+
+  public function reciboColegiatura(){
+      return view('impresiones.recibocolegiatura.index');
+  }
 }

@@ -12,7 +12,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-print text-info"></i> pago de colegiatura
+        <i class="fas fa-table text-info"></i> pago de colegiatura
       </h5>
 
     </div>

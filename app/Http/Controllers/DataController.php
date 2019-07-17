@@ -359,6 +359,72 @@ class DataController extends Controller
       })
       ->make(true);
   }
+
+  /*impresiones.recibocolegiatura.index*/
+  public function colegiaturasPorFecha($fecha){
+    $rows = DB::table('alumnos')
+      ->join('pago_colegiaturas', 'alumnos.id','=', 'pago_colegiaturas.alumno_id')
+      ->join('escuelas', 'pago_colegiaturas.escuela_id','=','escuelas.id')
+      ->join('ciclos', 'pago_colegiaturas.ciclo_id','=','ciclos.id')
+      ->join('grados','pago_colegiaturas.grado_id','=','grados.id')
+      ->join('grupos','pago_colegiaturas.grupo_id','=','grupos.id')
+      ->select('pago_colegiaturas.id', 'pago_colegiaturas.fecha_pago', 'pago_colegiaturas.pago_cancelado')
+      ->addSelect('pago_colegiaturas.cantidad_recibida_mxn', 'pago_colegiaturas.folio_recibo')
+      ->addSelect( 'alumnos.nombre1','alumnos.nombre2','alumnos.apellido1', 'alumnos.apellido2')
+      ->addSelect('escuelas.nombre as escuela', 'ciclos.periodo')
+      ->addSelect('grados.nombre as grado', 'grupos.nombre as grupo')
+      ->whereDate('fecha_pago', $fecha)
+      ->orderBy('pago_colegiaturas.folio_recibo', 'asc')
+      ->get();
+
+    return DataTables::of($rows)
+      ->addColumn('ciclo_enroll', function($row){
+        $cicloEnroll = $row->periodo;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
+      })
+      ->addColumn('importe', function ($row) {
+        return '$ ' . number_format($row->cantidad_recibida_mxn, 2, '.', ',');
+      })
+      ->addColumn('group_enroll', function($row){
+        $cicloEnroll = null;
+        $groupEnroll = $row->grupo;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
+      })
+      ->addColumn('recibo_colegiatura', function($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = route('print.recibo.colegiatura',['pago' => $row->id]);
+        $urlPago     = null;
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago
+        ]);
+      })
+      ->make(true);
+  }
 }
 /*
  * https://www.php.net/manual/es/language.operators.comparison.php

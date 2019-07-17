@@ -124,6 +124,8 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.hojainscripcion');
   Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
     ->name('alumnos.impresion.reciboinscripcion');
+  Route::get('alumnos/impresion/recibocolegiatura','ImpresionController@reciboColegiatura')
+    ->name('alumnos.impresion.recibocolegiatura');
 
 
   Route::prefix('data')->group(function () {
@@ -140,6 +142,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('tutores','DataController@tutores')->name('tutores.data');
     Route::get('gruposinscripcion/{escuela}/{grado}/{ciclo}', 'DataController@gruposInscripcion')
       ->name('gruposinscr.data');
+    Route::get('pagos/colegiatura/porfecha/{fecha}','DataController@colegiaturasPorFecha')
+      ->name('colegiaturasporfecha.data');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');
