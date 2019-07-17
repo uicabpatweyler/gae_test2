@@ -425,6 +425,37 @@ class DataController extends Controller
       })
       ->make(true);
   }
+
+  public function inscripcionesPorFecha($fecha){
+    $rows = DB::table('alumnos')
+      ->join('pago_inscripciones', 'alumnos.id','=', 'pago_inscripciones.alumno_id')
+      ->join('escuelas', 'pago_inscripciones.escuela_id','=','escuelas.id')
+      ->join('ciclos', 'pago_inscripciones.ciclo_id','=','ciclos.id')
+      ->join('grados','pago_inscripciones.grado_id','=','grados.id')
+      ->join('grupos','pago_inscripciones.grupo_id','=','grupos.id')
+      ->select('pago_inscripciones.id', 'pago_inscripciones.inscripcion_id', 'pago_inscripciones.folio_recibo')
+      ->addSelect('pago_inscripciones.importe_cuota','pago_inscripciones.porcentaje_descuento')
+      ->addSelect('pago_inscripciones.cantidad_recibida_mxn','pago_inscripciones.pago_cancelado')
+      ->addSelect('pago_inscripciones.fecha_cancelacion', 'pago_inscripciones.fecha')
+      ->addSelect( 'alumnos.nombre1','alumnos.nombre2','alumnos.apellido1', 'alumnos.apellido2')
+      ->addSelect('escuelas.nombre as escuela', 'ciclos.periodo')
+      ->addSelect('grados.nombre as grado', 'grupos.nombre as grupo')
+      ->whereDate('fecha', $fecha)
+      ->orderBy('pago_inscripciones.folio_recibo', 'asc')
+      ->get();
+
+    return DataTables::of($rows)
+      ->addColumn('ciclo', function($row){
+        return $row->periodo;
+      })
+      ->addColumn('cuota', function($row){
+       return '$ '.number_format($row->importe_cuota,2,'.',',');
+      })
+      ->addColumn('nombregrupo', function($row){
+        return $row->grupo;
+      })
+      ->make(true);
+  }
 }
 /*
  * https://www.php.net/manual/es/language.operators.comparison.php

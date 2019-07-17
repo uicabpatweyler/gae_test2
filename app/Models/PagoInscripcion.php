@@ -34,11 +34,14 @@ class PagoInscripcion extends Model
     'deleted_at',
     'created_at',
     'updated_at',
-    'fecha'
+    'fecha',
+    'fecha_cancelacion'
   ];
   protected $casts = [
     'status'   => 'boolean',
+    'pago_cancelado' => 'boolean',
     'fecha' => 'date:d-m-Y',
+    'fecha_cancelacion' => 'date:d-m-Y'
   ];
 
   public function setFechaAttribute($value){

@@ -25,4 +25,8 @@ class ImpresionController extends Controller
   public function reciboColegiatura(){
       return view('impresiones.recibocolegiatura.index');
   }
+
+  public function listadoInscripciones(){
+      return view('impresiones.reportes.inscripcion.index');
+  }
 }

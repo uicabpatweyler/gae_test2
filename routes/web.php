@@ -126,6 +126,11 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.reciboinscripcion');
   Route::get('alumnos/impresion/recibocolegiatura','ImpresionController@reciboColegiatura')
     ->name('alumnos.impresion.recibocolegiatura');
+  Route::get('impresion/inscripcionespordia','ImpresionController@listadoInscripciones')
+    ->name('impresion.inscripcionespordia.listado');
+
+  Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
+  Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');
 
 
   Route::prefix('data')->group(function () {
@@ -144,6 +149,7 @@ Route::middleware(['auth'])->group(function(){
       ->name('gruposinscr.data');
     Route::get('pagos/colegiatura/porfecha/{fecha}','DataController@colegiaturasPorFecha')
       ->name('colegiaturasporfecha.data');
+    Route::get('pagos/inscripcion/porfecha/{fecha}', 'DataController@inscripcionesPorFecha');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');
