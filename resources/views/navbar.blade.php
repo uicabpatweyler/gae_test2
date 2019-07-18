@@ -79,8 +79,11 @@
             <a class="dropdown-item" href="{{route('alumnos.impresion.hojainscripcion')}}"><i class="fas fa-angle-right"></i> Hoja de Inscripción</a>
             <a class="dropdown-item" href="{{route('alumnos.impresion.reciboinscripcion')}}"><i class="fas fa-angle-right"></i> Recibo de Inscripción</a>
             <a class="dropdown-item" href="{{route('impresion.inscripcionespordia.listado')}}"><i class="fas fa-angle-right"></i> Reporte de Inscripción</a>
+            <a class="dropdown-item" href="{{route('impresion.inscripciongradogrupo.index')}}"><i class="fas fa-angle-right"></i> Inscripciones por Grupo</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{route('alumnos.impresion.recibocolegiatura')}}"><i class="fas fa-angle-right"></i> Recibo de Colegiatura</a>
             <a class="dropdown-item" href="{{route('alumnos.impresion.recibocolegiatura')}}"><i class="fas fa-angle-right"></i> Reporte de Colegiaturas</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Lista de Asistencia</a>
           </div>

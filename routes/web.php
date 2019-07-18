@@ -128,10 +128,16 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.recibocolegiatura');
   Route::get('impresion/inscripcionespordia','ImpresionController@listadoInscripciones')
     ->name('impresion.inscripcionespordia.listado');
+  Route::get('impresion/inscripciongradogrupo', 'ImpresionController@inscripcionesGradoGrupo')
+    ->name('impresion.inscripciongradogrupo.index');
 
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
   Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');
 
+  Route::prefix('pdf')->group(function() {
+    Route::get('inscripciones_escuela_ciclo/{escuela}/{ciclo}', 'Reporte\InscripcionesEscuelaCiclo@printPDF')
+      ->name('pdf.inscripciones.escuela.ciclo');
+  });
 
   Route::prefix('data')->group(function () {
     Route::get('escuelas', 'DataController@escuelas')->name('escuelas.data');
