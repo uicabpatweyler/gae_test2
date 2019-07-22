@@ -268,6 +268,7 @@ class DataController extends Controller
   }
 
   /*impresiones.hojainscripcion.index*/
+  /*pagos.colegiatura.index (realizar pago)*/
   public function alumnosEscuelaCiclo($escuela,$ciclo){
     $rows = DB::table('alumnos')
       ->join('inscripciones', 'alumnos.id','=', 'inscripciones.alumno_id')
@@ -298,7 +299,8 @@ class DataController extends Controller
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null
         ]);
       })
       ->addColumn('group_enroll', function($row){
@@ -312,7 +314,8 @@ class DataController extends Controller
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null
         ]);
       })
       ->addColumn('sheet_enroll', function($row){
@@ -326,7 +329,8 @@ class DataController extends Controller
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null
         ]);
       })
       ->addColumn('receipt_enroll', function($row){
@@ -340,7 +344,8 @@ class DataController extends Controller
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null
         ]);
       })
       ->addColumn('pago_colegiatura', function($row){
@@ -354,13 +359,15 @@ class DataController extends Controller
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null
         ]);
       })
       ->make(true);
   }
 
   /*impresiones.recibocolegiatura.index*/
+  /*pagos.colegiatura.index (cancelar pago)*/
   public function colegiaturasPorFecha($fecha){
     $rows = DB::table('alumnos')
       ->join('pago_colegiaturas', 'alumnos.id','=', 'pago_colegiaturas.alumno_id')
@@ -384,12 +391,14 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlShowToCancel = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => $urlShowToCancel
         ]);
       })
       ->addColumn('importe', function ($row) {
@@ -401,12 +410,14 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlShowToCancel = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => $urlShowToCancel
         ]);
       })
       ->addColumn('recibo_colegiatura', function($row){
@@ -415,12 +426,35 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = route('print.recibo.colegiatura',['pago' => $row->id]);
         $urlPago     = null;
+        $urlShowToCancel = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
-          'urlPago'     => $urlPago
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => $urlShowToCancel
+        ]);
+      })
+      ->addColumn('showpaytocancel', function($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        if($row->pago_cancelado){
+          $urlShowToCancel = null;
+        }else{
+          $urlShowToCancel = route('pagocolegiaturas.showpaytocancel',['id' => $row->id]);
+        }
+
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => $urlShowToCancel
         ]);
       })
       ->make(true);

@@ -109,6 +109,10 @@ Route::middleware(['auth'])->group(function(){
     ->name('pagocolegiaturas.create');
   Route::post('pagocolegiaturas', 'PagoColegiaturaController@store')
     ->name('pgocolegiaturas.store');
+  Route::get('pagocolegiaturas/show/cancel/{pagoColegiatura}', 'PagoColegiaturaController@showPayToCancel')
+    ->name('pagocolegiaturas.showpaytocancel');
+  Route::post('pagocolegiatura/cancel/{pagoColegiatura}','PagoColegiaturaController@cancelarPagoColegiatura')
+    ->name('cancelar.pagocolegiatura');
 
 
   Route::get('pagocolegiaturas/faltantes', 'PagoColegiaturaController@alumnosDeudores')
@@ -166,7 +170,7 @@ Route::middleware(['auth'])->group(function(){
     //reinscripciones.index Lista de alumnos disponibles para reinscribir
     Route::get('alumnos_data','DataController@alumnos')->name('alumnos.data');
 
-    //
+    //pagos.colegiatura.index
     Route::get('alumnos/{escuela}/{ciclo}', 'DataController@alumnosEscuelaCiclo')
       ->name('alumnos.escuela.ciclo.data');
 

@@ -95,9 +95,9 @@ class ReciboColegiatura extends Controller
     //Color para el relleno de celdas: Verde Claro
     $this->pdf->SetFillColor(196,224,180);
     $this->pdf->Cell(25,4,'Alumno',1,0,'C',true);
-    $this->pdf->Cell(73,4,$alumno->full_name,1,0,'L',false);
+    $this->pdf->Cell(73,4,utf8_decode($alumno->full_name),1,0,'L',false);
     $this->pdf->Cell(25,4,'Tutor',1,0,'C',true);
-    $this->pdf->Cell(73,4,$tutor->full_name,1,1,'L',false);
+    $this->pdf->Cell(73,4,utf8_decode($tutor->full_name),1,1,'L',false);
     $this->pdf->Cell(25,4,'Direccion',1,0,'C',true);
     $this->pdf->Cell(171,4,utf8_decode($infoAlumno->direccion.' '.$infoAlumno->colonia),1,0,'L',false);
 
@@ -214,9 +214,9 @@ class ReciboColegiatura extends Controller
     //Color para el relleno de celdas: Verde Claro
     $this->pdf->SetFillColor(196,224,180);
     $this->pdf->Cell(25,4,'Alumno',1,0,'C',true);
-    $this->pdf->Cell(73,4,$alumno->full_name,1,0,'L',false);
+    $this->pdf->Cell(73,4,utf8_decode($alumno->full_name),1,0,'L',false);
     $this->pdf->Cell(25,4,'Tutor',1,0,'C',true);
-    $this->pdf->Cell(73,4,$tutor->full_name,1,1,'L',false);
+    $this->pdf->Cell(73,4,utf8_decode($tutor->full_name),1,1,'L',false);
     $this->pdf->Cell(25,4,'Direccion',1,0,'C',true);
     $this->pdf->Cell(171,4,utf8_decode($infoAlumno->direccion.' '.$infoAlumno->colonia),1,0,'L',false);
 

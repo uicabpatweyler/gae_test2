@@ -61,7 +61,8 @@
   <!-- Contenedor de la seccion -->
 
 @endsection
-@push('scripts') <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
+@push('scripts')
+<script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
 <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/messages/messages.es-es.js') }}"></script>
   <script>
   $(document).ready(function(){

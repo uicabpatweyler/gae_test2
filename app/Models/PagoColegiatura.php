@@ -17,7 +17,6 @@ class PagoColegiatura extends Model
   protected $casts = [
     'fecha_pago'        => 'date:d-m-Y',
     'pago_cancelado'    => 'boolean',
-    'cancelado_por'     => 'boolean',
     'fecha_cancelacion' => 'date:d-m-Y'
   ];
   protected $fillable = [
@@ -88,7 +87,7 @@ class PagoColegiatura extends Model
       $this->attributes['motivo_cancelacion'] = $value;
     }
     else{
-      $this->attributes['cancelado_por'] = null;
+      $this->attributes['motivo_cancelacion'] = null;
     }
   }
 

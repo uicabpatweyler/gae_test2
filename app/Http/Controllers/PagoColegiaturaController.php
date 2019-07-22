@@ -15,6 +15,7 @@ use App\Models\PagoColegiatura;
 use App\Models\SerieFolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PagoColegiaturaController extends Controller
@@ -125,6 +126,29 @@ class PagoColegiaturaController extends Controller
       ->json([
         'message'  => 'El pago se guardo correctamente con el folio '.$request->get('folio_recibo'),
         'urlRecibo' => route('print.recibo.colegiatura',['pago' => $rowPago->id])
+      ]);
+  }
+
+  public function showPayToCancel(PagoColegiatura $pagoColegiatura){
+    return view('pagos.colegiatura.cancel',[
+      'pago' => $pagoColegiatura
+    ]);
+  }
+
+  public function cancelarPagoColegiatura(Request $request, PagoColegiatura $pagoColegiatura){
+    $pagoColegiatura->pago_cancelado = true;
+    $pagoColegiatura->fecha_cancelacion = $request->get('fecha_cancelacion');
+    $pagoColegiatura->cancelado_por = $request->get('cancelado_por');
+    $pagoColegiatura->motivo_cancelacion = $request->get('motivo_cancelacion');
+    $pagoColegiatura->save();
+
+    DetallePagoColegiatura::where('pago_id', $pagoColegiatura->id)
+      ->update(['pago_cancelado' => true]);
+
+    return response()
+      ->json([
+        'message'  => 'El pago con el folio '.$pagoColegiatura->folio_recibo.' se cancelo correctamente',
+        'location' => route('pagocolegiaturas.index')
       ]);
   }
 
