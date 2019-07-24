@@ -20,20 +20,31 @@
     </div>
     <!-- Titulo de la seccion -->
 
-    <!-- Formulario, Tablas...etc -->
-    <div class="table-responsive col-12">
-      <table class="table table-striped" id="categorias">
-        <thead>
-        <tr>
-          <th scope="col" class="text-center">CATEGORÍA</th>
-          <th scope="col" class="text-center">DISPONIBLE</th>
-          <th scope="col" class="text-center">ACCIONES</th>
-        </tr>
-        </thead>
-      </table>
-    </div>
-    <!-- Formulario, Tablas...etc -->
 
+      <div class="accordion" id="accordionCategorias">
+        @foreach($categorias as $categoria)
+          <div class="card">
+            <div class="card-header" id="heading{{$categoria->nombre}}">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$categoria->id}}" aria-expanded="true" aria-controls="collapse{{$categoria->id}}">
+                  {{$categoria->nombre}}
+                </button>
+                <a href="{{route('categoria.child.create', ['id' => $categoria->id])}}" class="btn btn-sm btn-primary" role="button" title="Agregar" aria-pressed="true">
+                  <i class="fas fa-plus"></i>
+                </a>
+              </h2>
+            </div>
+
+            <div id="collapse{{$categoria->id}}" class="collapse" aria-labelledby="heading{{$categoria->nombre}}" data-parent="#accordionCategorias">
+              <div class="card-body">
+                @if(count($categoria->childs))
+                  @include('categorias.manageChild',['childs' => $categoria->childs, 'idAccordion' => $categoria->id])
+                @endif
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
   </div>
   <!-- Contenedor de la seccion -->
 
@@ -44,31 +55,7 @@
   <!-- Datatables JS -->
   <script>
     $(document).ready(function(){
-      $('#categorias').DataTable({
-        processing: true,
-        serverSide: true,
-        ordering:false,
-        ajax: '{{ route('categorias.data') }}',
-        language: {
-          url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
-        },
-        columns: [
-          {data: 'nombre', name: 'nombre', className:"text-center font-weight-"},
-          {data: null, className:"text-center",
-            render: function(data){
-              if(data.disponible==="1"){
-                return '<i class="fas fa-check text-success"></i>'
-              }
-              return '<i class="fas fa-times text-danger"></i>'
-            }
-          },
-          { data: "actions", className:"text-center",
-            render: function(data){
-              return htmlDecode(data);
-            }
-          }
-        ]
-      });
+
     });
   </script>
 @endpush

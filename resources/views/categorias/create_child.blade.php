@@ -29,7 +29,7 @@
     <!-- Formulario -->
     <form action="{{route('categorias.store')}}" method="POST" id="form_categoria" name="form_categoria">
       <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
-      <input type="hidden" id="parent_id" name="parent_id" value="0">
+      <input type="hidden" id="parent_id" name="parent_id" value="{{$parent_id}}">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -66,4 +66,3 @@
     });
   </script>
 @endpush
-

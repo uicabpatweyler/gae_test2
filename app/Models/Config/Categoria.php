@@ -12,6 +12,7 @@ class Categoria extends Model
   protected $fillable = [
     'nombre',
     'disponible',
+    'parent_id',
     'user_created',
     'user_updated'
   ];
@@ -36,6 +37,14 @@ class Categoria extends Model
       $this->attributes['disponible'] = false;
     }
   }
+  public function setParentIdAttribute($value){
+    if(isset($value)){
+      $this->attributes['parent_id'] = $value;
+    }
+    else{
+      $this->attributes['parent_id'] = 0;
+    }
+  }
   public function setUserCreatedAttribute($value){
     if(isset($value)){
       $this->attributes['user_created'] = $value;
@@ -52,6 +61,10 @@ class Categoria extends Model
     else{
       $this->attributes['user_updated'] = 0;
     }
+  }
+
+  public function childs(){
+    return $this->hasMany(Categoria::class, 'parent_id','id');
   }
 
 }

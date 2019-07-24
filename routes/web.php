@@ -26,6 +26,8 @@ Route::prefix('config')->middleware('auth')->group(function () {
   Route::resource('grupos', 'Config\GrupoController');
   Route::resource('cuotas', 'Config\CuotaController');
   Route::resource('categorias','Config\CategoriaController');
+  Route::get('categoria/child/create/{parent_id}','Config\CategoriaController@createChild')
+    ->name('categoria.child.create');
   Route::get('showapplypay/{cuota}', 'Config\CuotaGrupoController@show')->name('show.apply.pay');
   Route::post('cuotagrupo/{cuota}', 'Config\CuotaGrupoController@cuotaGrupo')->name('cuota.grupo');
 });

@@ -16,6 +16,7 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->string('nombre',120);
+          $table->unsignedBigInteger('parent_id');
           $table->boolean('disponible')->default(true);
           $table->unsignedInteger('user_created')->default(0);
           $table->unsignedInteger('user_updated')->default(0);

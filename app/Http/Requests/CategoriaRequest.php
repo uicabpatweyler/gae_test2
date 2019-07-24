@@ -39,7 +39,8 @@ class CategoriaRequest extends FormRequest
           'min:2',
           'max:30',
           Rule::unique('categorias')->where( function($query) {
-            return $query->where('nombre', mb_convert_case($this->nombre,MB_CASE_UPPER,'UTF-8'));
+            return $query->where('nombre', mb_convert_case($this->nombre,MB_CASE_UPPER,'UTF-8'))
+              ->where('parent_id', $this->parent_id);
           })
         ]
       ];
@@ -51,7 +52,8 @@ class CategoriaRequest extends FormRequest
           'min:2',
           'max:30',
           Rule::unique('categorias')->where( function($query) {
-            return $query->where('nombre', mb_convert_case($this->nombre,MB_CASE_UPPER,'UTF-8'));
+            return $query->where('nombre', mb_convert_case($this->nombre,MB_CASE_UPPER,'UTF-8'))
+              ->where('parent_id', $this->parent_id);
           })->ignore($this->categoria->id)
         ]
       ];

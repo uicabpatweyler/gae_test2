@@ -16,7 +16,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('categorias.index');
+      $categorias = Categoria::where('parent_id','=',0)->get();
+      return view('categorias.index',compact('categorias'));
     }
 
     /**
@@ -27,6 +28,11 @@ class CategoriaController extends Controller
     public function create()
     {
         return view('categorias.create');
+    }
+
+    public function createChild($parent_id)
+    {
+      return view('categorias.create_child',compact('parent_id'));
     }
 
     /**
