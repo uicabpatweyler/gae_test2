@@ -25,6 +25,7 @@ Route::prefix('config')->middleware('auth')->group(function () {
   Route::resource('grados', 'Config\GradoController');
   Route::resource('grupos', 'Config\GrupoController');
   Route::resource('cuotas', 'Config\CuotaController');
+  Route::resource('categorias','Config\CategoriaController');
   Route::get('showapplypay/{cuota}', 'Config\CuotaGrupoController@show')->name('show.apply.pay');
   Route::post('cuotagrupo/{cuota}', 'Config\CuotaGrupoController@cuotaGrupo')->name('cuota.grupo');
 });
@@ -160,6 +161,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('pagos/colegiatura/porfecha/{fecha}','DataController@colegiaturasPorFecha')
       ->name('colegiaturasporfecha.data');
     Route::get('pagos/inscripcion/porfecha/{fecha}', 'DataController@inscripcionesPorFecha');
+    Route::get('categorias','DataController@categorias')->name('categorias.data');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Config\Categoria;
 use App\Models\Config\Cuota;
 use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Grupo;
-use App\Models\InformacionAlumno;
 use App\Models\Inscripcion;
 use App\Models\Tutor;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -487,6 +486,19 @@ class DataController extends Controller
       })
       ->addColumn('nombregrupo', function($row){
         return $row->grupo;
+      })
+      ->make(true);
+  }
+
+  public function categorias()
+  {
+    $categorias = Categoria::all();
+    return DataTables::of($categorias)
+      ->addColumn('actions', function ($categoria) {
+        $showUrl = route('categorias.show', ['id' => $categoria->id]);
+        $editUrl = route('categorias.edit', ['id' => $categoria->id]);
+        $deleteUrl = route('categorias.destroy', ['id' => $categoria->id]);
+        return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
       })
       ->make(true);
   }

@@ -26,6 +26,7 @@
             <a class="dropdown-item" href="{{ route('grados.index') }}"><i class="fas fa-angle-right"></i> Grados Escolares</a>
             <a class="dropdown-item" href="{{ route('grupos.index') }}"><i class="fas fa-angle-right"></i> Grupos Escolares</a>
             <a class="dropdown-item" href="{{route('cuotas.index')}}"><i class="fas fa-angle-right"></i> Cuotas de Pago</a>
+            <a class="dropdown-item" href="{{route('categorias.index')}}"><i class="fas fa-angle-right"></i> Categorías Artículos</a>
           </div>
         </li>
 
