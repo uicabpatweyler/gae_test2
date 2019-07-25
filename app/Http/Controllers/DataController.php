@@ -502,6 +502,18 @@ class DataController extends Controller
       })
       ->make(true);
   }
+
+  /* Select de los grados para la creacion de un nuevo grupo*/
+  public function selectChilds($parent_id)
+  {
+    /*Relacion ESCUELA:GRADOS: 1:M*/
+    $childs = Categoria::find($parent_id)->childs()
+      ->select(['id as value', 'nombre as text'])->get()->toArray();
+
+    array_unshift($childs, ['value' => '', 'text' => '']);
+
+    return $childs;
+  }
 }
 /*
  * https://www.php.net/manual/es/language.operators.comparison.php

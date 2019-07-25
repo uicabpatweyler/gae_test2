@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Categorías de artículos')
+@section('title', 'Categorías de productos')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -12,7 +12,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-table text-info"></i> categorías de artículos
+        <i class="fas fa-table text-info"></i> categorías de productos
       </h5>
       <a href="{{ route('categorias.create') }}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="fas fa-plus"></i> nueva categoría
