@@ -516,12 +516,7 @@ class DataController extends Controller
     return $childs;
   }
 
-  public function dtProductos(){
-    $escuela = 1;
-    $ciclo = 2;
-    $categoria = 1;
-    $subcategoria = 3;
-
+  public function dtProductos($escuela, $ciclo, $categoria, $subcategoria){
     $productos = DB::table('productos')
       ->join('ciclos','productos.ciclo_id','=','ciclos.id')
       ->select('productos.*','ciclos.periodo')
@@ -533,9 +528,9 @@ class DataController extends Controller
     ])->get();
     return DataTables::of($productos)
       ->addColumn('actions', function ($producto) {
-        $showUrl = route('productos.show', ['id' => $producto->id]);
+        $showUrl = null;
         $editUrl = route('productos.edit', ['id' => $producto->id]);
-        $deleteUrl = route('productos.destroy', ['id' => $producto->id]);
+        $deleteUrl = null;
         return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
       })
       ->make(true);

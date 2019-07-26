@@ -1,7 +1,7 @@
 @extends('master')
 
 {{-- Titulo de la sección--}}
-@section('title', 'Nuevo Producto')
+@section('title', 'Editar Producto')
 
 {{--Contenido de la seccion--}}
 @section('content')
@@ -11,7 +11,7 @@
     <!-- Titulo de la seccion -->
     <div class="d-flex align-items-center justify-content-between p-2 my-2 rounded shadow-sm border">
       <h5 class="mb-0 lh-100 text-uppercase">
-        <i class="fas fa-plus-circle text-info"></i> nuevo producto
+        <i class="fas fa-plus-circle text-info"></i> editar producto
       </h5>
       <a href="{{route('productos.index')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="far fa-arrow-alt-circle-left"></i> regresar
@@ -26,9 +26,10 @@
       <small class="text-danger"> (* campo obligatorio)</small>
     </div>
 
-    <form action="{{route('productos.store')}}" method="POST" id="form_producto" name="form_producto">
-      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
-      <input type="hidden" id="nombre_categoria" name="nombre_categoria" value="">
+    <form action="{{route('productos.update', $producto->id)}}" method="POST" id="form_producto" name="form_producto">
+      <input type="hidden" id="user_updated" name="user_updated" value="{{Auth::id()}}">
+      <input type="hidden" id="nombre_categoria" name="nombre_categoria" value="{{$producto->nombre_categoria}}">
+      @method('PATCH')
       @csrf
       <div class="card">
         <div class="card-header">
@@ -41,20 +42,33 @@
               <select class="form-control form-control-sm" name="categoria_id" id="categoria_id" required>
                 @foreach($categorias as $categoria)
                   @if($loop->first)
-                    <option value="" selected></option>
+                    <option value=""></option>
                   @endif
-                  <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                  <option value="{{ $categoria->id }}" {{$producto->categoria_id === $categoria->id ? "selected" : ""}}>{{ $categoria->nombre }}</option>
                 @endforeach
               </select>
             </div>
             <div class="form-group col-md-4">
               <label for="subcategoria_id">Sub-Categoría<span class="text-danger">*</span></label>
-              <select class="form-control form-control-sm" name="subcategoria_id" id="subcategoria_id" required disabled>
+              <select class="form-control form-control-sm" name="subcategoria_id" id="subcategoria_id" required >
+                @foreach($subcategorias as $subcategoria)
+                  @if($loop->first)
+                    <option value=""></option>
+                  @endif
+                  <option value="{{ $subcategoria->id }}" {{$producto->subcategoria_id === $subcategoria->id ? "selected" : ""}}>{{ $subcategoria->nombre }}</option>
+                @endforeach
+              </select>
               </select>
             </div>
             <div class="form-group col-md-4">
               <label for="clasificacion1_id">Clasificación<span class="text-danger">*</span></label>
-              <select class="form-control form-control-sm" name="clasificacion1_id" id="clasificacion1_id" required disabled>
+              <select class="form-control form-control-sm" name="clasificacion1_id" id="clasificacion1_id" required>
+                @foreach($clasificaciones as $clasificacion)
+                  @if($loop->first)
+                    <option value=""></option>
+                  @endif
+                  <option value="{{ $clasificacion->id }}" {{$producto->clasificacion1_id === $clasificacion->id ? "selected" : ""}}>{{ $clasificacion->nombre }}</option>
+                @endforeach
               </select>
             </div>
           </div>
@@ -71,9 +85,9 @@
               <select id="escuela_id" name="escuela_id" class="form-control form-control-sm" required>
                 @foreach($escuelas as $escuela)
                   @if($loop->first)
-                    <option value="" selected>[Elija una escuela]</option>
+                    <option value="">[Elija una escuela]</option>
                   @endif
-                  <option value="{{ $escuela->id }}">{{ $escuela->nombre }}</option>
+                  <option value="{{ $escuela->id }}" {{$producto->escuela_id === $escuela->id ? "selected" : ""}}>{{ $escuela->nombre }}</option>
                 @endforeach
               </select>
             </div>
@@ -82,9 +96,9 @@
               <select id="ciclo_id" name="ciclo_id" class="form-control form-control-sm" required>
                 @foreach($ciclos as $ciclo)
                   @if($loop->first)
-                    <option value="" selected>[Elegir ciclo]</option>
+                    <option value="">[Elegir ciclo]</option>
                   @endif
-                  <option value="{{ $ciclo->id }}">{{ $ciclo->periodo }}</option>
+                  <option value="{{ $ciclo->id }}" {{$producto->ciclo_id === $ciclo->id ? "selected" : ""}}>{{ $ciclo->periodo }}</option>
                 @endforeach
               </select>
             </div>
@@ -92,15 +106,15 @@
           <div class="form-row">
             <div class="form-group col-md-3">
               <label for="codigo">Código</label>
-              <input type="text" class="form-control form-control-sm" id="codigo" name="codigo">
+              <input type="text" class="form-control form-control-sm" id="codigo" name="codigo" value="{{$producto->codigo}}">
             </div>
             <div class="form-group col-md-5">
               <label for="nombre">Nombre <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" placeholder="nombre" style="text-transform: capitalize" required>
+              <input type="text" class="form-control form-control-sm" value="{{$producto->nombre}}" id="nombre" name="nombre" style="text-transform: capitalize" required>
             </div>
             <div class="form-group col-md-4">
               <label for="adicional">Info. Adicional</label>
-              <input type="text" class="form-control form-control-sm" id="adicional" name="adicional">
+              <input type="text" class="form-control form-control-sm" id="adicional" name="adicional" value="{{$producto->adicional}}">
             </div>
           </div>
           <div class="form-row">
@@ -110,7 +124,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">$</div>
                 </div>
-                <input type="text" class="form-control" id="precio_venta" name="precio_venta" required>
+                <input type="text" class="form-control text-right" value="{{$producto->precio_venta}}" id="precio_venta" name="precio_venta" required>
               </div>
             </div>
           </div>
@@ -142,6 +156,7 @@
       event.preventDefault();
       showCancel('{{ route('productos.index') }}')
     });
+
     $().ready(function(){
       $('#form_producto').validate({
         debug: false,
@@ -248,4 +263,5 @@
     });
   </script>
 @endpush
+
 
