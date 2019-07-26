@@ -20,7 +20,11 @@ class CreateProductosTable extends Migration
           $table->unsignedBigInteger('categoria_id');
           $table->unsignedBigInteger('subcategoria_id');
           $table->unsignedBigInteger('clasificacion1_id');
+          $table->string('nombre_categoria');
+          $table->string('codigo')->nullable();
           $table->string('nombre');
+          $table->string('adicional')->nullable();
+          $table->float('precio_venta')->default(0);
           $table->boolean('disponible')->default(true);
           $table->unsignedInteger('user_created')->default(0);
           $table->unsignedInteger('user_updated')->default(0);

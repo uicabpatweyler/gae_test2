@@ -11,7 +11,7 @@
 |
 */
 
-/* Recursos: 
+/* Recursos:
 https://laravel-news.com/navigating-a-new-laravel-codebase
 https://laravel-news.com/authorization-gates
 https://laravel-news.com/login-validation
@@ -166,6 +166,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('pagos/inscripcion/porfecha/{fecha}', 'DataController@inscripcionesPorFecha');
     Route::get('categorias','DataController@categorias')->name('categorias.data');
     Route::get('categorias/childs/{parent_id}','DataController@selectChilds')->name('childs.data');
+    Route::get('productos','DataController@dtProductos')->name('productos.data');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');

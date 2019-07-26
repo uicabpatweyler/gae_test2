@@ -10,12 +10,14 @@ class Producto extends Model
   use SoftDeletes;
   protected $table = 'productos';
   protected $fillable = [
-    'nombre',
     'escuela_id',
     'ciclo_id',
     'categoria_id',
     'subcategoria_id',
     'clasificacion1_id',
+    'nombre_categoria',
+    'nombre',
+    'precio_venta',
     'user_created',
     'user_updated'
   ];

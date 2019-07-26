@@ -17,7 +17,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return view('productos.index');
     }
 
     /**
@@ -42,8 +42,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $producto = tap(new Producto($request->all()))->save();
-        return $producto->id;
+      $producto = tap(new Producto($request->all()))->save();
+      return $producto->id;
       //return dd($request->all());
     }
 

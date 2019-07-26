@@ -13,7 +13,7 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> nuevo producto
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
+      <a href="{{route('productos.index')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="far fa-arrow-alt-circle-left"></i> regresar
       </a>
     </div>
@@ -28,6 +28,7 @@
 
     <form action="{{route('productos.store')}}" method="POST" id="form_producto" name="form_producto">
       <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
+      <input type="hidden" id="nombre_categoria" name="nombre_categoria" value="">
       @csrf
       <div class="card">
         <div class="card-header">
@@ -89,9 +90,28 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="cct">Nombre <span class="text-danger">*</span></label>
+            <div class="form-group col-md-3">
+              <label for="codigo">Código</label>
+              <input type="text" class="form-control form-control-sm" id="codigo" name="codigo">
+            </div>
+            <div class="form-group col-md-5">
+              <label for="nombre">Nombre <span class="text-danger">*</span></label>
               <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" placeholder="nombre" style="text-transform: capitalize" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="adicional">Info. Adicional</label>
+              <input type="text" class="form-control form-control-sm" id="adicional" name="adicional">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-3">
+              <label for="precio_venta">Precio de Venta <span class="text-danger">*</span></label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input type="text" class="form-control" id="precio_venta" name="precio_venta" required>
+              </div>
             </div>
           </div>
         </div>
@@ -123,6 +143,7 @@
         if($(this).val()!==""){
           $('#subcategoria_id').enableControl(true,true);
           $("#clasificacion1_id").enableControl(true,false);
+          $("#nombre_categoria").val($(this).find("option:selected").text());
           $.getJSON(urlRoot+'/data/categorias/childs/'+$(this).val(), null, function (values) {
             $('#subcategoria_id').populateSelect(values);
           });

@@ -9,6 +9,7 @@ use App\Models\Config\Escuela;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Grupo;
 use App\Models\Inscripcion;
+use App\Models\Producto;
 use App\Models\Tutor;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -503,7 +504,7 @@ class DataController extends Controller
       ->make(true);
   }
 
-  /* Select de los grados para la creacion de un nuevo grupo*/
+  /* Select para mostrar las subcategorias de los productos*/
   public function selectChilds($parent_id)
   {
     /*Relacion ESCUELA:GRADOS: 1:M*/
@@ -513,6 +514,31 @@ class DataController extends Controller
     array_unshift($childs, ['value' => '', 'text' => '']);
 
     return $childs;
+  }
+
+  public function dtProductos(){
+    $escuela = 1;
+    $ciclo = 2;
+    $categoria = 1;
+    $subcategoria = 3;
+
+    $productos = DB::table('productos')
+      ->join('ciclos','productos.ciclo_id','=','ciclos.id')
+      ->select('productos.*','ciclos.periodo')
+      ->where([
+      ['escuela_id', '=', $escuela],
+      ['ciclo_id', '=', $ciclo],
+      ['categoria_id', '=', $categoria],
+      ['subcategoria_id', '=', $subcategoria]
+    ])->get();
+    return DataTables::of($productos)
+      ->addColumn('actions', function ($producto) {
+        $showUrl = route('productos.show', ['id' => $producto->id]);
+        $editUrl = route('productos.edit', ['id' => $producto->id]);
+        $deleteUrl = route('productos.destroy', ['id' => $producto->id]);
+        return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
+      })
+      ->make(true);
   }
 }
 /*
