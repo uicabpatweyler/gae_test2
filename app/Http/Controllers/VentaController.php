@@ -119,7 +119,7 @@ class VentaController extends Controller
       return response()
         ->json([
           'message'  => 'La venta se realizo correctamente con el folio '.$request->get('folio_recibo'),
-          'urlRecibo' => route('print.reciboventa',['salidaProducto' => $rowVenta->id])
+          'urlRecibo' => route('print.reciboventa',['salidaProducto' => 425])
         ]);
     }
 

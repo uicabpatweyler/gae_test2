@@ -269,6 +269,9 @@
           data: $("#form_venta").serialize()
         })
           .done(function(data, textStatus, jqXHR){
+            console.log('textStatus: '+textStatus);
+            console.log(jqXHR);
+            console.log(jqXHR.statusText);
             $("#urlRecibo").val(data.urlRecibo);
             showSwal(textStatus, jqXHR.statusText, data.message);
           })
@@ -289,11 +292,11 @@
       function showSwal(_textStatus, _statusText, _message){
         Swal.fire({
           type:  _textStatus,
-          title: _statusText === 'OK' ? 'OK' : _statusText,
+          title: _textStatus === 'success' ? 'OK' : _statusText,
           text:  _message,
           allowOutsideClick:  false,
-          showCancelButton:   _statusText !== 'OK',
-          showConfirmButton:  _statusText === 'OK',
+          showCancelButton:   _textStatus !== 'success',
+          showConfirmButton:  _textStatus === 'success',
           confirmButtonColor: '#3085d6',
           cancelButtonColor:  '#d33',
           cancelButtonText:   'Corregir',
