@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Config\Categoria;
 use App\Models\Config\Ciclo;
 use App\Models\Config\Escuela;
 use Illuminate\Http\Request;
@@ -35,5 +36,13 @@ class ImpresionController extends Controller
       'escuelas' => Escuela::with('nivel')->get(),
       'ciclos' => Ciclo::orderBy('periodo','desc')->get()
     ]);
+  }
+
+  public function kardexProductos(){
+      return view('impresiones.reportes.kardex.index',[
+        'escuelas' => Escuela::with('nivel')->get(),
+        'ciclos' => Ciclo::orderBy('periodo','desc')->get(),
+        'categorias' => Categoria::where('parent_id', '=', 0)->get()
+      ]);
   }
 }

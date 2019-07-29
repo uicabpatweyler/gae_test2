@@ -86,6 +86,7 @@
             <a class="dropdown-item" href="{{route('alumnos.impresion.recibocolegiatura')}}"><i class="fas fa-angle-right"></i> Recibo de Colegiatura</a>
             <a class="dropdown-item" href="{{route('alumnos.impresion.recibocolegiatura')}}"><i class="fas fa-angle-right"></i> Reporte de Colegiaturas</a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{route('impresion.kardex.productos')}}"><i class="fas fa-angle-right"></i> Kardex de Productos</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Lista de Asistencia</a>
           </div>

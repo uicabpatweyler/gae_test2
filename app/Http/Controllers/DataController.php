@@ -533,6 +533,16 @@ class DataController extends Controller
         $deleteUrl = null;
         return view('_formActions', compact('showUrl', 'editUrl', 'deleteUrl'));
       })
+      ->addColumn('existencia', function($producto){
+        $row = DB::table('kardex')
+          ->where([
+            ['escuela_id', '=', $producto->escuela_id],
+            ['ciclo_id', '=', $producto->ciclo_id],
+            ['producto_id', '=', $producto->id]
+          ])
+          ->first();
+        return $row->existencia;
+      })
       ->make(true);
   }
 }

@@ -15,7 +15,7 @@
         <i class="fas fa-table text-info"></i> PRODUCTOS
       </h5>
       <a href="{{route('productos.create')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
-        <i class="fas fa-plus"></i> nuevo PRODUCTO
+        <i class="fas fa-plus"></i> nuevo producto
       </a>
 
     </div>
@@ -73,6 +73,7 @@
           <th scope="col" class="text-center"></th>
           <th scope="col" class="text-center">CICLO</th>
           <th scope="col" class="text-center">NOMBRE</th>
+          <th scope="col" class="text-center">EXISTENCIA</th>
           <th scope="col" class="text-center">PRECIO VTA.</th>
           <th scope="col" class="text-center">DISPONIBLE</th>
           <th scope="col" class="text-center">ACCIONES</th>
@@ -169,6 +170,7 @@
               }
             },
             {data: 'nombre', name: 'nombre', className: "text-left"},
+            {data: 'existencia', name: 'existencia', className: 'text-center'},
             {data: 'precio_venta', name: 'precio_venta', className: "text-center", searchable: false,
               render: $.fn.dataTable.render.number( ',', '.', 2, '$ ' )
             },

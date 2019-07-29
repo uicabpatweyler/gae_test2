@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/productos/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/Kardex.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Entrada.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ModelsPdf/Kardex.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_26_164304_create_entradas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_26_171802_create_entrada_items_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_26_233834_create_kardex_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/EntradasTableSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/reportes/kardex/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/venta/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/escuelas/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/escuelas/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/productos/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/productos/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/productos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/productos/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -37,9 +47,6 @@
     <expand />
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -48,60 +55,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>asignar.tutor.alumno</find>
-      <find>editar</find>
-      <find>alumnos.data</find>
-      <find>InfoAl</find>
-      <find>infoAlumno</find>
-      <find>&lt;span class=&quot;text-danger&quot;&gt;*&lt;/span&gt;</find>
-      <find>$infoAlumno</find>
-      <find>updateDireccionTutor</find>
-      <find>infotutor.update.direccion</find>
-      <find>tutor.telefonos.edit</find>
-      <find>infotutor.update.telefonos</find>
-      <find>infotutor.edit.telefonos</find>
-      <find>tutor.telefonos.update</find>
-      <find>referencia4</find>
-      <find>infotutor.update.infoadicional</find>
-      <find>tutor/infoadicional/update/</find>
-      <find>Auth::routes()</find>
-      <find>Auth::routes</find>
-      <find>alumnos/impresion/hojainscripcion</find>
-      <find>impresion.hojainscripcion.index.data</find>
-      <find>alumnos.impresion.hojainscripcion</find>
-      <find>alumnos.impresion.reciboinscripcion</find>
-      <find>#btn_guardar</find>
-      <find>oute</find>
-      <find>urlRecibo</find>
-      <find>Header</find>
-      <find>Fpdf::</find>
-      <find>gruposinscripcion</find>
-      <find>colegiatura</find>
-      <find>alumnosEscuelaCiclo</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>form-control form-control-sm</replace>
-      <replace>$this-&gt;pdf-&gt;</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/resources/views/impresiones/hojainscripcion/index.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/productos/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/productos/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/productos/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/DataController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductoController.php" />
-        <option value="$PROJECT_DIR$/resources/views/navbar.blade.php" />
-      </list>
-    </option>
   </component>
   <component name="PhpServers">
     <servers />
@@ -193,51 +148,12 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1272" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
-  </component>
   <component name="ProjectId" id="1OWw2KwPZ5vbAkndT1qzmtJq35U" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gae_test2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gae_test2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="productos" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -748,36 +664,13 @@
       <workItem from="1564167973765" duration="1741000" />
       <workItem from="1564169816935" duration="1409000" />
       <workItem from="1564171348923" duration="191000" />
+      <workItem from="1564177223091" duration="3474000" />
+      <workItem from="1564200217360" duration="2473000" />
+      <workItem from="1564236202582" duration="14522000" />
+      <workItem from="1564334553815" duration="12579000" />
+      <workItem from="1564363115554" duration="9049000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7330000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="1272" y="-8" width="1296" height="1000" extended-state="6" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2540453" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -788,12 +681,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -815,124 +702,7 @@
       </map>
     </option>
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_25_140127_create_productos_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="29" column="62" lean-forward="true" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/grupos/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1917">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Config/GrupoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/impresiones/hojainscripcion/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-281">
-          <caret line="101" column="25" lean-forward="true" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4293">
-          <caret line="168" column="86" selection-start-line="168" selection-start-column="86" selection-end-line="168" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productos/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1296">
-          <caret line="9" column="73" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/escuelas/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modulos/escuela.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="60" selection-start-line="60" selection-end-line="84" selection-end-column="1" />
-          <folding>
-            <element signature="e#127#1888#0" />
-            <element signature="n#!!block;n#saveUpdate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Config/EscuelaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="88" column="8" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="92" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/escuelas/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productos/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="261" column="7" lean-forward="true" selection-start-line="237" selection-start-column="6" selection-end-line="261" selection-end-column="7" />
-          <folding>
-            <element signature="e#7360#9334#0#HTML" />
-            <element signature="e#9379#9939#0#HTML" />
-            <element signature="e#9987#10353#0#HTML" />
-            <element signature="e#10383#11457#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productos/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding>
-            <element signature="e#6154#6714#0#HTML" />
-            <element signature="e#6762#7128#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Producto.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1269">
-          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DataController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="536" column="3" lean-forward="true" selection-start-line="536" selection-start-column="3" selection-end-line="536" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/navbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="29" column="108" selection-start-line="29" selection-start-column="108" selection-end-line="29" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

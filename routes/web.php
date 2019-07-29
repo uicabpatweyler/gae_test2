@@ -118,9 +118,10 @@ Route::middleware(['auth'])->group(function(){
   Route::post('pagocolegiatura/cancel/{pagoColegiatura}','PagoColegiaturaController@cancelarPagoColegiatura')
     ->name('cancelar.pagocolegiatura');
 
-
   Route::get('pagocolegiaturas/faltantes', 'PagoColegiaturaController@alumnosDeudores')
     ->name('pagocolegiaturas.faltantes');
+
+  Route::resource('ventas', 'VentaController');
 
   Route::get('impresion/reciboinscripcion/{pagoInscripcion}/{inscripcion}', 'Impresion\ReciboInscripcion@printPDF')
     ->name('print.recibo.inscripcion');
@@ -138,6 +139,8 @@ Route::middleware(['auth'])->group(function(){
     ->name('impresion.inscripcionespordia.listado');
   Route::get('impresion/inscripciongradogrupo', 'ImpresionController@inscripcionesGradoGrupo')
     ->name('impresion.inscripciongradogrupo.index');
+  Route::get('impresion/kardex','ImpresionController@kardexProductos')
+    ->name('impresion.kardex.productos');
 
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
   Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');
@@ -145,6 +148,8 @@ Route::middleware(['auth'])->group(function(){
   Route::prefix('pdf')->group(function() {
     Route::get('inscripciones_escuela_ciclo/{escuela}/{ciclo}', 'Reporte\InscripcionesEscuelaCiclo@printPDF')
       ->name('pdf.inscripciones.escuela.ciclo');
+    Route::get('kardex/{escuela}/{ciclo}/{categoria}','Reporte\Kardex@printPDF')
+      ->name('pdf.kardex');
   });
 
   Route::prefix('data')->group(function () {
