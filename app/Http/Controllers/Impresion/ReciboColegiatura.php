@@ -171,6 +171,9 @@ class ReciboColegiatura extends Controller
     $this->pdf->SetFont('Times','BI', 14);
     $this->pdf->SetTextColor(0,128,0);
 
+    $this->pdf->Image('logo_left.png',10,144);
+    $this->pdf->Image('logo_right.png',185,140);
+
     $this->pdf->Cell(90,5,'IRLANDA Academy of English',0,0,'L');
     $this->pdf->Cell(16,5,'',0,0);
     $this->pdf->Cell(90,5,utf8_decode('Academia de Inglés IRLANDA'),0,1,'R');

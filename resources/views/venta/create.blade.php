@@ -13,7 +13,7 @@
       <h5 class="mb-0 lh-100 text-uppercase">
         <i class="fas fa-plus-circle text-info"></i> nueva venta
       </h5>
-      <a href="" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
+      <a href="{{route('ventas.index')}}" class="btn btn-sm blue600 text-white text-uppercase"  role="button" aria-pressed="true" >
         <i class="far fa-arrow-alt-circle-left"></i> regresar
       </a>
     </div>
@@ -21,12 +21,102 @@
 
     <div class="border-bottom border-gray pb-2 mb-2">
         <span class="font-weight-bold">
-            Complete los siguientes datos
+            Elija uno o mas productos. Presione el botón Lista de Productos para visualizar los productos por categoría.
         </span>
-      <small class="text-danger"> (* campo obligatorio)</small>
+
     </div>
 
-    <form action="">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-sm table-bordered">
+          <thead></thead>
+          <tbody>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Ciclo Escolar</td>
+            <td>{{$ciclo->periodo}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Escuela</td>
+            <td>{{$escuela->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Alumno</td>
+            <td>{{$alumno->full_name}}</td>
+          </tr>
+          <tr>
+            <td class="blue900 text-white font-weight-bold" style="width: 40%">Matrícula</td>
+            <td>{{$alumno->matricula}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-sm table-bordered">
+          <thead></thead>
+          <tbody>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Recibo</td>
+            <td class="text-center">
+              <span class="font-weight-bold text-danger">
+                {{$recibo->serie}}-{{$recibo->folio}}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Grado</td>
+            <td class="text-center">{{$grado->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Grupo</td>
+            <td class="text-center">{{$grupo->nombre}}</td>
+          </tr>
+          <tr>
+            <td class="bg-success text-white font-weight-bold" style="width: 50%">Fecha del recibo</td>
+            <td class="text-center">
+              <input type="text" class="form-control form-control-sm text-center" id="_fecha" name="_fecha" value="{{$fecha}}" readonly>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="text-center">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="btn_listaproductos" name="btn_listaproductos" data-toggle="modal" data-target="#modalProductos">
+          <i class="fas fa-table"></i>
+          Lista de Productos
+        </button>
+        <button type="button" class="btn red600 text-white mr-1" id="btn_cancelar" name="btn_cancelar">
+          <i class="fas fa-times-circle"></i>
+          Cancelar
+        </button>
+        <button type="button" class="btn blue700 text-white" id="btn_guardar" name="btn_guardar" disabled>
+          <i class="fas fa-hand-holding-usd"></i>
+          Realizar Venta
+        </button>
+        <button type="button" class="btn btn-info" id="btn_recibo" name="btn_recibo" disabled>
+          <i class="far fa-file-pdf"></i>
+          Imprimir Recibo
+        </button>
+      </div>
+    </div>
+
+    <form action="{{route('ventas.store')}}" method="POST" id="form_venta" name="form_venta">
+      <input type="hidden" id="rows_salida" name="rows_salida" value="">
+      <input type="hidden" id="escuela_id" name="escuela_id" value="{{$inscripcion->escuela_id}}">
+      <input type="hidden" id="ciclo_id" name="ciclo_id" value="{{$inscripcion->ciclo_id}}">
+      <input type="hidden" id="alumno_id" name="alumno_id" value="{{$inscripcion->alumno_id}}">
+      <input type="hidden" id="grupo_id" name="grupo_id" value="{{$inscripcion->grupo_id}}">
+      <input type="hidden" id="user_created" name="user_created" value="{{Auth::id()}}">
+      <input type="hidden" id="grado_id" name="grado_id" value="{{$inscripcion->grado_id}}">
+      <input type="hidden" id="serie_recibo" name="serie_recibo" value="{{$recibo->serie}}">
+      <input type="hidden" id="folio_recibo" name="folio_recibo" value="{{$recibo->folio}}">
+      <input type="hidden" id="fecha_venta" name="fecha_venta" value="{{$fecha}}">
+      <input type="hidden" id="cantidad_recibida_mxn" name="cantidad_recibida_mxn" value="">
+      <input type="hidden" id="urlRecibo" value="">
+      @csrf
       <table class="table table-striped" id="dtCartItems">
         <thead>
           <tr>
@@ -53,11 +143,6 @@
         </tfoot>
       </table>
     </form>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProductos">
-      Lista de Productos
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="modalProductos" tabindex="-1" role="dialog" aria-labelledby="modalProductosTitle" aria-hidden="true">
@@ -124,13 +209,112 @@
   <!-- Archivo(s) javascript del modulo -->
   <script src="{{ asset('jqueryvalidate-1.19.0/jquery.validate.js') }}"></script>
   <script src="{{ asset('jquerymask-1.14.15/jquery.mask.js') }}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/gijgo.js')}}"></script>
+  <script src="{{ asset('gijgo-datepicker-1.9.1.13/js/messages/messages.es-es.js') }}"></script>
   <script>
 
     $().ready(function(){
       let dtProductosModal;
       let dtCartItems;
-      let escuela = 1;
-      let ciclo = 2;
+      let datos = [];
+      let item = {};
+      let escuela = $("#escuela_id").val();
+      let ciclo = $("#ciclo_id").val();
+
+      $("#btn_guardar").click(function(){
+        datos = [];
+        let linea = 1;
+        let totalItems = parseFloat($("#_totalCartItems").val());
+        $(".cantidad").each(function (index, data) {
+          let fila = $(this).attr("name").slice(9);
+          item = {};
+          item['numero_linea'] = linea++;
+          item['categoria'] = $("#categoria_"+fila).val();
+          item['producto']  = fila;
+          item['precio_unitario'] = parseFloat($("#precioUnitario_"+fila).val());
+          item['cantidad'] = parseFloat($(this).val());
+          datos.push(item);
+        });
+        let message = totalItems === 1
+          ? '1 producto. Total: '+$("#_totalPago").val()
+          : totalItems + ' productos. Total: '+$("#_totalPago").val();
+
+
+        Swal.fire({
+          type:  'info',
+          title: message,
+          text:  '¿Los datos son correctos?',
+          allowOutsideClick:  false,
+          showCancelButton:   true,
+          showConfirmButton:  true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor:  '#d33',
+          cancelButtonText:   'Verificar',
+          confirmButtonText:
+            '<i class="fas fa-hand-holding-usd"></i> Realizar Venta',
+          confirmButtonAriaLabel: 'Realizar Venta',
+        }).then((result) => {
+          if (result.value) {
+            $("#rows_salida").val(JSON.stringify(datos));
+            saveUpdate();
+          }
+        });
+      });
+
+      function saveUpdate(){
+        $("#btn_guardar").prop('disabled', 'disabled');
+        $.ajax({
+          method: "POST",
+          url: $("#form_venta").attr('action'),
+          data: $("#form_venta").serialize()
+        })
+          .done(function(data, textStatus, jqXHR){
+            $("#urlRecibo").val(data.urlRecibo);
+            showSwal(textStatus, jqXHR.statusText, data.message);
+          })
+          .fail(function( jqXHR, textStatus, errorThrown){
+            var message = 'Ocurrio un error al procesar la venta de productos';
+            showSwal(textStatus, jqXHR.statusText, message);
+            $("#btn_guardar").removeAttr('disabled');
+            console.log(jqXHR);
+          });
+      }
+
+      $("#btn_recibo").click(function(){
+        event.preventDefault();
+        window.open($("#urlRecibo").val());
+        return false;
+      });
+
+      function showSwal(_textStatus, _statusText, _message){
+        Swal.fire({
+          type:  _textStatus,
+          title: _statusText === 'OK' ? 'OK' : _statusText,
+          text:  _message,
+          allowOutsideClick:  false,
+          showCancelButton:   _statusText !== 'OK',
+          showConfirmButton:  _statusText === 'OK',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor:  '#d33',
+          cancelButtonText:   'Corregir',
+          confirmButtonText:  'OK'
+        }).then((result) => {
+          if (result.value) {
+            $("#btn_recibo").removeAttr('disabled');
+            $("#_fecha").prop('disabled','disabled');
+            $("#btn_listaproductos").prop('disabled', 'disabled');
+          }
+        });
+      }
+
+      $('#_fecha').datepicker({
+        locale: 'es-es',
+        format: 'dd-mm-yyyy',
+        showOtherMonths: true,
+        disableDaysOfWeek: [0, 6]
+      }).change(function(){
+        $("#fecha_venta").val($(this).val());
+      });
 
       $("#modalProductos").on('show.bs.modal', function (event){
         //console.log('show.bs.modal');
@@ -228,7 +412,7 @@
           data['nombre'],
           '$ '+parseFloat(data['precio_venta']).format(2),
           inputCantidad(data['id']),
-          inputImporte(data['id'],data['precio_venta']),
+          inputImporte(data['id'],data['precio_venta'], data['categoria_id']),
           btnDelete()
         ]).draw();
 
@@ -239,11 +423,14 @@
           countItems();
         });
 
+        checkRows();
+
       });
 
       $('#dtCartItems tbody').on( 'click', 'button', function () {
-          dtCartItems.row( $(this).parents('tr') ).remove().draw();
-          countItems();
+        dtCartItems.row( $(this).parents('tr') ).remove().draw();
+        countItems();
+        checkRows();
       });
 
       function calcularImportePorFila(rowId){
@@ -251,7 +438,6 @@
         let _precUnit  = parseFloat($("#precioUnitario_"+rowId).val());
         let _importe = _cantidad * _precUnit;
         $("#importe_"+rowId).empty().val('$ '+parseFloat(_importe).format(2));
-
       }
 
       function countItems(){
@@ -269,6 +455,22 @@
         });
         $("#_totalCartItems").empty().val(cantidad);
         $("#_totalPago").empty().val('$ '+parseFloat(total).format(2));
+        $("#cantidad_recibida_mxn").empty().val(total);
+      }
+
+      function checkRows(){
+        let cantidad = 0;
+        let rowCantidad = 0;
+        $(".cantidad").each(function (index, data) {
+          rowCantidad = parseFloat($(this).val());
+          cantidad = cantidad + rowCantidad;
+        });
+        if(cantidad!==0){
+          $("#btn_guardar").enableControl(false, true);
+        }
+        else{
+          $("#btn_guardar").enableControl(false, false);
+        }
       }
 
       function inputCantidad(_idProducto){
@@ -279,11 +481,16 @@
         return input;
       }
 
-      function inputImporte(_idProducto,_precio_venta){
+      function inputImporte(_idProducto,_precio_venta,_categoria){
         let input = '';
         input += '<input type="text" class="form-control-sm form-control text-center font-weight-bold" ';
         input += 'value="$ '+parseFloat(_precio_venta).format(2)+'"';
         input += 'id="'+"importe_"+_idProducto+'" name="'+"importe_"+_idProducto+'" required disabled>';
+
+        input += '<input type="hidden" class="form-control-sm form-control" ';
+        input += 'value="'+_categoria+'" ';
+        input += 'id="'+"categoria_"+_idProducto+'" name="'+"categoria_"+_idProducto+'">';
+
         input += '<input type="hidden" class="form-control-sm form-control" ';
         input += 'value="'+parseFloat(_precio_venta).format(2)+'" ';
         input += 'id="'+"precioUnitario_"+_idProducto+'" name="'+"precioUnitario_"+_idProducto+'">';

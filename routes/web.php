@@ -121,7 +121,9 @@ Route::middleware(['auth'])->group(function(){
   Route::get('pagocolegiaturas/faltantes', 'PagoColegiaturaController@alumnosDeudores')
     ->name('pagocolegiaturas.faltantes');
 
-  Route::resource('ventas', 'VentaController');
+  Route::resource('ventas', 'VentaController')->except(['create']);
+  Route::get('ventas/create/{inscripcion}','VentaController@create')
+    ->name('ventas.create');
 
   Route::get('impresion/reciboinscripcion/{pagoInscripcion}/{inscripcion}', 'Impresion\ReciboInscripcion@printPDF')
     ->name('print.recibo.inscripcion');
@@ -141,6 +143,8 @@ Route::middleware(['auth'])->group(function(){
     ->name('impresion.inscripciongradogrupo.index');
   Route::get('impresion/kardex','ImpresionController@kardexProductos')
     ->name('impresion.kardex.productos');
+  Route::get('impresion/reciboventa/{salidaProducto}','Impresion\ReciboVenta@printPDF')
+    ->name('print.reciboventa');
 
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
   Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');

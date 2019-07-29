@@ -294,13 +294,15 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => null
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('group_enroll', function($row){
@@ -309,13 +311,15 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => null
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('sheet_enroll', function($row){
@@ -324,13 +328,15 @@ class DataController extends Controller
         $urlHoja     = route('print.hoja.inscripcion', $row->inscripcion_id);
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => null
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('receipt_enroll', function($row){
@@ -339,13 +345,15 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = route('print.recibo.inscripcion', ['pago' => $row->pago_id, 'inscripcion' =>$row->inscripcion_id ]);
         $urlPago     = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => null
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('pago_colegiatura', function($row){
@@ -354,13 +362,32 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago = route('pagocolegiaturas.create',['inscripcion' => $row->inscripcion_id]);
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => null
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
+        ]);
+      })
+      ->addColumn('venta', function ($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        $urlVenta    = route('ventas.create',['inscripcion' => $row->inscripcion_id]);
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->make(true);
@@ -392,13 +419,15 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlShowToCancel = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => $urlShowToCancel
+          'urlShowToCancel' => $urlShowToCancel,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('importe', function ($row) {
@@ -411,13 +440,15 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlShowToCancel = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => $urlShowToCancel
+          'urlShowToCancel' => $urlShowToCancel,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('recibo_colegiatura', function($row){
@@ -427,13 +458,15 @@ class DataController extends Controller
         $urlRecibo   = route('print.recibo.colegiatura',['pago' => $row->id]);
         $urlPago     = null;
         $urlShowToCancel = null;
+        $urlVenta    = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => $urlShowToCancel
+          'urlShowToCancel' => $urlShowToCancel,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->addColumn('showpaytocancel', function($row){
@@ -442,6 +475,7 @@ class DataController extends Controller
         $urlHoja     = null;
         $urlRecibo   = null;
         $urlPago     = null;
+        $urlVenta    = null;
         if($row->pago_cancelado){
           $urlShowToCancel = null;
         }else{
@@ -454,7 +488,8 @@ class DataController extends Controller
           'urlHoja'     => $urlHoja,
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
-          'urlShowToCancel' => $urlShowToCancel
+          'urlShowToCancel' => $urlShowToCancel,
+          'urlVenta'        => $urlVenta
         ]);
       })
       ->make(true);

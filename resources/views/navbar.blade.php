@@ -66,7 +66,7 @@
             Ventas
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownVentas">
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Libros y Playeras</a>
+            <a class="dropdown-item" href="{{route('ventas.index')}}"><i class="fas fa-angle-right"></i> Libros y Playeras</a>
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cancelar Venta</a>
           </div>
         </li>

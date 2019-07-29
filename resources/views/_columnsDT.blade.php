@@ -36,4 +36,11 @@
     <i class="fas fa-ban"></i>
   </a>
 @endif
+@if($urlVenta!=null)
+  <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href=('{!! $urlVenta !!}')">
+    <i class="far fa-user-circle"></i>
+    <i class="fas fa-arrow-right"></i>
+    <i class="fas fa-dollar-sign"></i>
+  </button>
+@endif
 
