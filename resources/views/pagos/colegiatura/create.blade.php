@@ -250,12 +250,12 @@
           .done(function(data, textStatus, jqXHR){
             $("#urlRecibo").val(data.urlRecibo);
             $("#_fecha").prop('disabled','disabled');
-            showSwal(textStatus, jqXHR.statusText, data.message);
+              showSwal('success', 'OK', data.message);
             $("#btn_recibo").removeAttr('disabled');
           })
           .fail(function( jqXHR, textStatus, errorThrown){
             var message = 'Ocurrio un error al procesar el pago de colegiatura.';
-            showSwal(textStatus, jqXHR.statusText, message);
+            showSwal('error', 'ERROR', message);
             console.log(jqXHR);
             $("#btn_recibo").removeAttr('disabled');
           });

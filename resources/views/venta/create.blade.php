@@ -269,17 +269,13 @@
           data: $("#form_venta").serialize()
         })
           .done(function(data, textStatus, jqXHR){
-            console.log('textStatus: '+textStatus);
-            console.log(jqXHR);
-            console.log(jqXHR.statusText);
             $("#urlRecibo").val(data.urlRecibo);
-            showSwal(textStatus, jqXHR.statusText, data.message);
+            showSwal('success', 'OK', data.message);
           })
           .fail(function( jqXHR, textStatus, errorThrown){
             var message = 'Ocurrio un error al procesar la venta de productos';
-            showSwal(textStatus, jqXHR.statusText, message);
+            showSwal('error', 'ERROR', message);
             $("#btn_guardar").removeAttr('disabled');
-            console.log(jqXHR);
           });
       }
 
@@ -292,20 +288,20 @@
       function showSwal(_textStatus, _statusText, _message){
         Swal.fire({
           type:  _textStatus,
-          title: _textStatus === 'success' ? 'OK' : _statusText,
+          title: _statusText === 'OK' ? 'OK' : _statusText,
           text:  _message,
           allowOutsideClick:  false,
-          showCancelButton:   _textStatus !== 'success',
-          showConfirmButton:  _textStatus === 'success',
+          showCancelButton:   _statusText !== 'OK',
+          showConfirmButton:  _statusText === 'OK',
           confirmButtonColor: '#3085d6',
           cancelButtonColor:  '#d33',
           cancelButtonText:   'Corregir',
           confirmButtonText:  'OK'
         }).then((result) => {
           if (result.value) {
-            $("#btn_recibo").removeAttr('disabled');
-            $("#_fecha").prop('disabled','disabled');
-            $("#btn_listaproductos").prop('disabled', 'disabled');
+            $(":checkbox").prop('disabled', 'disabled');
+            $(".recargo").prop('disabled','disabled');
+            $(".descuento").prop('disabled','disabled');
           }
         });
       }
