@@ -45,4 +45,8 @@ class ImpresionController extends Controller
         'categorias' => Categoria::where('parent_id', '=', 0)->get()
       ]);
   }
+
+  public function listaVentasPordia(){
+    return view('impresiones.reportes.ventaspordia.index');
+  }
 }

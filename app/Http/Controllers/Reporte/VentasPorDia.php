@@ -23,9 +23,9 @@ class VentasPorDia extends Controller
    * Total otras paginas: 45 - 4 = 41
    *
    */
-  public function printPDF(){
+  public function printPDF($fechaReporte){
 
-    $fechaReporte = '2018-08-16';
+    //$fechaReporte = '2018-08-21';
     $numLibros = 0;
     $numPlayeras = 0;
     $importeLibros = 0;
@@ -58,13 +58,20 @@ class VentasPorDia extends Controller
         ->where('salidaprod_id','=', $salida->id)
         ->orderBy('numero_linea','asc')
         ->get();
-
+      $cancelType = 0;
       foreach ($detalles as $detalle) {
-        if($detalle->nombre_categoria === 'Libro'){
+        if($salida->venta_cancelada === 1 && ($salida->fecha_venta === $salida->fecha_cancelacion)){
+          $cancelType = 1;
+        }
+        if($salida->venta_cancelada === 1  && ($salida->fecha_venta !== $salida->fecha_cancelacion)){
+          $cancelType = 0;
+        }
+
+        if($detalle->nombre_categoria === 'Libro'  && $cancelType === 0){
           $numLibros = $numLibros + $detalle->cantidad;
           $importeLibros = $importeLibros + ($detalle->precio_unitario * $detalle->cantidad);
         }
-        if($detalle->nombre_categoria === 'Playera'){
+        if($detalle->nombre_categoria === 'Playera' && $cancelType === 0){
           $numPlayeras = $numPlayeras + $detalle->cantidad;
           $importePlayeras = $importePlayeras + ($detalle->precio_unitario * $detalle->cantidad);
         }
@@ -77,7 +84,7 @@ class VentasPorDia extends Controller
           'apellido1'  => $salida->apellido1,
           'apellido2'  => strlen($salida->apellido1)!==0 ?  ' '.substr($salida->apellido2,0,1).'.' : '',
           'producto'   => $detalle->nombre_producto,
-          'fecha_cancelacion' => $salida->fecha_cancelacion!==null ? $salida->fecha_cancelacion->format('Y-m-d') : '',
+          'fecha_cancelacion' => $salida->fecha_cancelacion!==null ? (new Carbon($salida->fecha_cancelacion))->format('d-m-Y') : '',
           'cantidad'   => $detalle->cantidad,
           'precio_unitario' => $detalle->precio_unitario,
           'importe' => $detalle->precio_unitario * $detalle->cantidad
@@ -85,10 +92,6 @@ class VentasPorDia extends Controller
       }
       $numLinea++;
     }
-
-    //$salida->nombre1.strlen($salida->nombre2)!==0 ?  ' '.substr($salida->nombre2,0,1).'.' : ''
-
-    //return $rows;
 
     $data = $this->detailsRowsReport(count($rows));
 
@@ -98,7 +101,7 @@ class VentasPorDia extends Controller
 
     for($pagina = 0; $pagina < count($data); $pagina++){
       $this->pdf->AddPage('P','Letter');
-      $this->tituloPaginacion();
+      $this->tituloPaginacion($fechaReporte);
       $this->espacio(5);
       if($data[$pagina]['page'] === 1){
         $this->resumen($numLibros, $numPlayeras, $importeLibros, $importePlayeras, $numeroRecibos, $recibosCancelados);
@@ -214,13 +217,20 @@ class VentasPorDia extends Controller
     $this->reset();
   }
 
-  private function tituloPaginacion(){
+  private function tituloPaginacion($date){
+    $shortDayOfWeek = array('Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado');
+    $nameMonths     = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre',' Diciembre'];
+    $fecha = (new Carbon($date));
+    $_fecha = $shortDayOfWeek[$fecha->dayOfWeek].' '.$fecha->day.', '.$nameMonths[$fecha->month-1].' '.$fecha->year;
+
     /*Titulo del reporte  y paginación*/
-    $this->pdf->SetFont('Arial', 'B', 9);
+    $this->pdf->SetFont('Arial', '', 9);
     $this->pdf->SetTextColor(0);
     $this->pdf->SetLineWidth(.2);
     $this->pdf->SetDrawColor(0);
-    $this->pdf->Cell(150,8,'Reporte de ventas del dia: ','B',0,'L',false);
+    $this->pdf->Cell(40,8,'Reporte de ventas del dia: ','B',0,'L',false);
+    $this->pdf->SetFont('Arial', 'B', 9);
+    $this->pdf->Cell(110,8,utf8_decode($_fecha),'B',0,'L',false);
     $this->pdf->SetFont('Arial', '', 8);
     $this->pdf->Cell(56,8,utf8_decode('Página ').$this->pdf->PageNo().' de {nb}','B',1,'R',false);
     $this->reset();

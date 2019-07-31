@@ -124,6 +124,9 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('ventas', 'VentaController')->except(['create']);
   Route::get('ventas/create/{inscripcion}','VentaController@create')
     ->name('ventas.create');
+  /*impresiones/reportes/ventaspordia/index.blade.php*/
+  Route::get('ventas/impresion/recibo_reporte','ImpresionController@listaVentasPordia')
+    ->name('ventas.impresion.recibo.reporte');
 
   Route::get('impresion/reciboinscripcion/{pagoInscripcion}/{inscripcion}', 'Impresion\ReciboInscripcion@printPDF')
     ->name('print.recibo.inscripcion');
@@ -135,8 +138,13 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.hojainscripcion');
   Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
     ->name('alumnos.impresion.reciboinscripcion');
+
+  //Impresión del Recibo de colegiaturas por dia
+  //Impresion del Reporte de colegiatura por dia
   Route::get('alumnos/impresion/recibocolegiatura','ImpresionController@reciboColegiatura')
     ->name('alumnos.impresion.recibocolegiatura');
+
+
   Route::get('impresion/inscripcionespordia','ImpresionController@listadoInscripciones')
     ->name('impresion.inscripcionespordia.listado');
   Route::get('impresion/inscripciongradogrupo', 'ImpresionController@inscripcionesGradoGrupo')
@@ -146,9 +154,10 @@ Route::middleware(['auth'])->group(function(){
   Route::get('impresion/reciboventa/{salidaProducto}','Impresion\ReciboVenta@printPDF')
     ->name('print.reciboventa');
 
+
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
   Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');
-  Route::get('reportes/ventaspordia','Reporte\VentasPorDia@printPDF');
+  Route::get('reportes/ventaspordia/{fecha}','Reporte\VentasPorDia@printPDF');
 
   Route::prefix('pdf')->group(function() {
     Route::get('inscripciones_escuela_ciclo/{escuela}/{ciclo}', 'Reporte\InscripcionesEscuelaCiclo@printPDF')
@@ -178,6 +187,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('categorias/childs/{parent_id}','DataController@selectChilds')->name('childs.data');
     Route::get('productos/{escuela}/{ciclo}/{parent}/{parentid}','DataController@dtProductos')
       ->name('productos.data');
+    Route::get('ventas/porfecha/{fecha}','DataController@ventasPorDia')
+      ->name('ventaspordia.data');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');

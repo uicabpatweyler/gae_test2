@@ -55,7 +55,6 @@
           <div class="dropdown-menu" aria-labelledby="dropdownPagos">
             <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Pago de Inscripcion</a>
             <a class="dropdown-item" href="{{route('pagocolegiaturas.index')}}"><i class="fas fa-angle-right"></i> Pago de Colegiatura</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cancelar Pago</a>
           </div>
         </li>
 
@@ -67,7 +66,6 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownVentas">
             <a class="dropdown-item" href="{{route('ventas.index')}}"><i class="fas fa-angle-right"></i> Libros y Playeras</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Cancelar Venta</a>
           </div>
         </li>
 
@@ -87,8 +85,8 @@
             <a class="dropdown-item" href="{{route('alumnos.impresion.recibocolegiatura')}}"><i class="fas fa-angle-right"></i> Reporte de Colegiaturas</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{route('impresion.kardex.productos')}}"><i class="fas fa-angle-right"></i> Kardex de Productos</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-angle-right"></i> Lista de Asistencia</a>
+            <a class="dropdown-item" href="{{route('ventas.impresion.recibo.reporte')}}"><i class="fas fa-angle-right"></i> Recibo de Venta</a>
+            <a class="dropdown-item" href="{{route('ventas.impresion.recibo.reporte')}}"><i class="fas fa-angle-right"></i> Reporte de Ventas</a>
           </div>
         </li>
 

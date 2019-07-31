@@ -394,7 +394,7 @@ class DataController extends Controller
   }
 
   /*impresiones.recibocolegiatura.index*/
-  /*pagos.colegiatura.index (cancelar pago)*/
+  /*pagos.colegiatura.index (tab cancelar pago)*/
   public function colegiaturasPorFecha($fecha){
     $rows = DB::table('alumnos')
       ->join('pago_colegiaturas', 'alumnos.id','=', 'pago_colegiaturas.alumno_id')
@@ -577,6 +577,28 @@ class DataController extends Controller
           ])
           ->first();
         return $row->existencia;
+      })
+      ->make(true);
+  }
+
+  /*impresiones/reportes/ventaspordia/index.blade.php*/
+  public function ventasPorDia($fecha){
+    $salidas = DB::table('salida_productos')
+      ->join('alumnos', 'salida_productos.alumno_id', '=', 'alumnos.id')
+      ->select('salida_productos.*')
+      ->addselect('alumnos.id as alumno_id','alumnos.nombre1', 'alumnos.nombre2', 'alumnos.apellido1', 'alumnos.apellido2')
+      ->whereDate('fecha_venta', $fecha)
+      ->orderBy('folio_recibo', 'asc')
+      ->get();
+    return DataTables::of($salidas)
+      ->addColumn('importe', function ($row) {
+        return '$ ' . number_format($row->cantidad_recibida_mxn, 2, '.', ',');
+      })
+      ->addColumn('recibo_venta', function($row){
+        $urlRecibo   = route('print.reciboventa',['salida' => $row->id]);
+        return view('impresiones.reportes.ventaspordia._columnsDTVentas',[
+          'urlRecibo'   => $urlRecibo
+        ]);
       })
       ->make(true);
   }
