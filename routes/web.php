@@ -148,6 +148,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
   Route::get('reportes/inscripcionpordia/{fecha}', 'Reporte\PagosInscripcionPorDia@printPDF');
+  Route::get('reportes/ventaspordia','Reporte\VentasPorDia@printPDF');
 
   Route::prefix('pdf')->group(function() {
     Route::get('inscripciones_escuela_ciclo/{escuela}/{ciclo}', 'Reporte\InscripcionesEscuelaCiclo@printPDF')

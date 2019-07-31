@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/VentasPorDia.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ModelsPdf/ReporteDiarioVenta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pagos/colegiatura/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pagos/colegiatura/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/venta/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/venta/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,24 +42,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>urlRecibo</find>
-      <find>Fpdf</find>
-      <find>Fpdf::</find>
-      <find>Image</find>
-      <find>urlVenta</find>
-      <find>_columnsDT</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>$this-&gt;pdf-&gt;</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpServers">
-    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -170,19 +156,19 @@
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\gae_test2\resources\views" />
-      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
-      <recent name="C:\laragon\www\gae_test2\app\Models" />
-      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
-      <recent name="C:\laragon\www\gae_test2\app\Models\Inscripcion" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
       <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
       <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
       <recent name="C:\laragon\www\gae_test2\public\js" />
       <recent name="C:\laragon\www\gae_test2\public\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\gae_test2\resources\views" />
+      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
+      <recent name="C:\laragon\www\gae_test2\app\Models" />
+      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
+      <recent name="C:\laragon\www\gae_test2\app\Models\Inscripcion" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -687,6 +673,8 @@
       <workItem from="1564455670831" duration="1067000" />
       <workItem from="1564458645848" duration="862000" />
       <workItem from="1564459544056" duration="767000" />
+      <workItem from="1564494706846" duration="637000" />
+      <workItem from="1564505867262" duration="19744000" />
     </task>
     <servers />
   </component>

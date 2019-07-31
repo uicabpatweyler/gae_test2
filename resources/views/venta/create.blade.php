@@ -299,9 +299,9 @@
           confirmButtonText:  'OK'
         }).then((result) => {
           if (result.value) {
-            $(":checkbox").prop('disabled', 'disabled');
-            $(".recargo").prop('disabled','disabled');
-            $(".descuento").prop('disabled','disabled');
+            $("#btn_recibo").removeAttr('disabled');
+            $("#_fecha").prop('disabled','disabled');
+            $("#btn_listaproductos").prop('disabled', 'disabled');
           }
         });
       }
