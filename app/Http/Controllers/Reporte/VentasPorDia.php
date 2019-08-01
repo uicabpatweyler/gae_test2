@@ -43,14 +43,18 @@ class VentasPorDia extends Controller
 
     $rows = [];
     $numLinea = 1;
+
     foreach ($salidas as $salida) {
-
+      $cancelType = 0;
       $numeroRecibos++;
-
       if($salida->venta_cancelada){
         $recibosCancelados++;
+        $date_a = Carbon::parse($salida->fecha_venta);
+        $date_b = Carbon::parse($salida->fecha_cancelacion);
+        if($date_a->equalTo($date_b)){
+          $cancelType = 1;
+        }
       }
-
       $detalles = DB::table('detalle_salida_productos')
         ->join('productos','detalle_salida_productos.producto_id', '=', 'productos.id')
         ->select('detalle_salida_productos.*')
@@ -58,14 +62,8 @@ class VentasPorDia extends Controller
         ->where('salidaprod_id','=', $salida->id)
         ->orderBy('numero_linea','asc')
         ->get();
-      $cancelType = 0;
+
       foreach ($detalles as $detalle) {
-        if($salida->venta_cancelada === 1 && ($salida->fecha_venta === $salida->fecha_cancelacion)){
-          $cancelType = 1;
-        }
-        if($salida->venta_cancelada === 1  && ($salida->fecha_venta !== $salida->fecha_cancelacion)){
-          $cancelType = 0;
-        }
 
         if($detalle->nombre_categoria === 'Libro'  && $cancelType === 0){
           $numLibros = $numLibros + $detalle->cantidad;
@@ -76,18 +74,18 @@ class VentasPorDia extends Controller
           $importePlayeras = $importePlayeras + ($detalle->precio_unitario * $detalle->cantidad);
         }
         $rows[]= [
-          'numLinea'  => $numLinea,
-          'recibo'    => $salida-> serie_recibo.'-'.$salida->folio_recibo,
-          'cancelado' => $salida->venta_cancelada ? 'Si' : '',
-          'nombre1'    => $salida->nombre1,
-          'nombre2'    => strlen($salida->nombre2)!==0 ?  ' '.substr($salida->nombre2,0,1).'.' : '',
-          'apellido1'  => $salida->apellido1,
-          'apellido2'  => strlen($salida->apellido1)!==0 ?  ' '.substr($salida->apellido2,0,1).'.' : '',
-          'producto'   => $detalle->nombre_producto,
+          'numLinea'          => $numLinea,
+          'recibo'            => $salida-> serie_recibo.'-'.$salida->folio_recibo,
+          'cancelado'         => $salida->venta_cancelada ? 'Si' : '',
+          'nombre1'           => $salida->nombre1,
+          'nombre2'           => strlen($salida->nombre2)!==0 ?  ' '.substr($salida->nombre2,0,1).'.' : '',
+          'apellido1'         => $salida->apellido1,
+          'apellido2'         => strlen($salida->apellido1)!==0 ?  ' '.substr($salida->apellido2,0,1).'.' : '',
+          'producto'          => $detalle->nombre_producto,
           'fecha_cancelacion' => $salida->fecha_cancelacion!==null ? (new Carbon($salida->fecha_cancelacion))->format('d-m-Y') : '',
-          'cantidad'   => $detalle->cantidad,
-          'precio_unitario' => $detalle->precio_unitario,
-          'importe' => $detalle->precio_unitario * $detalle->cantidad
+          'cantidad'          => $detalle->cantidad,
+          'precio_unitario'   => $cancelType === 1 ? 0 : $detalle->precio_unitario,
+          'importe'           => $cancelType === 1 ? 0 : $detalle->precio_unitario * $detalle->cantidad
         ];
       }
       $numLinea++;

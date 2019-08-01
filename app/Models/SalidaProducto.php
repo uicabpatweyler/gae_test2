@@ -48,4 +48,5 @@ class SalidaProducto extends Model
   public function setFechaVentaAttribute($value){
     $this->attributes['fecha_venta'] = (new Carbon($value))->format('Y-m-d');
   }
+
 }
