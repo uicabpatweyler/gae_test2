@@ -86,7 +86,38 @@
         <!-- Formulario, Tablas...etc -->
 
       </div>
-      <div class="tab-pane fade" id="cancelar_pago" role="tabpanel" aria-labelledby="cancel-tab">...</div>
+      <div class="tab-pane fade" id="cancelar_pago" role="tabpanel" aria-labelledby="cancel-tab">
+        <div class="border-bottom border-gray pb-2 mb-2"></div>
+        <div class="card border-0 mt-2">
+          <div class="form-group row">
+            <label for="fecha" class="col-sm-2 col-form-label">Seleccionar fecha</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fecha" name="fecha" readonly>
+            </div>
+            <button type="button" class="btn btn-primary mr-2" id="btn_buscar" name="btn_buscar">
+              <i class="fas fa-search"></i>
+              Realizar Búsqueda</button>
+          </div>
+        </div>
+
+        <div class="border-bottom border-gray pb-0 mb-2"></div>
+
+        <div class="table-responsive col-12">
+          <table class="table table-striped" id="ventas">
+            <thead>
+            <tr>
+              <th scope="col" class="text-left">FECHA</th>
+              <th scope="col" class="text-left">#</th>
+              <th scope="col" class="text-left">ESTADO</th>
+              <th scope="col" class="text-left">IMPORTE</th>
+              <th scope="col" class="text-left">ALUMNO</th>
+              <th scope="col" class="text-left">ACCIONES</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
+      </div>
       <div class="tab-pane fade" id="editar_pago" role="tabpanel" aria-labelledby="edit-tab">...</div>
     </div>
 
@@ -157,6 +188,50 @@
               }
             },
             {data: "venta", className:"text-center", searchable: false,
+              render: function(data){
+                return htmlDecode(data);
+              }
+            }
+          ]
+        });
+      }
+
+      $("#btn_buscar").click(function(){
+        if($("#fecha").val()!==""){
+          filtrarVentas(urlRoot + '/data/ventas/porfecha/'+$("#fecha").val());
+        }
+      });
+
+      function filtrarVentas(urlAjax){
+        dtAlumnos = $('#ventas').DataTable({
+          processing: true,
+          serverSide: true,
+          ordering:false,
+          ajax: urlAjax,
+          destroy: true,
+          language: {
+            url: "{{ asset('datatables-1.10.19/lang/Spanish.json') }}"
+          },
+          columns: [
+            {data: 'fecha_venta', name: 'fecha_venta', className:"text-center",searchable: false,},
+            {data: 'folio_recibo', name: 'folio_recibo', className:"text-center"},
+            {
+              data: null, className: "text-center", searchable: false,
+              render: function (data) {
+                if(data.venta_cancelada  === "1"){
+                  return '<span class="text-danger font-weight-bold">Cancelado</span>'
+                }
+                return '';
+              }
+            },
+            {data: 'importe', name: 'importe', className:"text-center",searchable: false,},
+            {
+              data: null, className:"text-left", searchable: false,
+              render: function (data) {
+                return data.nombre1+' '+data.nombre2+' '+data.apellido1+' '+data.apellido2;
+              }
+            },
+            {data: "cancelar_recuperar", className:"text-center", searchable: false,
               render: function(data){
                 return htmlDecode(data);
               }

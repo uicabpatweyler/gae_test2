@@ -124,6 +124,11 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('ventas', 'VentaController')->except(['create']);
   Route::get('ventas/create/{inscripcion}','VentaController@create')
     ->name('ventas.create');
+  Route::get('venta/show/cancel/{salidaProducto}','VentaController@showPayToCancel')
+    ->name('venta.showpaytocancel');
+  Route::patch('venta/cancel/{salidaProducto}','VentaController@cancelarVenta')
+    ->name('cancelar.venta');
+
   /*impresiones/reportes/ventaspordia/index.blade.php*/
   Route::get('ventas/impresion/recibo_reporte','ImpresionController@listaVentasPordia')
     ->name('ventas.impresion.recibo.reporte');

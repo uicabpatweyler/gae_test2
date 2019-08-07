@@ -596,8 +596,22 @@ class DataController extends Controller
       })
       ->addColumn('recibo_venta', function($row){
         $urlRecibo   = route('print.reciboventa',['salida' => $row->id]);
+        $urlShowToCancel = null;
         return view('impresiones.reportes.ventaspordia._columnsDTVentas',[
-          'urlRecibo'   => $urlRecibo
+          'urlRecibo'   => $urlRecibo,
+          'urlShowToCancel' => $urlShowToCancel
+        ]);
+      })
+      ->addColumn('cancelar_recuperar', function($row){
+        $urlRecibo   = null;
+        if($row->venta_cancelada){
+          $urlShowToCancel = null;
+        }else{
+          $urlShowToCancel = route('venta.showpaytocancel', ['salida' => $row->id]);
+        }
+        return view('impresiones.reportes.ventaspordia._columnsDTVentas',[
+          'urlRecibo'   => $urlRecibo,
+          'urlShowToCancel' => $urlShowToCancel
         ]);
       })
       ->make(true);

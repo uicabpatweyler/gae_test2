@@ -13,6 +13,7 @@ use App\Models\Inscripcion;
 use App\Models\SalidaProducto;
 use App\Models\SerieFolio;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class VentaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -34,7 +35,7 @@ class VentaController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create($inscripcion)
     {
@@ -58,8 +59,8 @@ class VentaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -124,10 +125,10 @@ class VentaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource to cancel.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -138,7 +139,7 @@ class VentaController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -148,20 +149,60 @@ class VentaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param SalidaProducto $salidaProducto
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SalidaProducto $salidaProducto)
     {
-        //
+
+    }
+
+    public function cancelarVenta(Request $request, SalidaProducto $salidaProducto)
+    {
+      $salidaProducto->venta_cancelada = true;
+      $salidaProducto->fecha_cancelacion = $request->get('fecha_cancelacion');
+      $salidaProducto->cancelado_por = $request->get('cancelado_por');
+      $salidaProducto->motivo_cancelacion = $request->get('motivo_cancelacion');
+      $salidaProducto->save();
+
+      DetalleSalidaProducto::where('salidaprod_id', $salidaProducto->id)
+        ->update(['venta_cancelada' => true]);
+
+      $rows = DetalleSalidaProducto::where('salidaprod_id', $salidaProducto->id)->get();
+      foreach ($rows as $row) {
+        $productKardex = DB::table('kardex')
+          ->where('producto_id','=', $row->producto_id)
+          ->limit(1);
+        $productKardex->increment('existencia',$row->cantidad);
+        $productKardex->decrement('salidas',$row->cantidad);
+      }
+
+      return response()
+        ->json([
+          'message'  => 'El recibo de venta con el folio '.$salidaProducto->folio_recibo.' se cancelo correctamente',
+          'location' => route('ventas.index')
+        ]);
+    }
+
+  /**
+   * Display the specified resource to cancel.
+   *
+   * @param SalidaProducto $salidaProducto
+   * @return Response
+   */
+    public function showPayToCancel(SalidaProducto $salidaProducto)
+    {
+      return view('venta.cancel', [
+        'salida' => $salidaProducto
+      ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

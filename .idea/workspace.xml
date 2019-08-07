@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/venta/cancel.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Reporte/PagosInscripcionPorDia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/PagosInscripcionPorDia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ModelsPdf/PagosInscripcionPorDia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ModelsPdf/PagosInscripcionPorDia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/impresiones/reportes/ventaspordia/_columnsDTVentas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/impresiones/reportes/ventaspordia/_columnsDTVentas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/venta/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/venta/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +144,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/gijgo-datepicker-1.9.1.13" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -678,6 +682,10 @@
       <workItem from="1564608599736" duration="5404000" />
       <workItem from="1564665162748" duration="2968000" />
       <workItem from="1564671570812" duration="4875000" />
+      <workItem from="1564758140648" duration="693000" />
+      <workItem from="1565128456689" duration="2511000" />
+      <workItem from="1565184152430" duration="1288000" />
+      <workItem from="1565196438159" duration="4710000" />
     </task>
     <servers />
   </component>
