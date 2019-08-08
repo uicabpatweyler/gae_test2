@@ -285,6 +285,7 @@ class DataController extends Controller
       ->addSelect( 'alumnos.nombre1','alumnos.nombre2','alumnos.apellido1', 'alumnos.apellido2')
       ->where('inscripciones.escuela_id','=', $escuela)
       ->where('inscripciones.ciclo_id','=', $ciclo)
+      ->where('inscripciones.pago_id','!=', 0)
       ->orderBy('inscripciones.pago_id', 'asc')
       ->get();
     return DataTables::of($rows)
