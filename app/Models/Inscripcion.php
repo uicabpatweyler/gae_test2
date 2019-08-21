@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Config\Ciclo;
+use App\Models\Config\Escuela;
+use App\Models\Config\Grado;
+use App\Models\Config\Grupo;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -82,6 +86,34 @@ class Inscripcion extends Model
    */
   public function alumno(){
     return $this->belongsTo(Alumno::class, 'alumno_id', 'id');
+  }
+
+  /*
+   * Obtener la escuela a la que pertenece esta inscripcion
+   */
+  public function escuela(){
+    return $this->belongsTo(Escuela::class, 'escuela_id', 'id');
+  }
+
+  /*
+   * Obtener el ciclo al que pertenece esta inscripcion
+   */
+  public function ciclo(){
+    return $this->belongsTo(Ciclo::class, 'ciclo_id', 'id');
+  }
+
+  /*
+   * Obtener el grado al que pertenece esta inscripcion
+   */
+  public function grado(){
+    return $this->belongsTo(Grado::class, 'grado_id', 'id');
+  }
+
+  /*
+   * Obtener el grupo al que pertenece esta inscripcion
+   */
+  public function grupo(){
+    return $this->belongsTo(Grupo::class, 'grupo_id', 'id');
   }
 
 }

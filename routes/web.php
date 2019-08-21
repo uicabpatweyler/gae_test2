@@ -43,6 +43,12 @@ Route::middleware(['auth'])->group(function(){
     ->name('infoalumno.edit');
   Route::patch('alumno/informacion/update/{informacionAlumno}', 'InfoAlumnoController@updateInfoAlumno')
     ->name('infoalumno.update');
+  Route::get('alumnos/cambiodegrupo/index','CambioGrupoController@index')
+    ->name('alumnos.cambiodegrupo.index');
+  Route::get('alumnos/cambiodegrupo/create/{inscripcion}','CambioGrupoController@create')
+    ->name('alumnos.cambiodegrupo.create');
+  Route::post('alumnos/cambiodegrupo/store','CambioGrupoController@store')
+    ->name('alumnos.cambiodegrupo.store');
 
   //Rutas para la creación de la información de un  nuevo alumno (inscripcion)
   Route::get('alumno/direccion/{alumno}','InfoAlumnoController@createDireccion')

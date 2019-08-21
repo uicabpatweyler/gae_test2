@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CambioGrupoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/cambiodegrupo/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/cambiodegrupo/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Inscripcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Inscripcion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_columnsDT.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_columnsDT.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,22 +157,22 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
-      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
-      <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
-      <recent name="C:\laragon\www\gae_test2\public\js" />
-      <recent name="C:\laragon\www\gae_test2\public\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\gae_test2\resources\views" />
       <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
       <recent name="C:\laragon\www\gae_test2\app\Models" />
       <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
       <recent name="C:\laragon\www\gae_test2\app\Models\Inscripcion" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
+      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
+      <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
+      <recent name="C:\laragon\www\gae_test2\public\js" />
+      <recent name="C:\laragon\www\gae_test2\public\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -685,6 +692,14 @@
       <workItem from="1565292750155" duration="3945000" />
       <workItem from="1565358732604" duration="81000" />
       <workItem from="1565733354049" duration="65000" />
+      <workItem from="1565733484829" duration="131000" />
+      <workItem from="1565733761334" duration="629000" />
+      <workItem from="1565736518120" duration="1236000" />
+      <workItem from="1565793420609" duration="4132000" />
+      <workItem from="1565909790374" duration="239000" />
+      <workItem from="1565924405213" duration="3902000" />
+      <workItem from="1566249766010" duration="6973000" />
+      <workItem from="1566338153069" duration="866000" />
     </task>
     <servers />
   </component>

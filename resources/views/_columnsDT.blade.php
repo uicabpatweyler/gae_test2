@@ -43,4 +43,11 @@
     <i class="fas fa-dollar-sign"></i>
   </button>
 @endif
+@if($urlCambioGrupo!=null)
+  <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href=('{!! $urlCambioGrupo !!}')">
+    <i class="far fa-user-circle"></i>
+    <i class="fas fa-arrow-right"></i>
+    <i class="fas fa-user-friends"></i>
+  </button>
+@endif
 

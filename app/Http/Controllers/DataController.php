@@ -296,6 +296,7 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlVenta    = null;
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -303,7 +304,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('group_enroll', function($row){
@@ -313,6 +315,7 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlVenta    = null;
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -320,7 +323,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('sheet_enroll', function($row){
@@ -330,6 +334,7 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlVenta    = null;
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -337,7 +342,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('receipt_enroll', function($row){
@@ -347,6 +353,7 @@ class DataController extends Controller
         $urlRecibo   = route('print.recibo.inscripcion', ['pago' => $row->pago_id, 'inscripcion' =>$row->inscripcion_id ]);
         $urlPago     = null;
         $urlVenta    = null;
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -354,7 +361,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('pago_colegiatura', function($row){
@@ -364,6 +372,7 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago = route('pagocolegiaturas.create',['inscripcion' => $row->inscripcion_id]);
         $urlVenta    = null;
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -371,7 +380,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('venta', function ($row){
@@ -381,6 +391,7 @@ class DataController extends Controller
         $urlRecibo   = null;
         $urlPago     = null;
         $urlVenta    = route('ventas.create',['inscripcion' => $row->inscripcion_id]);
+        $urlCambioGrupo = null;
         return view('_columnsDT',[
           'cicloEnroll' => $cicloEnroll,
           'groupEnroll' => $groupEnroll,
@@ -388,7 +399,27 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => null,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
+        ]);
+      })
+      ->addColumn('cambiodegrupo', function ($row){
+        $cicloEnroll = null;
+        $groupEnroll = null;
+        $urlHoja     = null;
+        $urlRecibo   = null;
+        $urlPago     = null;
+        $urlVenta    = null;
+        $urlCambioGrupo = route('alumnos.cambiodegrupo.create',['inscripcion' => $row->inscripcion_id]);
+        return view('_columnsDT',[
+          'cicloEnroll' => $cicloEnroll,
+          'groupEnroll' => $groupEnroll,
+          'urlHoja'     => $urlHoja,
+          'urlRecibo'   => $urlRecibo,
+          'urlPago'     => $urlPago,
+          'urlShowToCancel' => null,
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => $urlCambioGrupo
         ]);
       })
       ->make(true);
