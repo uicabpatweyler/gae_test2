@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CambioGrupoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cambiodegrupo/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cambiodegrupo/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Inscripcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Inscripcion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_columnsDT.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_columnsDT.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -700,6 +693,7 @@
       <workItem from="1565924405213" duration="3902000" />
       <workItem from="1566249766010" duration="6973000" />
       <workItem from="1566338153069" duration="866000" />
+      <workItem from="1566426071727" duration="1030000" />
     </task>
     <servers />
   </component>

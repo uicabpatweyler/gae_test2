@@ -459,7 +459,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => $urlShowToCancel,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('importe', function ($row) {
@@ -480,7 +481,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => $urlShowToCancel,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('recibo_colegiatura', function($row){
@@ -498,7 +500,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => $urlShowToCancel,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->addColumn('showpaytocancel', function($row){
@@ -521,7 +524,8 @@ class DataController extends Controller
           'urlRecibo'   => $urlRecibo,
           'urlPago'     => $urlPago,
           'urlShowToCancel' => $urlShowToCancel,
-          'urlVenta'        => $urlVenta
+          'urlVenta'        => $urlVenta,
+          'urlCambioGrupo' => null
         ]);
       })
       ->make(true);
