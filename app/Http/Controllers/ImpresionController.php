@@ -49,4 +49,11 @@ class ImpresionController extends Controller
   public function listaVentasPordia(){
     return view('impresiones.reportes.ventaspordia.index');
   }
+
+  public function listasDeAsistencia(){
+      return view('impresiones.listadeasistencia.create',[
+        'escuelas' => Escuela::with('nivel')->get(),
+        'ciclos' => Ciclo::orderBy('periodo','desc')->get()
+      ]);
+  }
 }

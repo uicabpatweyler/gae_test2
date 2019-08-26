@@ -149,6 +149,10 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.hojainscripcion');
   Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
     ->name('alumnos.impresion.reciboinscripcion');
+  Route::get('impresion/listadeasistencia','ImpresionController@listasDeAsistencia')
+    ->name('impresion.listadeasistencia');
+  Route::get('print/listadeasistencia/{grupo}/{mes}/{teacher}/{fecha}','Impresion\ListaAsistencia@printPdf')
+    ->name('print.listadeasistencia');
 
   //Impresión del Recibo de colegiaturas por dia
   //Impresion del Reporte de colegiatura por dia
@@ -183,6 +187,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grados/{escuela}', 'DataController@grados')->name('grados.data');
     Route::get('selectgrados/{escuela}', 'DataController@selectGradosEscuela');
     Route::get('grupos/{escuela}/{grado}/{ciclo}', 'DataController@grupos');
+    Route::get('selectgrupos/{escuela}/{ciclo}/{grado}', 'DataController@selectGrupos');
     Route::get('cuotas/{escuela}/{ciclo}/{tipo}', 'DataController@cuotas')->name('cuotas.data');
     Route::get('_cuotas/{escuela}/{ciclo}/{tipo}', 'DataController@selectCuotas')->name('selectCuotas');
     Route::get('delegaciones/{estado}','DataController@selectDelegaciones')->name('selectDelegaciones');

@@ -89,6 +89,17 @@ class DataController extends Controller
       ->make(true);
   }
 
+  public function selectGrupos($escuela, $ciclo, $grado){
+    $grupos = Grupo::select(['id as value','nombre as text'])
+      ->where('escuela_id', $escuela)
+      ->where('ciclo_id', $ciclo)
+      ->where('grado_id', $grado)
+      ->orderBy('nombre','asc')
+      ->get()->toArray();
+    array_unshift($grupos, ['value' => '', 'text' => '[Elegir grupo]']);
+    return $grupos;
+  }
+
   public function gruposInscripcion($escuela, $grado, $ciclo){
     $grupos = Grupo::with('grado')
       ->where('escuela_id','=',$escuela)

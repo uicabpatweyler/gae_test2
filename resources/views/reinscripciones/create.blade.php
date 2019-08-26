@@ -238,11 +238,11 @@
                     <input type="text" class="form-control form-control-sm" id="nombre2" name="nombre2" value="{{$alumno->nombre2}}" disabled>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="apellido1">Apellido Materno</label>
+                    <label for="apellido1">Apellido Paterno</label>
                     <input type="text" class="form-control form-control-sm" id="apellido1" name="apellido1" value="{{$alumno->apellido1}}" disabled>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="apellido2">Apellido Paterno</label>
+                    <label for="apellido2">Apellido Materno</label>
                     <input type="text" class="form-control form-control-sm" id="apellido2" name="apellido2" value="{{$alumno->apellido2}}" disabled>
                   </div>
                 </div>

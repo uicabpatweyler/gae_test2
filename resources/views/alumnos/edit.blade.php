@@ -60,12 +60,12 @@
           <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{$alumno->nombre2}}" placeholder="Segundo Nombre" style="text-transform:capitalize">
         </div>
         <div class="form-group col-md-3">
-          <label for="apellido1">Apellido Materno <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$alumno->apellido1}}" placeholder="Apellido Materno" style="text-transform:capitalize" required>
+          <label for="apellido1">Apellido Paterno <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$alumno->apellido1}}" placeholder="Apellido Paterno" style="text-transform:capitalize" required>
         </div>
         <div class="form-group col-md-3">
-          <label for="apellido2">Apellido Paterno</label>
-          <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$alumno->apellido2}}" placeholder="Apellido Paterno" style="text-transform:capitalize">
+          <label for="apellido2">Apellido Materno</label>
+          <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$alumno->apellido2}}" placeholder="Apellido Materno" style="text-transform:capitalize">
         </div>
       </div>
       <div class="border-top mt-2 mb-2"></div>
