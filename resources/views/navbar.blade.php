@@ -89,6 +89,7 @@
             <a class="dropdown-item" href="{{route('ventas.impresion.recibo.reporte')}}"><i class="fas fa-angle-right"></i> Reporte de Ventas</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{route('impresion.listadeasistencia')}}"><i class="fas fa-angle-right"></i> Listas de Asistencia</a>
+            <a class="dropdown-item" href="{{route('impresion.alumnosdeudores')}}"><i class="fas fa-angle-right"></i> Alumnos Deudores</a>
           </div>
         </li>
 

@@ -153,6 +153,10 @@ Route::middleware(['auth'])->group(function(){
     ->name('impresion.listadeasistencia');
   Route::get('print/listadeasistencia/{grupo}/{mes}/{teacher}/{fecha}','Impresion\ListaAsistencia@printPdf')
     ->name('print.listadeasistencia');
+  Route::get('impresion/alumnosdeudores','ImpresionController@indexAlumnosDeudores')
+    ->name('impresion.alumnosdeudores');
+  Route::get('print/alumnosdeudores/{escuela}/{ciclo}/{grado}/{mes}','Reporte\ListadoDeudores@printPDF')
+    ->name('print.alumnosdeudores');
 
   //Impresión del Recibo de colegiaturas por dia
   //Impresion del Reporte de colegiatura por dia

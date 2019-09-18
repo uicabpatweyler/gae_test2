@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Impresion/ListaAsistencia.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ModelsPdf/ListaDeAsistencia.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/listadeasistencia/_columnsDT.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/listadeasistencia/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/ListadoDeudores.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ModelsPdf/ListaDeudores.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/reportes/alumnosdeudores/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/alumnos/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/alumnos/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/alumnos/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/alumnos/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reinscripciones/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reinscripciones/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -164,19 +159,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\listadeasistencia" />
-      <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
-      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
-      <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
-      <recent name="C:\laragon\www\gae_test2\public\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\gae_test2\resources\views" />
       <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
       <recent name="C:\laragon\www\gae_test2\app\Models" />
       <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
       <recent name="C:\laragon\www\gae_test2\app\Models\Inscripcion" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\listadeasistencia" />
+      <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
+      <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
+      <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
+      <recent name="C:\laragon\www\gae_test2\public\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -706,6 +701,19 @@
       <workItem from="1566338153069" duration="866000" />
       <workItem from="1566426071727" duration="21953000" />
       <workItem from="1566852351869" duration="404000" />
+      <workItem from="1568653248729" duration="1096000" />
+      <workItem from="1568655362360" duration="1748000" />
+      <workItem from="1568657144249" duration="1790000" />
+      <workItem from="1568659266999" duration="1745000" />
+      <workItem from="1568669870416" duration="599000" />
+      <workItem from="1568745677897" duration="1306000" />
+      <workItem from="1568747418773" duration="1319000" />
+      <workItem from="1568753957888" duration="1721000" />
+      <workItem from="1568755787528" duration="1736000" />
+      <workItem from="1568757601645" duration="1674000" />
+      <workItem from="1568831261469" duration="1705000" />
+      <workItem from="1568833062367" duration="1747000" />
+      <workItem from="1568835020210" duration="415000" />
     </task>
     <servers />
   </component>
