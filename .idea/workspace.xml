@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="" />
+    <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_125544_create_bouncer_tables.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/RolesPermissionsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gae_test2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gae_test2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagoColegiaturaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagoColegiaturaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_26_194536_create_tipos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_05_26_194536_create_tipos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_26_194554_create_niveles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_05_26_194554_create_niveles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_26_194610_create_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_05_26_194610_create_servicios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_26_194618_create_escuelas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_05_26_194618_create_escuelas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_06_103843_create_ciclos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_06_103843_create_ciclos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_07_114125_create_grados_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_07_114125_create_grados_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_09_103400_create_grupos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_09_103400_create_grupos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_11_163015_create_cuotas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_11_163015_create_cuotas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_18_163328_create_mesesdepago_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_18_163328_create_mesesdepago_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_19_002340_create_alumnos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_19_002340_create_alumnos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_24_123214_create_informacion_alumnos.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_24_123214_create_informacion_alumnos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_26_125647_create_tutores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_26_125647_create_tutores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_27_121148_create_informacion_tutores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_27_121148_create_informacion_tutores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_28_155805_create_inscripciones_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_06_28_155805_create_inscripciones_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_01_164551_create_series_folios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_01_164551_create_series_folios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_01_165911_create_pago_inscripciones_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_01_165911_create_pago_inscripciones_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_23_124200_create_categorias_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_23_124200_create_categorias_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_25_140127_create_productos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_25_140127_create_productos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_26_164304_create_entradas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_26_164304_create_entradas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_26_171802_create_entrada_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_26_171802_create_entrada_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_26_233834_create_kardex_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/old/2019_07_26_233834_create_kardex_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pagos/colegiatura/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pagos/colegiatura/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/venta/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/venta/index.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +162,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/silber/bouncer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OWw2KwPZ5vbAkndT1qzmtJq35U" />
@@ -150,19 +189,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\gae_test2\resources\views" />
-      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
-      <recent name="C:\laragon\www\gae_test2\app\Models" />
-      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
-      <recent name="C:\laragon\www\gae_test2\app\Models\Inscripcion" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\listadeasistencia" />
       <recent name="C:\laragon\www\gae_test2\public\gijgo-datepicker-1.9.1.13" />
       <recent name="C:\laragon\www\gae_test2\resources\views\impresiones\reciboinscripcion" />
       <recent name="C:\laragon\www\gae_test2\resources\views\alumnos" />
       <recent name="C:\laragon\www\gae_test2\public\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\gae_test2\database\migrations\old" />
+      <recent name="C:\laragon\www\gae_test2\resources\views" />
+      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers" />
+      <recent name="C:\laragon\www\gae_test2\app\Models" />
+      <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -706,6 +745,14 @@
       <workItem from="1568833062367" duration="1747000" />
       <workItem from="1568835020210" duration="415000" />
       <workItem from="1568914836808" duration="52000" />
+      <workItem from="1571245982227" duration="747000" />
+      <workItem from="1571247782624" duration="1765000" />
+      <workItem from="1571249701677" duration="1709000" />
+      <workItem from="1571251574367" duration="1342000" />
+      <workItem from="1571253428782" duration="262000" />
+      <workItem from="1571330543006" duration="1704000" />
+      <workItem from="1571332401762" duration="808000" />
+      <workItem from="1571333403247" duration="269000" />
     </task>
     <servers />
   </component>
