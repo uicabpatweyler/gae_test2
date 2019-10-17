@@ -15,6 +15,7 @@ use App\Models\SerieFolio;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class VentaController extends Controller
@@ -193,9 +194,13 @@ class VentaController extends Controller
    */
     public function showPayToCancel(SalidaProducto $salidaProducto)
     {
-      return view('venta.cancel', [
-        'salida' => $salidaProducto
-      ]);
+        if(Auth::user()->isAn('admin'))
+        {
+            return view('venta.cancel', [
+                'salida' => $salidaProducto
+            ]);
+        }
+        abort(404);
     }
 
     /**

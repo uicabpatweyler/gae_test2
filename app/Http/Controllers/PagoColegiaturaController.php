@@ -130,9 +130,13 @@ class PagoColegiaturaController extends Controller
   }
 
   public function showPayToCancel(PagoColegiatura $pagoColegiatura){
-    return view('pagos.colegiatura.cancel',[
-      'pago' => $pagoColegiatura
-    ]);
+      if(Auth::user()->isAn('admin'))
+      {
+          return view('pagos.colegiatura.cancel',[
+              'pago' => $pagoColegiatura
+          ]);
+      }
+      abort(404);
   }
 
   public function cancelarPagoColegiatura(Request $request, PagoColegiatura $pagoColegiatura){

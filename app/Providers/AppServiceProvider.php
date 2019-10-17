@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Bouncer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Bouncer::tables([
+            'abilities' => 'bouncer_abilities',
+            'assigned_roles' => 'bouncer_assigned_roles',
+            'permissions' => 'bouncer_permissions',
+            'roles' => 'bouncer_roles'
+        ]);
     }
 }

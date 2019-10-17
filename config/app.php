@@ -168,6 +168,7 @@ return [
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
         Codedge\Fpdf\FpdfServiceProvider::class,
+        Silber\Bouncer\BouncerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+        'Bouncer' => Silber\Bouncer\BouncerFacade::class,
 
     ],
 
