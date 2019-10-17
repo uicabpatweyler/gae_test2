@@ -24,16 +24,20 @@
           <i class="fas fa-hand-holding-usd"></i>
           Realizar Pago</a>
       </li>
+      @can('cancelar_pago_colegiatura')
       <li class="nav-item">
         <a class="nav-link" id="cancel-tab" data-toggle="tab" href="#cancelar_pago" role="tab" aria-controls="cancelar_pago" aria-selected="false">
           <i class="fas fa-ban"></i>
           Cancelar Pago</a>
       </li>
+      @endcan
+      @can('editar_pago_colegiatura')
       <li class="nav-item">
         <a class="nav-link" id="edit-tab" data-toggle="tab" href="#editar_pago" role="tab" aria-controls="editar_pago" aria-selected="false">
           <i class="fas fa-pencil-alt"></i>
           Editar Pago</a>
       </li>
+      @endcan
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -86,6 +90,7 @@
         <!-- Formulario, Tablas...etc -->
 
       </div>
+      @can('cancelar_pago_colegiatura')
       <div class="tab-pane fade" id="cancelar_pago" role="tabpanel" aria-labelledby="cancel-tab">
         <div class="border-bottom border-gray pb-2 mb-2"></div>
         <div class="card border-0 mt-2">
@@ -115,7 +120,10 @@
           </table>
         </div>
       </div>
+      @endcan
+      @can('editar_pago_colegiatura')
       <div class="tab-pane fade" id="editar_pago" role="tabpanel" aria-labelledby="edit-tab">...</div>
+      @endcan
     </div>
 
   </div>
