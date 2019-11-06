@@ -49,11 +49,12 @@ class VentasPorDia extends Controller
       $numeroRecibos++;
       if($salida->venta_cancelada){
         $recibosCancelados++;
-        $date_a = Carbon::parse($salida->fecha_venta);
-        $date_b = Carbon::parse($salida->fecha_cancelacion);
-        if($date_a->equalTo($date_b)){
+//        $date_a = Carbon::parse($salida->fecha_venta);
+//        $date_b = Carbon::parse($salida->fecha_cancelacion);
+//        if($date_a->equalTo($date_b)){
+//          $cancelType = 1;
+//        }
           $cancelType = 1;
-        }
       }
       $detalles = DB::table('detalle_salida_productos')
         ->join('productos','detalle_salida_productos.producto_id', '=', 'productos.id')

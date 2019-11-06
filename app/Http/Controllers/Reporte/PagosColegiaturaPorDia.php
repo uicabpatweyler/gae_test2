@@ -42,13 +42,7 @@ class PagosColegiaturaPorDia extends Controller
 
      if($pago->pago_cancelado){
        $recibosCancelados++;
-       if($pago->fecha_pago->equalTo($pago->fecha_cancelacion)){
-         $totalReporte = $totalReporte + 0;
-         $cancelType = 1;
-       }
-       else{
-         $totalReporte = $totalReporte + $pago->cantidad_recibida_mxn;
-       }
+       $totalReporte = $totalReporte + 0;
      }
      else{
        $totalReporte = $totalReporte + $pago->cantidad_recibida_mxn;
@@ -71,10 +65,10 @@ class PagosColegiaturaPorDia extends Controller
         'alumno'            => $alumno,
         'grupo'             => $pago->grupo,
         'fecha_cancelacion' => $pago->pago_cancelado ? $pago->fecha_cancelacion->format('d-m-Y') : '',
-        'colegiatura'       => $cancelType === 1 ? 0 : $detalle->importe_colegiatura,
-        'recargo'           => $cancelType === 1 ? 0 : $recargo,
-        'descuento'         => $cancelType === 1 ? 0 : $descuento,
-        'total'             => $cancelType === 1 ? 0 : ($detalle->importe_colegiatura + $recargo) - $descuento
+        'colegiatura'       => $detalle->importe_colegiatura,
+        'recargo'           => $recargo,
+        'descuento'         => $descuento,
+        'total'             => ($detalle->importe_colegiatura + $recargo) - $descuento
       ];
     } //foreach tabla detalle_pago_colegiaturas
     $numLinea++;
