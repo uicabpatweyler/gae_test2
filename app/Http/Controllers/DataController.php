@@ -278,6 +278,23 @@ class DataController extends Controller
       ->make(true);
   }
 
+  public function historialDePagos1()
+  {
+      $alumnos = Alumno::orderBy('apellido1', 'asc')->get();
+      return DataTables::of($alumnos)
+          ->addColumn('actions', function($alumno) {
+              $showUrl = route('alumnos.impresion.historialdepagos2', ['alumno' => $alumno->id]);
+              $editUrl = null;
+              $deleteUrl = null;
+              return view('_formActions', [
+                  'showUrl' => $showUrl,
+                  'editUrl' => $editUrl,
+                  'deleteUrl' => $deleteUrl
+              ]);
+          })
+          ->make(true);
+  }
+
   /*impresiones.hojainscripcion.index*/
   /*pagos.colegiatura.index (realizar pago)*/
   public function alumnosEscuelaCiclo($escuela,$ciclo){

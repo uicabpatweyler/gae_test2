@@ -149,6 +149,10 @@ Route::middleware(['auth'])->group(function(){
     ->name('alumnos.impresion.hojainscripcion');
   Route::get('alumnos/impresion/reciboinscripcion','ImpresionController@reciboInscripcion')
     ->name('alumnos.impresion.reciboinscripcion');
+  Route::get('alumnos/impresion/historialdepagos1','ImpresionController@historialDePagos1')
+      ->name('alumnos.impresion.historialdepagos1');
+  Route::get('alumnos/impresion/historialdepagos2/{alumno}','ImpresionController@historialDePagos2')
+      ->name('alumnos.impresion.historialdepagos2');
   Route::get('impresion/listadeasistencia','ImpresionController@listasDeAsistencia')
     ->name('impresion.listadeasistencia');
   Route::get('print/listadeasistencia/{grupo}/{mes}/{teacher}/{fecha}','Impresion\ListaAsistencia@printPdf')
@@ -172,6 +176,8 @@ Route::middleware(['auth'])->group(function(){
     ->name('impresion.kardex.productos');
   Route::get('impresion/reciboventa/{salidaProducto}','Impresion\ReciboVenta@printPDF')
     ->name('print.reciboventa');
+  Route::get('impresion/historialdepagos/{inscripcion}','Impresion\HistorialDePagos@printPdf')
+      ->name('print.historialdepagos');
 
 
   Route::get('reportes/colegiaturapordia/{fecha}','Reporte\PagosColegiaturaPorDia@printPDF');
@@ -209,6 +215,8 @@ Route::middleware(['auth'])->group(function(){
       ->name('productos.data');
     Route::get('ventas/porfecha/{fecha}','DataController@ventasPorDia')
       ->name('ventaspordia.data');
+    Route::get('historialdepagos1','DataController@historialDePagos1')
+        ->name('index.historialdepagos1.data');
 
     //alumnos.index Alumnos
     Route::get('alumnos','DataController@indexAlumnos')->name('index.alumnos.data');

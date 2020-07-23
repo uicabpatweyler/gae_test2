@@ -144,4 +144,9 @@ class PagoColegiatura extends Model
       $this->attributes['tipo_tarjeta'] = null;
     }
   }
+
+  public function details()
+  {
+      return $this->hasMany(DetallePagoColegiatura::class,'pago_id','id');
+  }
 }

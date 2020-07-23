@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe426043-098a-49f5-b144-d1209269494e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Impresion/HistorialDePagos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ModelsPdf/HistorialDePagos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/historialdepagos/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/impresiones/historialdepagos/index2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gae_test2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gae_test2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Reporte/PagosColegiaturaPorDia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/PagosColegiaturaPorDia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Reporte/VentasPorDia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Reporte/VentasPorDia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImpresionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PagoColegiatura.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PagoColegiatura.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,9 +21,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -42,6 +47,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -135,13 +143,19 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/impresiones/listadeasistencia" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -169,18 +183,6 @@
       <recent name="C:\laragon\www\gae_test2\app\Models" />
       <recent name="C:\laragon\www\gae_test2\app\Http\Controllers\Inscripcion" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -721,20 +723,47 @@
       <workItem from="1571333403247" duration="269000" />
       <workItem from="1571934876391" duration="18000" />
       <workItem from="1573068087447" duration="1302000" />
+      <workItem from="1591327584618" duration="868000" />
+      <workItem from="1591764117375" duration="1352000" />
+      <workItem from="1591765952309" duration="1278000" />
+      <workItem from="1591767610210" duration="1780000" />
+      <workItem from="1591769414151" duration="1782000" />
+      <workItem from="1591771224531" duration="798000" />
+      <workItem from="1591792086923" duration="1813000" />
+      <workItem from="1591793933755" duration="1792000" />
+      <workItem from="1591795749608" duration="135000" />
+      <workItem from="1591818757751" duration="1104000" />
+      <workItem from="1591821063481" duration="1138000" />
+      <workItem from="1591822871835" duration="1837000" />
+      <workItem from="1591931122776" duration="1777000" />
+      <workItem from="1591933465791" duration="1789000" />
+      <workItem from="1591935273512" duration="927000" />
+      <workItem from="1591937103347" duration="228000" />
+      <workItem from="1592275716596" duration="1327000" />
+      <workItem from="1592277721672" duration="1792000" />
+      <workItem from="1592279532111" duration="1405000" />
+      <workItem from="1592281417933" duration="1031000" />
+      <workItem from="1592283457624" duration="1808000" />
+      <workItem from="1592285283014" duration="1466000" />
+      <workItem from="1592429269073" duration="907000" />
+      <workItem from="1592430389412" duration="1792000" />
+      <workItem from="1592432198590" duration="480000" />
+      <workItem from="1592432810673" duration="520000" />
+      <workItem from="1592514878588" duration="1089000" />
+      <workItem from="1592516106250" duration="1717000" />
+      <workItem from="1594264867354" duration="8000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -753,8 +782,23 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="370" y="247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591793977483">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="370" y="247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.984@0.0.1280.984" timestamp="1591793977483" />
+    <state x="474" y="416" key="NewPhpFileDialog" timestamp="1591792280820">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="474" y="416" key="NewPhpFileDialog/0.0.1280.984@0.0.1280.984" timestamp="1591792280820" />
+    <state x="303" y="211" width="672" height="678" key="search.everywhere.popup" timestamp="1591793062340">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="303" y="211" width="672" height="678" key="search.everywhere.popup/0.0.1280.984@0.0.1280.984" timestamp="1591793062340" />
   </component>
 </project>
